@@ -9,106 +9,93 @@
     <style>
         body { font-family: 'Inter', sans-serif; background: #020617; color: #f8fafc; min-height: 100vh; }
         .mono { font-family: 'JetBrains Mono', monospace; }
-        .glass { background: rgba(30, 41, 59, 0.4); backdrop-filter: blur(12px); border: 2px solid rgba(255, 255, 255, 0.05); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .glass:hover { border-color: #38bdf8; transform: scale(1.02); box-shadow: 0 0 30px rgba(56, 189, 248, 0.1); }
-        .section-title { font-weight: 900; letter-spacing: -0.05em; text-transform: uppercase; border-left: 8px solid #38bdf8; padding-left: 15px; margin-bottom: 2rem; }
+        .glass { background: rgba(30, 41, 59, 0.4); backdrop-filter: blur(12px); border: 2px solid rgba(255, 255, 255, 0.05); transition: all 0.3s ease; }
+        .glass:hover { border-color: #38bdf8; transform: scale(1.01); }
+        .section-title { font-weight: 900; letter-spacing: -0.05em; text-transform: uppercase; border-left: 6px solid #38bdf8; padding-left: 12px; margin-bottom: 1.5rem; font-size: 1.875rem; }
     </style>
 </head>
-<body class="max-w-6xl mx-auto px-6 py-12">
+<body class="max-w-5xl mx-auto px-6 py-10">
 
-    <header class="mb-24 text-center">
-        <h1 class="text-7xl font-black mb-4 tracking-tighter uppercase italic">Giorgos Papatsimpas</h1>
-        <p class="text-2xl text-blue-400 mono font-bold">UNDERGRADUATE STUDENT @ COMPUTER SCIENCE & TELECOMMUNICATIONS</p>
+    <header class="mb-16 text-center">
+        <h1 class="text-6xl font-black mb-3 tracking-tighter uppercase italic">Giorgos Papatsimpas</h1>
+        <p class="text-xl text-blue-400 mono font-bold">UNDERGRADUATE STUDENT @ CS & TELECOMMUNICATIONS</p>
     </header>
 
-    <section class="mb-24">
-        <h2 class="section-title text-4xl">Professional Certifications</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            
-            <div class="glass p-8 rounded-3xl border-t-4 border-t-red-500">
-                <div class="text-5xl mb-4">🛡️</div>
-                <h3 class="text-2xl font-black mb-6 uppercase tracking-tight">Cyber Security</h3>
-                <ul class="space-y-4 font-bold text-slate-300">
-                    <li class="flex items-start gap-2"><span class="text-red-500 text-xl">▶</span> THREAT LANDSCAPE 3.0 (FORTINET)</li>
-                    <li class="flex items-start gap-2"><span class="text-red-500 text-xl">▶</span> THREAT INTELLIGENCE & HUNTING (IBM)</li>
-                    <li class="flex items-start gap-2"><span class="text-red-500 text-xl">▶</span> CYBERSECURITY FUNDAMENTALS (IBM)</li>
-                    <li class="flex items-start gap-2"><span class="text-red-500 text-xl">▶</span> STAY SAFE ONLINE (OPEN UNIVERSITY)</li>
+    <section class="mb-20">
+        <h2 class="section-title">A Bit About Me</h2>
+        <div class="glass p-8 rounded-2xl leading-relaxed text-lg text-slate-300 italic">
+            "I am a tech enthusiast who thrives in the complexity of low-level programming and the vast world of telecommunications. Based in Tripoli, I spend my time bridging the gap between hardware and software, whether it's writing thousands of lines in C or training AI models. My goal? To build secure, high-performance systems that define the next generation of connectivity."
+        </div>
+    </section>
+
+    <section class="mb-20">
+        <h2 class="section-title">Professional Certifications</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="glass p-6 rounded-2xl border-t-4 border-t-red-500">
+                <div class="text-3xl mb-3">🛡️</div>
+                <h3 class="text-lg font-black mb-4 uppercase tracking-tight">Cyber Security</h3>
+                <ul class="space-y-2 font-bold text-slate-400 text-[12px]">
+                    <li>▶ THREAT LANDSCAPE (FORTINET)</li>
+                    <li>▶ THREAT INTELLIGENCE (IBM)</li>
+                    <li>▶ CYBERSECURITY FUND. (IBM)</li>
+                    <li>▶ STAY SAFE ONLINE (OPEN UNIV)</li>
                 </ul>
             </div>
-
-            <div class="glass p-8 rounded-3xl border-t-4 border-t-blue-500">
-                <div class="text-5xl mb-4">🤖</div>
-                <h3 class="text-2xl font-black mb-6 uppercase tracking-tight">Data & AI</h3>
-                <ul class="space-y-4 font-bold text-slate-300">
-                    <li class="flex items-start gap-2"><span class="text-blue-500 text-xl">▶</span> DATA SCIENCE & ANALYTICS (HP LIFE)</li>
-                    <li class="flex items-start gap-2"><span class="text-blue-500 text-xl">▶</span> DATA FUNDAMENTALS (IBM)</li>
-                    <li class="flex items-start gap-2"><span class="text-blue-500 text-xl">▶</span> INTRODUCTION TO AI (UNIV. HELSINKI)</li>
-                    <li class="flex items-start gap-2"><span class="text-blue-500 text-xl">▶</span> GOOGLE ANALYTICS CERTIFIED</li>
+            <div class="glass p-6 rounded-2xl border-t-4 border-t-blue-500">
+                <div class="text-3xl mb-3">🤖</div>
+                <h3 class="text-lg font-black mb-4 uppercase tracking-tight">Data & AI</h3>
+                <ul class="space-y-2 font-bold text-slate-400 text-[12px]">
+                    <li>▶ DATA SCIENCE (HP LIFE)</li>
+                    <li>▶ DATA FUNDAMENTALS (IBM)</li>
+                    <li>▶ INTRO TO AI (UNIV. HELSINKI)</li>
+                    <li>▶ GOOGLE ANALYTICS</li>
                 </ul>
             </div>
-
-            <div class="glass p-8 rounded-3xl border-t-4 border-t-green-500">
-                <div class="text-5xl mb-4">🌐</div>
-                <h3 class="text-2xl font-black mb-6 uppercase tracking-tight">Development</h3>
-                <ul class="space-y-4 font-bold text-slate-300">
-                    <li class="flex items-start gap-2"><span class="text-green-500 text-xl">▶</span> WEB DEVELOPMENT FUNDAMENTALS (IBM)</li>
-                    <li class="flex items-start gap-2"><span class="text-green-500 text-xl">▶</span> FUNDAMENTALS OF DIGITAL MARKETING</li>
+            <div class="glass p-6 rounded-2xl border-t-4 border-t-green-500">
+                <div class="text-3xl mb-3">🌐</div>
+                <h3 class="text-lg font-black mb-4 uppercase tracking-tight">Development</h3>
+                <ul class="space-y-2 font-bold text-slate-400 text-[12px]">
+                    <li>▶ WEB DEV FUNDAMENTALS (IBM)</li>
+                    <li>▶ DIGITAL MARKETING (GOOGLE)</li>
                 </ul>
             </div>
-        </div>
-    </section>
-
-    <section class="mb-24">
-        <h2 class="section-title text-4xl border-purple-500">Languages & Communication</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="glass p-10 rounded-3xl flex items-center gap-8">
-                <div class="text-6xl">🇬🇧</div>
-                <div>
-                    <h3 class="text-3xl font-black uppercase text-purple-400 mb-2">English (C2 Level)</h3>
-                    <p class="font-bold text-slate-400 uppercase tracking-tighter">LRN C2 | Pearson PTE C2 | ECCE B2 | TOEIC</p>
-                </div>
-            </div>
-            <div class="glass p-10 rounded-3xl flex items-center gap-8 border-t-4 border-t-yellow-600">
-                <div class="text-6xl">🇩🇪</div>
-                <div>
-                    <h3 class="text-3xl font-black uppercase text-yellow-500 mb-2">German (C1 Level)</h3>
-                    <p class="font-bold text-slate-400 uppercase tracking-tighter">State Certificate of Proficiency (KPG)</p>
-                </div>
+            <div class="glass p-6 rounded-2xl border-t-4 border-t-purple-500">
+                <div class="text-3xl mb-3">🇬🇧 🇩🇪</div>
+                <h3 class="text-lg font-black mb-2 uppercase tracking-tight">Languages</h3>
+                <p class="text-[11px] font-bold text-white uppercase italic">English C2 (LRN, PTE, ECCE, TOEIC)</p>
+                <p class="text-[11px] font-bold text-white uppercase italic mt-2">German C1 (State Cert.)</p>
             </div>
         </div>
     </section>
 
-    <section class="mb-24">
-        <h2 class="section-title text-4xl border-orange-500 text-orange-500">International Conferences</h2>
-        <div class="glass p-10 rounded-3xl flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex items-center gap-6">
-                <div class="text-5xl">🎤</div>
-                <div>
-                    <h3 class="text-3xl font-black uppercase">Voxxed Days Ioannina 2024</h3>
-                    <p class="text-slate-400 font-bold uppercase">Certificate of Attendance - Developer Community Event</p>
+    <section class="mb-20">
+        <h2 class="section-title">Core C Projects</h2>
+        <div class="grid gap-6">
+            <a href="https://github.com/GPap223" class="glass p-8 rounded-2xl block hover:bg-slate-800/40 group">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-2xl font-black text-blue-400 uppercase italic">AcrosticMultiCreator</h3>
+                    <span class="bg-white text-black font-black px-4 py-1 text-sm italic">+13,877 LOC</span>
                 </div>
-            </div>
-            <span class="bg-orange-500 text-white font-black px-8 py-2 rounded-full uppercase italic">Feb 2024</span>
+                <p class="text-md text-slate-300 font-bold uppercase tracking-tight">Advanced C algorithm for large-scale architecture and high-performance computing.</p>
+            </a>
+            <a href="https://github.com/GPap223" class="glass p-8 rounded-2xl block hover:bg-slate-800/40 group">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-2xl font-black text-purple-400 uppercase italic">DungeonAdventure</h3>
+                    <span class="bg-purple-500 text-white font-black px-4 py-1 text-sm italic">1,352 LOC</span>
+                </div>
+                <p class="text-md text-slate-300 font-bold uppercase tracking-tight">Complex "spaghetti" logic engine built in C. Intense structural programming and logic puzzles.</p>
+            </a>
         </div>
     </section>
 
-    <section class="mb-24">
-        <h2 class="section-title text-4xl">Core C Projects</h2>
-        <div class="grid gap-8">
-            <div class="glass p-10 rounded-3xl group">
-                <div class="flex justify-between items-center mb-6">
-                    <h3 class="text-4xl font-black text-blue-400 uppercase italic">AcrosticMultiCreator</h3>
-                    <span class="bg-white text-black font-black px-6 py-2 text-xl italic">+13,877 LOC</span>
-                </div>
-                <p class="text-xl text-slate-300 font-bold leading-tight">ADVANCED C ALGORITHM DEMONSTRATING LARGE-SCALE ARCHITECTURE AND HIGH-PERFORMANCE COMPUTING.</p>
-            </div>
+    <footer class="text-center py-10 border-t border-slate-900">
+        <div class="mb-10 text-slate-500 font-bold uppercase text-sm">
+            🎤 VOXXED DAYS IOANNINA 2024 ATTENDEE
         </div>
-    </section>
-
-    <footer class="text-center py-20">
-        <a href="https://linkedin.com/in/GPapatsimpas" class="bg-[#0077b5] hover:bg-white hover:text-[#0077b5] text-white text-4xl font-black px-16 py-6 rounded-full transition-all uppercase italic shadow-2xl">
+        <a href="https://linkedin.com/in/GPapatsimpas" class="bg-[#0077b5] hover:bg-white hover:text-[#0077b5] text-white text-3xl font-black px-12 py-5 rounded-full transition-all uppercase italic">
             CONNECT ON LINKEDIN
         </a>
+        <p class="mt-8 mono text-[10px] text-slate-700 tracking-[0.8em]">GPAP @ UOP TRIPOLI</p>
     </footer>
 
 </body>
