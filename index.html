@@ -1,135 +1,94 @@
 <!DOCTYPE html>
-<html lang="el" class="dark">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Γιώργος Παπατσίμπας</title>
+    <title>Giorgos Papatsimpas | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <style>
-        body { 
-            font-family: 'Inter', sans-serif; 
-            /* Neo-Gradient Background */
-            background: radial-gradient(circle at top left, #1e1b4b, #0f172a 40%),
-                        radial-gradient(circle at bottom right, #4c1d95, #0f172a 40%);
-            background-color: #0f172a;
-            color: #f8fafc;
-            min-height: 100vh;
-        }
+        body { font-family: 'Inter', sans-serif; background: radial-gradient(circle at top left, #1e1b4b, #0f172a 40%), radial-gradient(circle at bottom right, #4c1d95, #0f172a 40%); background-color: #0f172a; color: #f8fafc; min-height: 100vh; }
         .mono { font-family: 'JetBrains Mono', monospace; }
-        .gradient-text { 
-            background: linear-gradient(90deg, #38bdf8, #a855f7); 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
-        }
-        .glass-card {
-            background: rgba(30, 41, 59, 0.4);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .card-hover:hover { 
-            transform: translateY(-5px); 
-            border-color: #38bdf8;
-            transition: all 0.3s ease; 
-        }
+        .glass { background: rgba(30, 41, 59, 0.4); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .gradient-text { background: linear-gradient(90deg, #38bdf8, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     </style>
 </head>
 <body class="max-w-4xl mx-auto px-6 py-12">
 
-    <header class="mb-16">
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-            <div>
-                <h1 class="text-5xl font-extrabold mb-4 italic tracking-tight">Γεια, είμαι ο <span class="gradient-text">Γιώργος</span></h1>
-                <p class="text-xl text-slate-300 leading-relaxed max-w-2xl">
-                    Φοιτητής στο τμήμα <span class="text-blue-400 font-semibold underline decoration-blue-500/30">Πληροφορικής και Τηλεπικοινωνιών</span> (Τρίπολη) του Πα.Πελ. 
-                    Εστιάζω στο Low-level Programming (C/C++), στα δίκτυα 5G και στην εκπαίδευση μοντέλων AI.
-                </p>
-            </div>
-        </div>
-        
-        <div class="mt-8 flex flex-wrap gap-4">
-            <a href="mailto:ΤΟ-EMAIL-ΣΟΥ@GMAIL.COM" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-bold shadow-lg shadow-blue-500/20 transition">Contact Me</a>
-            <a href="https://github.com/GPap223" class="glass-card hover:bg-slate-800 px-8 py-3 rounded-full transition mono">GitHub</a>
-            <a href="https://linkedin.com/in/ΤΟ-LINKEDIN-ΣΟΥ" class="border border-blue-500/50 text-blue-400 hover:bg-blue-500/10 px-8 py-3 rounded-full transition font-bold">LinkedIn</a>
-        </div>
+    <header class="mb-16 text-center">
+        <h1 class="text-5xl font-extrabold mb-2 tracking-tight">Giorgos Papatsimpas</h1>
+        <p class="text-xl text-blue-400 mono italic">Undergraduate Student at the Department of Informatics and Telecommunications, University of Peloponnese (Tripoli)</p>
     </header>
 
     <section class="mb-16">
-        <h2 class="text-sm uppercase tracking-widest text-slate-500 font-bold mb-8 flex items-center gap-2">
-            <span class="w-8 h-px bg-slate-700"></span> Certifications & Learning Path
-        </h2>
+        <h2 class="text-xs uppercase tracking-[0.3em] text-slate-500 font-bold mb-8">Professional Certifications</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="glass-card p-6 rounded-2xl card-hover">
-                <div class="text-blue-400 text-xs font-bold mono mb-2">IBM PROFESSIONAL</div>
-                <h4 class="text-xl font-bold mb-2">Data Science Specialist</h4>
-                <p class="text-sm text-slate-400 leading-relaxed">Ανάλυση δεδομένων, Python, και Machine Learning θεμέλια.</p>
+            <div class="glass p-6 rounded-2xl">
+                <h3 class="text-blue-400 font-bold mb-4 uppercase text-sm italic">Data Science & AI</h3>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li>• IBM Data Science Professional</li>
+                    <li>• Introduction to Artificial Intelligence (IBM)</li>
+                    <li>• Python for Data Science</li>
+                </ul>
             </div>
-            <div class="glass-card p-6 rounded-2xl card-hover">
-                <div class="text-purple-400 text-xs font-bold mono mb-2">ARTIFICIAL INTELLIGENCE</div>
-                <h4 class="text-xl font-bold mb-2">Intro to AI (IBM)</h4>
-                <p class="text-sm text-slate-400 leading-relaxed">Κατανόηση αλγορίθμων AI και ηθικής των μοντέλων.</p>
-            </div>
-            <div class="glass-card p-6 rounded-2xl card-hover">
-                <div class="text-blue-400 text-xs font-bold mono mb-2">DATA ENGINEERING</div>
-                <h4 class="text-xl font-bold mb-2">Python for Data Science</h4>
-                <p class="text-sm text-slate-400 leading-relaxed">Εφαρμογή της Python σε πολύπλοκα σύνολα δεδομένων.</p>
-            </div>
-            <div class="glass-card p-6 rounded-2xl card-hover">
-                <div class="text-purple-400 text-xs font-bold mono mb-2">TELECOM FUNDAMENTALS</div>
-                <h4 class="text-xl font-bold mb-2">Networking Protocols</h4>
-                <p class="text-sm text-slate-400 leading-relaxed">Βασικές αρχές δικτύων, TCP/IP και πρωτόκολλα επικοινωνίας.</p>
+            <div class="glass p-6 rounded-2xl">
+                <h3 class="text-purple-400 font-bold mb-4 uppercase text-sm italic">Professional Development</h3>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li>• AI Code Reviewer @ DataAnnotation</li>
+                    <li>• LinkedIn Learning Path: Networking Fundamentals</li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <section class="mb-16 glass-card p-10 rounded-3xl border border-blue-500/20">
-        <h2 class="text-sm uppercase tracking-widest text-slate-500 font-bold mb-10 text-center">Core Technologies</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div class="group">
-                <p class="text-3xl font-bold text-white group-hover:text-blue-400 transition">C / C++</p>
-                <p class="text-xs text-slate-500 uppercase mt-2">Embedded</p>
+    <section class="mb-16 glass p-8 rounded-3xl">
+        <h2 class="text-xs uppercase tracking-[0.3em] text-slate-500 font-bold mb-8 text-center">Code Technologies</h2>
+        <div class="flex flex-wrap justify-center gap-8">
+            <div class="text-center group">
+                <p class="text-3xl font-bold group-hover:text-blue-400 transition">C</p>
+                <p class="text-[10px] text-slate-500 uppercase">Systems</p>
             </div>
-            <div class="group">
-                <p class="text-3xl font-bold text-white group-hover:text-blue-400 transition">Python</p>
-                <p class="text-xs text-slate-500 uppercase mt-2">AI/ML</p>
+            <div class="text-center group">
+                <p class="text-3xl font-bold group-hover:text-blue-400 transition">Java</p>
+                <p class="text-[10px] text-slate-500 uppercase">OOP</p>
             </div>
-            <div class="group">
-                <p class="text-3xl font-bold text-white group-hover:text-blue-400 transition">Linux</p>
-                <p class="text-xs text-slate-500 uppercase mt-2">SysAdmin</p>
+            <div class="text-center group">
+                <p class="text-3xl font-bold group-hover:text-blue-400 transition">MATLAB</p>
+                <p class="text-[10px] text-slate-500 uppercase">Signals</p>
             </div>
-            <div class="group">
-                <p class="text-3xl font-bold text-white group-hover:text-blue-400 transition">5G / IP</p>
-                <p class="text-xs text-slate-500 uppercase mt-2">Telecoms</p>
+            <div class="text-center group">
+                <p class="text-3xl font-bold group-hover:text-blue-400 transition">Python</p>
+                <p class="text-[10px] text-slate-500 uppercase">AI/ML</p>
             </div>
         </div>
     </section>
 
     <section class="mb-16">
-        <h2 class="text-sm uppercase tracking-widest text-slate-500 font-bold mb-8 flex items-center gap-2">
-            <span class="w-8 h-px bg-slate-700"></span> Featured Projects
-        </h2>
-        <div class="grid gap-8">
-            <div class="glass-card p-8 rounded-2xl card-hover group">
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-2xl font-bold group-hover:text-blue-400 transition">Acrostic Multicreator (C)</h3>
-                    <span class="bg-blue-500/10 text-blue-400 text-xs px-3 py-1 rounded-full mono">1.6k Lines</span>
+        <h2 class="text-xs uppercase tracking-[0.3em] text-slate-500 font-bold mb-8 italic">Technical Projects (C Programming)</h2>
+        <div class="grid gap-6">
+            <a href="https://github.com/GPap223/DungeonAdventure" class="glass p-8 rounded-2xl block hover:border-blue-500/50 transition group">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-2xl font-bold group-hover:text-blue-400">DungeonAdventure</h3>
+                    <span class="bg-blue-500/10 text-blue-400 px-4 py-1 rounded-full mono text-xs">1,352 Lines of Code</span>
                 </div>
-                <p class="text-slate-400 text-lg leading-relaxed">Ανάπτυξη αλγορίθμου υψηλής απόδοσης με έμφαση στη διαχείριση μνήμης και pointers.</p>
-            </div>
-            <div class="glass-card p-8 rounded-2xl card-hover group">
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-2xl font-bold group-hover:text-purple-400 transition">AI Model Training (RLHF)</h3>
-                    <span class="bg-purple-500/10 text-purple-400 text-xs px-3 py-1 rounded-full mono">Active Experience</span>
+                <p class="text-slate-400 text-sm">Complex game logic and engine development written entirely in C. Focus on structural programming and memory management.</p>
+            </a>
+            <a href="https://github.com/GPap223/AcrosticMultiCreator" class="glass p-8 rounded-2xl block hover:border-purple-500/50 transition group">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-2xl font-bold group-hover:text-purple-400">AcrosticMultiCreator</h3>
+                    <span class="bg-purple-500/10 text-purple-400 px-4 py-1 rounded-full mono text-xs">13,877 Lines of Code</span>
                 </div>
-                <p class="text-slate-400 text-lg leading-relaxed text-justify">Εκπαίδευση LLM μοντέλων μέσω DataAnnotation.tech, με εστίαση στο debugging κώδικα Python/C++.</p>
-            </div>
+                <p class="text-slate-400 text-sm">Large-scale algorithmic project in C. Demonstrates advanced handling of data structures and large-scale code architecture.</p>
+            </a>
         </div>
     </section>
 
-    <footer class="mt-20 pt-10 border-t border-slate-800/50 text-center">
-        <p class="text-slate-500 text-sm mono">
-            &copy; 2026 | George Papatsimpas | <span class="text-blue-400">Πληροφορική Τρίπολης</span>
-        </p>
+    <footer class="text-center space-y-6 mt-20 border-t border-slate-800 pt-10">
+        <h3 class="text-slate-400 uppercase tracking-widest text-xs">Let's build the future together</h3>
+        <a href="https://linkedin.com/in/GPapatsimpas" class="inline-block bg-[#0077b5] hover:bg-[#005c8d] text-white px-10 py-3 rounded-full font-bold transition">
+            Connect on LinkedIn
+        </a>
+        <p class="mono text-[10px] text-slate-600 mt-8 uppercase tracking-[0.5em]">2026 | Giorgos Papatsimpas | UOP Tripoli</p>
     </footer>
 
 </body>
