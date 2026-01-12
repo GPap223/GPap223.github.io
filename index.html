@@ -9,33 +9,43 @@
     <style>
         body { 
             font-family: 'Inter', sans-serif; 
-            background: linear-gradient(125deg, #020617, #0f172a, #1e1b4b, #020617);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            background: #020617; /* Deep dark background */
             color: #f8fafc; 
-            min-height: 100vh; 
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
         }
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+
+        /* ASTRO MOUSE FOLLOWER EFFECT */
+        #mouse-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, rgba(56, 189, 248, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease;
         }
+
         .mono { font-family: 'JetBrains Mono', monospace; }
-        .glass { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.4s ease; }
+        .glass { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; position: relative; z-index: 1; }
         .glass:hover { border-color: #38bdf8; transform: translateY(-3px); }
         
-        /* ΟΜΟΙΟΜΟΡΦΟΙ ΤΙΤΛΟΙ ΓΙΑ ΟΛΕΣ ΤΙΣ ΕΝΟΤΗΤΕΣ */
         .section-title { 
             font-weight: 900; 
-            letter-spacing: -0.05em; 
             text-transform: uppercase; 
             border-left: 6px solid #38bdf8; 
             padding-left: 12px; 
             margin-bottom: 2rem; 
-            font-size: 1.5rem; /* Σταθερό μέγεθος (24px) για όλους τους τίτλους */
-            line-height: 1;
+            font-size: 1.5rem; 
+            position: relative;
+            z-index: 1;
         }
-        
+
         .tech-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -43,11 +53,6 @@
             border-radius: 16px;
             text-align: center;
             transition: all 0.3s ease;
-        }
-        .tech-card:hover {
-            background: rgba(56, 189, 248, 0.1);
-            border-color: #38bdf8;
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
         }
 
         .cert-item { 
@@ -65,8 +70,10 @@
 </head>
 <body class="max-w-5xl mx-auto px-6 py-10">
 
-    <header class="mb-16 text-center">
-        <h1 class="text-6xl font-black mb-3 tracking-tighter uppercase italic drop-shadow-2xl text-white">Giorgos Papatsimpas</h1>
+    <div id="mouse-glow"></div>
+
+    <header class="mb-16 text-center relative z-10">
+        <h1 class="text-6xl font-black mb-3 tracking-tighter uppercase italic drop-shadow-2xl text-white text-shadow-lg">Giorgos Papatsimpas</h1>
         <p class="text-xl text-blue-400 mono font-bold uppercase tracking-tight bg-blue-500/10 inline-block px-4 py-1 rounded-lg">Undergraduate Student @ Computer Science & Telecommunications</p>
     </header>
 
@@ -86,40 +93,34 @@
         <h2 class="section-title">Professional Certifications</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div class="glass p-6 rounded-3xl border-t-4 border-t-red-500 shadow-xl">
-                <div class="text-3xl mb-4">🛡️</div>
                 <h3 class="text-lg font-black mb-6 uppercase italic text-red-400">Cyber Security</h3>
                 <div class="space-y-2">
                     <span class="cert-item">▶ THREAT LANDSCAPE (FORTINET)</span>
                     <span class="cert-item">▶ THREAT INTELLIGENCE (IBM)</span>
                     <span class="cert-item">▶ CYBERSECURITY FUND. (IBM)</span>
-                    <span class="cert-item">▶ STAY SAFE ONLINE (OPEN UNIV)</span>
                 </div>
             </div>
             <div class="glass p-6 rounded-3xl border-t-4 border-t-blue-500 shadow-xl">
-                <div class="text-3xl mb-4">🤖</div>
-                <h3 class="text-lg font-black mb-4 uppercase italic text-blue-400">Data & AI</h3>
+                <h3 class="text-lg font-black mb-6 uppercase italic text-blue-400">Data & AI</h3>
                 <div class="space-y-2">
                     <span class="cert-item">▶ DATA SCIENCE (HP LIFE)</span>
                     <span class="cert-item">▶ DATA FUNDAMENTALS (IBM)</span>
                     <span class="cert-item">▶ INTRO TO AI (UNIV. HELSINKI)</span>
-                    <span class="cert-item">▶ GOOGLE ANALYTICS</span>
                 </div>
             </div>
             <div class="glass p-6 rounded-3xl border-t-4 border-t-green-500 shadow-xl">
-                <div class="text-3xl mb-4">🌐</div>
-                <h3 class="text-lg font-black mb-4 uppercase italic text-green-400">Development</h3>
+                <h3 class="text-lg font-black mb-6 uppercase italic text-green-400">Development</h3>
                 <div class="space-y-2">
                     <span class="cert-item">▶ WEB DEV FUNDAMENTALS (IBM)</span>
                     <span class="cert-item">▶ DIGITAL MARKETING (GOOGLE)</span>
                 </div>
             </div>
         </div>
-
         <div class="glass p-5 rounded-2xl border border-blue-500/30 bg-blue-500/5 flex items-center justify-center gap-4 group">
             <span class="text-2xl animate-pulse">🔗</span>
             <p class="text-md font-bold uppercase tracking-tight text-slate-200 italic text-center">
                 Verify my certifications' existence on my 
-                <a href="https://www.linkedin.com/in/giorgos-papatsimpas-203212377/" target="_blank" class="text-blue-400 underline group-hover:text-white transition-colors ml-1">LinkedIn Profile</a>.
+                <a href="https://www.linkedin.com/in/giorgos-papatsimpas-203212377/" target="_blank" class="text-blue-400 underline group-hover:text-white transition-colors ml-1 font-black">LinkedIn Profile</a>.
             </p>
         </div>
     </section>
@@ -127,27 +128,27 @@
     <section class="mb-20">
         <h2 class="section-title">Tech Stack & Tools</h2>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            <div class="tech-card">
+            <div class="tech-card glass">
                 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" class="w-10 h-10 mx-auto mb-3" alt="C">
                 <span class="mono text-[10px] font-bold">C PROGRAMMING</span>
             </div>
-            <div class="tech-card">
+            <div class="tech-card glass">
                 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" class="w-10 h-10 mx-auto mb-3" alt="Python">
                 <span class="mono text-[10px] font-bold">PYTHON</span>
             </div>
-            <div class="tech-card">
+            <div class="tech-card glass">
                 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" class="w-10 h-10 mx-auto mb-3" alt="Java">
                 <span class="mono text-[10px] font-bold">JAVA</span>
             </div>
-            <div class="tech-card">
+            <div class="tech-card glass">
                 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" class="w-10 h-10 mx-auto mb-3" alt="Linux">
                 <span class="mono text-[10px] font-bold">LINUX OS</span>
             </div>
-            <div class="tech-card">
+            <div class="tech-card glass">
                 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" class="w-10 h-10 mx-auto mb-3" alt="Git">
                 <span class="mono text-[10px] font-bold">GIT / GITHUB</span>
             </div>
-            <div class="tech-card">
+            <div class="tech-card glass">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png" class="w-10 h-10 mx-auto mb-3" alt="Matlab">
                 <span class="mono text-[10px] font-bold">MATLAB</span>
             </div>
@@ -160,15 +161,15 @@
             <div class="glass p-8 rounded-2xl flex items-center gap-6 border-l-8 border-l-purple-500">
                 <div class="text-5xl">🇬🇧</div>
                 <div>
-                    <h3 class="text-2xl font-black uppercase text-white tracking-tight italic">English - Proficiency Level</h3>
-                    <p class="font-black text-purple-400 text-md uppercase tracking-wider italic">C2 Level (Full Mastery)</p>
+                    <h3 class="text-2xl font-black uppercase text-white tracking-tight italic">English - Proficiency C2</h3>
+                    <p class="font-black text-purple-400 text-md uppercase tracking-wider italic">Full Mastery</p>
                 </div>
             </div>
             <div class="glass p-8 rounded-2xl flex items-center gap-6 border-l-8 border-l-yellow-600">
                 <div class="text-5xl">🇩🇪</div>
                 <div>
-                    <h3 class="text-2xl font-black uppercase text-white tracking-tight italic">German - Proficiency Level</h3>
-                    <p class="font-black text-yellow-500 text-md uppercase tracking-wider italic">C1 Level (Advanced Mastery)</p>
+                    <h3 class="text-2xl font-black uppercase text-white tracking-tight italic">German - Mastery C1</h3>
+                    <p class="font-black text-yellow-500 text-md uppercase tracking-wider italic">Advanced Mastery</p>
                 </div>
             </div>
         </div>
@@ -181,10 +182,10 @@
                 <div class="text-4xl">🎤</div>
                 <div>
                     <h3 class="text-2xl font-black uppercase tracking-tight italic">Voxxed Days Ioannina 2024</h3>
-                    <p class="text-slate-400 font-bold text-sm uppercase italic">Certificate of Attendance - Developer Community</p>
+                    <p class="text-slate-400 font-bold text-sm uppercase italic">Certificate of Attendance</p>
                 </div>
             </div>
-            <span class="font-black text-orange-500 mono italic text-md border-2 border-orange-500/30 px-6 py-2 rounded-full shadow-lg">ATTENDEE</span>
+            <span class="font-black text-orange-500 mono italic text-md border-2 border-orange-500/30 px-6 py-2 rounded-full">ATTENDEE</span>
         </div>
     </section>
 
@@ -208,12 +209,20 @@
         </div>
     </section>
 
-    <footer class="text-center py-16 border-t border-slate-900/50">
+    <footer class="text-center py-16 border-t border-slate-900/50 relative z-10">
         <a href="https://www.linkedin.com/in/giorgos-papatsimpas-203212377/" target="_blank" class="bg-[#0077b5] hover:bg-white hover:text-[#0077b5] text-white text-3xl font-black px-12 py-5 rounded-full transition-all uppercase italic shadow-2xl inline-block border-2 border-transparent hover:border-[#0077b5]">
             CONNECT ON LINKEDIN
         </a>
         <p class="mt-12 mono text-[10px] text-slate-800 tracking-[0.8em] uppercase italic">Giorgos Papatsimpas | University of Peloponnese</p>
     </footer>
+
+    <script>
+        const glow = document.getElementById('mouse-glow');
+        window.addEventListener('mousemove', (e) => {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+    </script>
 
 </body>
 </html>
