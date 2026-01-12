@@ -9,86 +9,121 @@
     <style>
         body { font-family: 'Inter', sans-serif; background: radial-gradient(circle at top left, #1e1b4b, #0f172a 40%), radial-gradient(circle at bottom right, #4c1d95, #0f172a 40%); background-color: #0f172a; color: #f8fafc; min-height: 100vh; }
         .mono { font-family: 'JetBrains Mono', monospace; }
-        .glass { background: rgba(30, 41, 59, 0.4); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .glass { background: rgba(30, 41, 59, 0.4); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; }
+        .glass:hover { border-color: rgba(56, 189, 248, 0.5); transform: translateY(-2px); }
         .gradient-text { background: linear-gradient(90deg, #38bdf8, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     </style>
 </head>
-<body class="max-w-4xl mx-auto px-6 py-12">
+<body class="max-w-5xl mx-auto px-6 py-12">
 
     <header class="mb-16 text-center">
-        <h1 class="text-5xl font-extrabold mb-2 tracking-tight">Giorgos Papatsimpas</h1>
-        <p class="text-xl text-blue-400 mono italic">Undergraduate Student at the Department of Informatics and Telecommunications, University of Peloponnese (Tripoli)</p>
+        <h1 class="text-6xl font-black mb-4 tracking-tighter">Giorgos Papatsimpas</h1>
+        <p class="text-xl text-blue-400 mono italic max-w-3xl mx-auto">Undergraduate Student at the Department of Informatics and Telecommunications, University of Peloponnese (Tripoli)</p>
     </header>
 
-    <section class="mb-16">
-        <h2 class="text-xs uppercase tracking-[0.3em] text-slate-500 font-bold mb-8">Professional Certifications</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <section class="mb-20">
+        <h2 class="text-xs uppercase tracking-[0.3em] text-slate-500 font-bold mb-10 flex items-center gap-4">
+            <span class="w-12 h-px bg-slate-800"></span> Professional Certifications
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div class="glass p-6 rounded-2xl">
-                <h3 class="text-blue-400 font-bold mb-4 uppercase text-sm italic">Data Science & AI</h3>
-                <ul class="space-y-2 text-sm text-slate-300">
-                    <li>• IBM Data Science Professional</li>
-                    <li>• Introduction to Artificial Intelligence (IBM)</li>
-                    <li>• Python for Data Science</li>
+                <h3 class="text-red-400 font-bold mb-4 uppercase text-xs italic">Cybersecurity</h3>
+                <ul class="space-y-3 text-[13px] text-slate-300">
+                    <li>• Threat Landscape 3.0 (Fortinet)</li>
+                    <li>• Threat Intelligence & Hunting (IBM)</li>
+                    <li>• Cybersecurity Fundamentals (IBM)</li>
+                    <li>• Stay Safe Online (Open University)</li>
                 </ul>
             </div>
+
             <div class="glass p-6 rounded-2xl">
-                <h3 class="text-purple-400 font-bold mb-4 uppercase text-sm italic">Professional Development</h3>
-                <ul class="space-y-2 text-sm text-slate-300">
-                    <li>• AI Code Reviewer @ DataAnnotation</li>
-                    <li>• LinkedIn Learning Path: Networking Fundamentals</li>
+                <h3 class="text-blue-400 font-bold mb-4 uppercase text-xs italic">Data & AI</h3>
+                <ul class="space-y-3 text-[13px] text-slate-300">
+                    <li>• Data Science & Analytics (HP LIFE)</li>
+                    <li>• Data Fundamentals (IBM)</li>
+                    <li>• Introduction to AI (Univ. of Helsinki)</li>
+                    <li>• Google Analytics Certification</li>
+                </ul>
+            </div>
+
+            <div class="glass p-6 rounded-2xl">
+                <h3 class="text-green-400 font-bold mb-4 uppercase text-xs italic">Web & Development</h3>
+                <ul class="space-y-3 text-[13px] text-slate-300">
+                    <li>• Web Development Fundamentals (IBM)</li>
+                    <li>• Fundamentals of Digital Marketing (Google)</li>
+                    <li>• Voxxed Days Ioannina 2024</li>
+                </ul>
+            </div>
+
+            <div class="glass p-6 rounded-2xl">
+                <h3 class="text-purple-400 font-bold mb-4 uppercase text-xs italic">Languages</h3>
+                <ul class="space-y-3 text-[13px] text-slate-300">
+                    <li class="font-bold text-white uppercase italic">English (C2 Level)</li>
+                    <li class="pl-2 text-[11px] text-slate-500">• LRN Level 3 Certificate</li>
+                    <li class="pl-2 text-[11px] text-slate-500">• Pearson PTE Academic</li>
+                    <li class="font-bold text-white uppercase italic mt-4">German (C1 Level)</li>
+                    <li class="pl-2 text-[11px] text-slate-500">• State Certificate (KPG)</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <section class="mb-16 glass p-8 rounded-3xl">
-        <h2 class="text-xs uppercase tracking-[0.3em] text-slate-500 font-bold mb-8 text-center">Code Technologies</h2>
-        <div class="flex flex-wrap justify-center gap-8">
+    <section class="mb-20 glass p-10 rounded-3xl border border-blue-500/10">
+        <h2 class="text-xs uppercase tracking-[0.3em] text-slate-500 font-bold mb-10 text-center">Technical Stack</h2>
+        <div class="flex flex-wrap justify-center gap-12">
             <div class="text-center group">
-                <p class="text-3xl font-bold group-hover:text-blue-400 transition">C</p>
-                <p class="text-[10px] text-slate-500 uppercase">Systems</p>
+                <p class="text-4xl font-black group-hover:text-blue-400 transition tracking-tighter">C</p>
+                <p class="text-[10px] text-slate-500 uppercase mt-1">Systems</p>
             </div>
             <div class="text-center group">
-                <p class="text-3xl font-bold group-hover:text-blue-400 transition">Java</p>
-                <p class="text-[10px] text-slate-500 uppercase">OOP</p>
+                <p class="text-4xl font-black group-hover:text-blue-400 transition tracking-tighter">JAVA</p>
+                <p class="text-[10px] text-slate-500 uppercase mt-1">Software</p>
             </div>
             <div class="text-center group">
-                <p class="text-3xl font-bold group-hover:text-blue-400 transition">MATLAB</p>
-                <p class="text-[10px] text-slate-500 uppercase">Signals</p>
+                <p class="text-4xl font-black group-hover:text-blue-400 transition tracking-tighter">MATLAB</p>
+                <p class="text-[10px] text-slate-500 uppercase mt-1">Engineering</p>
             </div>
             <div class="text-center group">
-                <p class="text-3xl font-bold group-hover:text-blue-400 transition">Python</p>
-                <p class="text-[10px] text-slate-500 uppercase">AI/ML</p>
+                <p class="text-4xl font-black group-hover:text-blue-400 transition tracking-tighter">PYTHON</p>
+                <p class="text-[10px] text-slate-500 uppercase mt-1">Data/AI</p>
             </div>
         </div>
     </section>
 
-    <section class="mb-16">
-        <h2 class="text-xs uppercase tracking-[0.3em] text-slate-500 font-bold mb-8 italic">Technical Projects (C Programming)</h2>
-        <div class="grid gap-6">
-            <a href="https://github.com/GPap223/DungeonAdventure" class="glass p-8 rounded-2xl block hover:border-blue-500/50 transition group">
-                <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-2xl font-bold group-hover:text-blue-400">DungeonAdventure</h3>
-                    <span class="bg-blue-500/10 text-blue-400 px-4 py-1 rounded-full mono text-xs">1,352 Lines of Code</span>
+    <section class="mb-20">
+        <h2 class="text-xs uppercase tracking-[0.3em] text-slate-500 font-bold mb-10 flex items-center gap-4">
+            <span class="w-12 h-px bg-slate-800"></span> Core C Projects
+        </h2>
+        <div class="grid gap-8">
+            <a href="https://github.com/GPap223" class="glass p-8 rounded-3xl block hover:bg-slate-800/40 transition group relative overflow-hidden">
+                <div class="absolute right-0 top-0 h-full w-1 bg-blue-500 opacity-0 group-hover:opacity-100 transition"></div>
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-2xl font-bold group-hover:text-blue-400 transition">DungeonAdventure</h3>
+                    <span class="mono text-blue-400 text-xs font-bold bg-blue-400/10 px-4 py-1 rounded-full border border-blue-400/20">1,352 LOC</span>
                 </div>
-                <p class="text-slate-400 text-sm">Complex game logic and engine development written entirely in C. Focus on structural programming and memory management.</p>
+                <p class="text-slate-400 text-sm leading-relaxed max-w-2xl text-justify">Custom game engine logic implemented in C. Developed with strict memory management protocols and complex algorithmic structures.</p>
             </a>
-            <a href="https://github.com/GPap223/AcrosticMultiCreator" class="glass p-8 rounded-2xl block hover:border-purple-500/50 transition group">
-                <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-2xl font-bold group-hover:text-purple-400">AcrosticMultiCreator</h3>
-                    <span class="bg-purple-500/10 text-purple-400 px-4 py-1 rounded-full mono text-xs">13,877 Lines of Code</span>
+
+            <a href="https://github.com/GPap223" class="glass p-8 rounded-3xl block hover:bg-slate-800/40 transition group relative overflow-hidden">
+                <div class="absolute right-0 top-0 h-full w-1 bg-purple-500 opacity-0 group-hover:opacity-100 transition"></div>
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-2xl font-bold group-hover:text-purple-400 transition">AcrosticMultiCreator</h3>
+                    <span class="mono text-purple-400 text-xs font-bold bg-purple-500/10 px-4 py-1 rounded-full border border-purple-500/20">13,877 LOC</span>
                 </div>
-                <p class="text-slate-400 text-sm">Large-scale algorithmic project in C. Demonstrates advanced handling of data structures and large-scale code architecture.</p>
+                <p class="text-slate-400 text-sm leading-relaxed max-w-2xl text-justify">A massive algorithmic system in C demonstrating large-scale architecture, high-performance computing, and advanced data structure handling.</p>
             </a>
         </div>
     </section>
 
-    <footer class="text-center space-y-6 mt-20 border-t border-slate-800 pt-10">
-        <h3 class="text-slate-400 uppercase tracking-widest text-xs">Let's build the future together</h3>
-        <a href="https://linkedin.com/in/GPapatsimpas" class="inline-block bg-[#0077b5] hover:bg-[#005c8d] text-white px-10 py-3 rounded-full font-bold transition">
-            Connect on LinkedIn
-        </a>
-        <p class="mono text-[10px] text-slate-600 mt-8 uppercase tracking-[0.5em]">2026 | Giorgos Papatsimpas | UOP Tripoli</p>
+    <footer class="text-center py-20 border-t border-slate-900">
+        <div class="inline-block glass p-1 rounded-full mb-8">
+            <a href="https://linkedin.com/in/GPapatsimpas" class="flex items-center gap-4 bg-[#0077b5] hover:bg-[#005c8d] text-white px-10 py-4 rounded-full font-bold transition">
+                <span>Connect on LinkedIn</span>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+        </div>
+        <p class="mono text-[10px] text-slate-700 uppercase tracking-[1em]">Giorgos Papatsimpas | Tripoli, GR</p>
     </footer>
 
 </body>
