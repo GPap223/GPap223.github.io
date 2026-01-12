@@ -18,10 +18,8 @@
 
         #mouse-glow {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 600px;
-            height: 600px;
+            top: 0; left: 0;
+            width: 600px; height: 600px;
             background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, rgba(56, 189, 248, 0) 70%);
             border-radius: 50%;
             pointer-events: none;
@@ -36,57 +34,56 @@
         .section-title { 
             font-weight: 900; 
             text-transform: uppercase; 
-            border-left: 6px solid #38bdf8; 
+            border-left: 4px solid #38bdf8; 
             padding-left: 15px; 
             margin-bottom: 2rem; 
-            font-size: 1.5rem; /* Μεγάλος και καθαρός τίτλος */
+            font-size: 1.25rem; /* 20px - Σοβαρό και επίσημο */
             letter-spacing: 0.05em;
         }
 
         .cert-item { 
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 12px;
-            border-radius: 8px;
-            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 10px 14px;
+            border-radius: 6px;
+            margin-bottom: 8px;
             display: block;
-            font-weight: 800;
-            color: #f1f5f9;
-            font-size: 0.85rem; /* Μεγαλύτερη γραμματοσειρά για αναγνωσιμότητα */
-            text-align: center;
+            font-weight: 700;
+            color: #cbd5e1;
+            font-size: 0.8rem; /* 13px - Καθαρό list item */
         }
 
-        .terminal-header { background: #1e293b; border-radius: 8px 8px 0 0; padding: 10px 15px; display: flex; gap: 8px; }
-        .dot { width: 12px; height: 12px; border-radius: 50%; }
-        .terminal-body { background: #0f172a; border-radius: 0 0 8px 8px; padding: 30px; min-height: 250px; color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 16px; line-height: 1.8; border: 1px solid rgba(56, 189, 248, 0.1); }
-        .cursor { display: inline-block; width: 8px; height: 18px; background: #38bdf8; animation: blink 1s infinite; vertical-align: middle; }
+        .terminal-header { background: #1e293b; border-radius: 8px 8px 0 0; padding: 10px 15px; display: flex; gap: 6px; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; }
+        .terminal-body { background: #0f172a; border-radius: 0 0 8px 8px; padding: 25px; min-height: 250px; color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.8; border: 1px solid rgba(56, 189, 248, 0.1); }
+        .cursor { display: inline-block; width: 7px; height: 15px; background: #38bdf8; animation: blink 1s infinite; vertical-align: middle; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
         
-        #terminal-section { display: none; margin-bottom: 5rem; }
+        #terminal-section { display: none; margin-bottom: 4rem; }
     </style>
 </head>
-<body class="max-w-6xl mx-auto px-8 py-12">
+<body class="max-w-5xl mx-auto px-6 py-12">
 
     <div id="mouse-glow"></div>
 
-    <header class="mb-16 text-center relative z-10">
-        <h1 class="text-6xl font-black mb-4 tracking-tighter uppercase italic text-white drop-shadow-2xl">Giorgos Papatsimpas</h1>
-        <p class="text-xl text-blue-400 mono font-bold uppercase tracking-widest bg-blue-500/5 inline-block px-6 py-2 rounded-lg border border-blue-500/20">Undergraduate Student | Computer Science & Telecommunications</p>
+    <header class="mb-12 text-center relative z-10">
+        <h1 class="text-5xl font-black mb-4 tracking-tight uppercase italic text-white">Giorgos Papatsimpas</h1>
+        <p class="text-lg text-blue-400 mono font-bold uppercase tracking-widest bg-blue-500/5 inline-block px-6 py-2 rounded-md border border-blue-500/20">Undergraduate Student | Computer Science & Telecommunications</p>
         
-        <div class="mt-12">
-            <button onclick="revealTerminal()" id="message-btn" class="bg-cyan-600 hover:bg-white hover:text-cyan-700 text-white font-black px-12 py-5 rounded-full transition-all uppercase italic text-sm tracking-[0.2em] shadow-xl">
+        <div class="mt-10">
+            <button onclick="revealTerminal()" id="message-btn" class="bg-transparent border-2 border-cyan-500 text-cyan-500 hover:bg-cyan-500 hover:text-white font-black px-8 py-3 rounded-md transition-all uppercase italic text-xs tracking-widest">
                 View Official Message
             </button>
         </div>
     </header>
 
     <section id="terminal-section">
-        <div class="glass p-1 rounded-2xl shadow-2xl">
+        <div class="glass p-1 rounded-xl">
             <div class="terminal-header">
                 <div class="dot bg-slate-600"></div>
                 <div class="dot bg-slate-600"></div>
                 <div class="dot bg-slate-600"></div>
-                <span class="ml-4 text-[10px] mono text-slate-400 uppercase font-bold tracking-[0.3em]">official_welcome.sh</span>
+                <span class="ml-4 text-[9px] mono text-slate-500 uppercase font-bold tracking-[0.2em]">system_authentication.sh</span>
             </div>
             <div class="terminal-body">
                 <div id="terminal-text"></div>
@@ -96,52 +93,51 @@
     </section>
 
     <section class="mb-24">
-        <h2 class="section-title text-white">About My Mission</h2>
-        <div class="glass p-10 rounded-2xl shadow-xl">
-            <p class="leading-relaxed text-xl text-slate-200 font-medium italic text-justify">
-                "I am a tech enthusiast specializing in low-level systems and telecommunications. I focus on the intersection of hardware and software, with extensive experience in C programming and AI model training. My goal is to build secure, high-performance systems for the next generation of connectivity."
+        <h2 class="section-title text-white">Profile Summary</h2>
+        <div class="glass p-10 rounded-xl">
+            <p class="leading-relaxed text-lg text-slate-300 font-medium text-justify italic">
+                "Tech enthusiast specializing in low-level systems and telecommunications. Focused on the intersection of hardware and software, with extensive experience in C programming and algorithmic architecture. Committed to building secure, high-performance systems for next-generation connectivity."
             </p>
-            <div class="mt-10">
-                <a href="mailto:gpapatsimpas@gmail.com?subject=Request%20for%20Giorgos%20Papatsimpas%20CV" class="bg-white text-black font-black px-8 py-4 rounded-xl hover:bg-blue-500 hover:text-white transition-all uppercase text-sm italic shadow-lg">
-                    Request Full CV
+            <div class="mt-8">
+                <a href="mailto:gpapatsimpas@gmail.com?subject=Request%20for%20Giorgos%20Papatsimpas%20CV" class="text-xs font-black uppercase tracking-widest text-blue-400 hover:text-white transition-colors border-b border-blue-400/30 pb-1">
+                    Request Comprehensive CV 
                 </a>
             </div>
         </div>
     </section>
 
     <section class="mb-24">
-        <h2 class="section-title">Professional Certifications</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            <div class="glass p-8 rounded-3xl border-t-4 border-t-red-600 shadow-2xl">
-                <h3 class="text-xl font-black mb-8 uppercase italic text-red-500 text-center">Cyber Security</h3>
-                <div class="space-y-3">
+        <h2 class="section-title">Verified Certifications</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            <div class="glass p-6 rounded-xl border-t-2 border-t-red-900/50">
+                <h3 class="text-xs font-black mb-6 uppercase tracking-[0.2em] text-red-500/80">Cyber Security</h3>
+                <div class="space-y-2">
                     <span class="cert-item">THREAT LANDSCAPE (FORTINET)</span>
                     <span class="cert-item">THREAT INTELLIGENCE (IBM)</span>
                     <span class="cert-item">CYBERSECURITY FUND. (IBM)</span>
                     <span class="cert-item">STAY SAFE ONLINE (OPEN UNIV)</span>
                 </div>
             </div>
-            <div class="glass p-8 rounded-3xl border-t-4 border-t-blue-600 shadow-2xl">
-                <h3 class="text-xl font-black mb-8 uppercase italic text-blue-500 text-center">Data & AI</h3>
-                <div class="space-y-3">
+            <div class="glass p-6 rounded-xl border-t-2 border-t-blue-900/50">
+                <h3 class="text-xs font-black mb-6 uppercase tracking-[0.2em] text-blue-500/80">Data & AI</h3>
+                <div class="space-y-2">
                     <span class="cert-item">DATA SCIENCE (HP LIFE)</span>
                     <span class="cert-item">DATA FUNDAMENTALS (IBM)</span>
-                    <span class="cert-item">INTRO TO AI (U. HELSINKI)</span>
-                    <span class="cert-item">ANALYTICS CERTIFIED (GOOGLE)</span>
+                    <span class="cert-item">INTRO TO AI (UNIV. HELSINKI)</span>
+                    <span class="cert-item">GOOGLE ANALYTICS</span>
                 </div>
             </div>
-            <div class="glass p-8 rounded-3xl border-t-4 border-t-green-600 shadow-2xl">
-                <h3 class="text-xl font-black mb-8 uppercase italic text-green-500 text-center">Development</h3>
-                <div class="space-y-3">
+            <div class="glass p-6 rounded-xl border-t-2 border-t-green-900/50">
+                <h3 class="text-xs font-black mb-6 uppercase tracking-[0.2em] text-green-500/80">Development</h3>
+                <div class="space-y-2">
                     <span class="cert-item">WEB DEV FUNDAMENTALS (IBM)</span>
                     <span class="cert-item">DIGITAL MARKETING (GOOGLE)</span>
                 </div>
             </div>
         </div>
-        <div class="glass p-6 rounded-2xl border border-blue-500/20 bg-blue-500/5 text-center">
-            <p class="text-md font-bold uppercase italic text-slate-300">
-                Verify my official credentials on my 
-                <a href="https://www.linkedin.com/in/giorgos-papatsimpas-203212377/" target="_blank" class="text-blue-400 underline ml-1">LinkedIn Profile</a>
+        <div class="text-center">
+            <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-500">
+                Verify credentials via <a href="https://www.linkedin.com/in/giorgos-papatsimpas-203212377/" target="_blank" class="text-blue-500 hover:underline">Professional Profile</a>
             </p>
         </div>
     </section>
@@ -149,87 +145,75 @@
     <section class="mb-24">
         <h2 class="section-title">Technical Expertise</h2>
         <div class="grid grid-cols-2 md:grid-cols-6 gap-6">
-            <div class="glass p-6 rounded-2xl text-center">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" class="w-10 h-10 mx-auto mb-4">
-                <span class="mono text-[11px] font-black uppercase">C Programming</span>
+            <div class="glass p-5 rounded-lg text-center transition-all">
+                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" class="w-8 h-8 mx-auto mb-3">
+                <span class="mono text-[9px] font-bold tracking-widest uppercase">C Language</span>
             </div>
-            <div class="glass p-6 rounded-2xl text-center">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" class="w-10 h-10 mx-auto mb-4">
-                <span class="mono text-[11px] font-black uppercase">Python</span>
+            <div class="glass p-5 rounded-lg text-center transition-all">
+                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" class="w-8 h-8 mx-auto mb-3">
+                <span class="mono text-[9px] font-bold tracking-widest uppercase">Python</span>
             </div>
-            <div class="glass p-6 rounded-2xl text-center">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" class="w-10 h-10 mx-auto mb-4">
-                <span class="mono text-[11px] font-black uppercase">Linux OS</span>
+            <div class="glass p-5 rounded-lg text-center transition-all">
+                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" class="w-8 h-8 mx-auto mb-3">
+                <span class="mono text-[9px] font-bold tracking-widest uppercase">Linux</span>
             </div>
-            <div class="glass p-6 rounded-2xl text-center">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" class="w-10 h-10 mx-auto mb-4">
-                <span class="mono text-[11px] font-black uppercase">Git / GitHub</span>
+            <div class="glass p-5 rounded-lg text-center transition-all">
+                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" class="w-8 h-8 mx-auto mb-3">
+                <span class="mono text-[9px] font-bold tracking-widest uppercase">Git</span>
             </div>
-            <div class="glass p-6 rounded-2xl text-center">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" class="w-10 h-10 mx-auto mb-4">
-                <span class="mono text-[11px] font-black uppercase">Java OOP</span>
+            <div class="glass p-5 rounded-lg text-center transition-all">
+                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" class="w-8 h-8 mx-auto mb-3">
+                <span class="mono text-[9px] font-bold tracking-widest uppercase">Java</span>
             </div>
-            <div class="glass p-6 rounded-2xl text-center">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png" class="w-10 h-10 mx-auto mb-4">
-                <span class="mono text-[11px] font-black uppercase">Matlab</span>
+            <div class="glass p-5 rounded-lg text-center transition-all">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png" class="w-8 h-8 mx-auto mb-3">
+                <span class="mono text-[9px] font-bold tracking-widest uppercase">Matlab</span>
             </div>
         </div>
     </section>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-24">
-        <section>
-            <h2 class="section-title border-purple-600">Foreign Languages</h2>
-            <div class="glass p-10 rounded-3xl space-y-6">
-                <div class="flex items-center gap-6">
-                    <span class="text-5xl">🇬🇧</span>
-                    <div>
-                        <p class="text-2xl font-black uppercase italic text-white leading-none">English - Proficiency C2</p>
-                        <p class="text-xs text-purple-400 font-bold uppercase mt-2 italic">Full Professional Mastery</p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-6 border-t border-white/5 pt-6">
-                    <span class="text-5xl">🇩🇪</span>
-                    <div>
-                        <p class="text-2xl font-black uppercase italic text-white leading-none">German - Mastery C1</p>
-                        <p class="text-xs text-yellow-500 font-bold uppercase mt-2 italic">Advanced Mastery</p>
-                    </div>
+    <section class="mb-24">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="glass p-10 rounded-xl border-l-4 border-l-purple-900/50">
+                <h3 class="text-xs font-black uppercase tracking-[0.2em] text-slate-500 mb-6">Languages</h3>
+                <div class="space-y-4">
+                    <p class="font-bold text-white tracking-tight uppercase">🇬🇧 English — Proficiency (C2)</p>
+                    <p class="font-bold text-white tracking-tight uppercase border-t border-white/5 pt-4">🇩🇪 German — Advanced (C1)</p>
                 </div>
             </div>
-        </section>
-        <section>
-            <h2 class="section-title border-orange-600">Events</h2>
-            <div class="glass p-10 rounded-3xl flex flex-col justify-center h-full text-center md:text-left">
-                <p class="text-3xl font-black uppercase italic text-white mb-2">Voxxed Days Ioannina 2024</p>
-                <p class="text-sm text-orange-500 font-black uppercase italic tracking-widest">Authorized Attendee Certificate</p>
+            <div class="glass p-10 rounded-xl border-l-4 border-l-orange-900/50">
+                <h3 class="text-xs font-black uppercase tracking-[0.2em] text-slate-500 mb-6 text-left">Conferences</h3>
+                <p class="font-bold text-white tracking-tight uppercase mb-2">Voxxed Days Ioannina 2024</p>
+                <p class="text-[10px] text-orange-500 font-bold uppercase tracking-widest">Authorized Attendee</p>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
     <section class="mb-24">
-        <h2 class="section-title border-blue-400">Core Engineering Repositories</h2>
-        <div class="grid gap-8">
-            <a href="https://github.com/GPap223" target="_blank" class="glass p-10 rounded-3xl block hover:bg-slate-800/60 shadow-2xl transition">
-                <div class="flex justify-between items-center mb-6">
-                    <h3 class="text-3xl font-black text-blue-400 italic mono tracking-tighter">ACROSTIC_MULTICREATOR</h3>
-                    <span class="bg-white text-black font-black px-6 py-2 text-xl italic shadow-xl">1,387 LOC</span>
+        <h2 class="section-title border-blue-400">Engineering Repositories</h2>
+        <div class="grid gap-6">
+            <a href="https://github.com/GPap223" target="_blank" class="glass p-8 rounded-xl block group transition">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-black text-blue-400 mono tracking-tighter italic">ACROSTIC_MULTICREATOR</h3>
+                    <span class="mono text-[10px] font-bold text-slate-500 border border-slate-500/20 px-3 py-1">1,387 LOC</span>
                 </div>
-                <p class="text-xl text-slate-300 font-bold uppercase tracking-tight">Large-scale C algorithmic architecture focused on performance and memory safety.</p>
+                <p class="text-sm text-slate-400 uppercase leading-relaxed font-bold tracking-wide">Algorithmic architecture focusing on memory allocation and C optimization.</p>
             </a>
-            <a href="https://github.com/GPap223" target="_blank" class="glass p-10 rounded-3xl block hover:bg-slate-800/60 shadow-2xl transition">
-                <div class="flex justify-between items-center mb-6">
-                    <h3 class="text-3xl font-black text-purple-400 italic mono tracking-tighter">DUNGEON_ADVENTURE</h3>
-                    <span class="bg-purple-500 text-white font-black px-6 py-2 text-xl italic shadow-xl">1,352 LOC</span>
+            <a href="https://github.com/GPap223" target="_blank" class="glass p-8 rounded-xl block group transition">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-black text-purple-400 mono tracking-tighter italic">DUNGEON_ADVENTURE</h3>
+                    <span class="mono text-[10px] font-bold text-slate-500 border border-slate-500/20 px-3 py-1">1,352 LOC</span>
                 </div>
-                <p class="text-xl text-slate-300 font-bold uppercase tracking-tight">Complex logic engine implementation using structural C programming patterns.</p>
+                <p class="text-sm text-slate-400 uppercase leading-relaxed font-bold tracking-wide">Complex logic engine implementation utilizing modular C programming patterns.</p>
             </a>
         </div>
     </section>
 
     <footer class="text-center py-20 border-t border-slate-900/50">
-        <a href="https://www.linkedin.com/in/giorgos-papatsimpas-203212377/" target="_blank" class="bg-[#0077b5] hover:bg-white hover:text-[#0077b5] text-white text-3xl font-black px-16 py-6 rounded-full transition-all uppercase italic shadow-2xl inline-block border-2 border-transparent hover:border-[#0077b5]">
-            CONNECT ON LINKEDIN
+        <a href="https://www.linkedin.com/in/giorgos-papatsimpas-203212377/" target="_blank" class="inline-block text-[10px] font-black uppercase tracking-[0.4em] text-white hover:text-blue-400 transition-all border border-white/20 px-10 py-4 rounded-sm italic">
+            Connect via LinkedIn
         </a>
-        <p class="mt-12 mono text-xs text-slate-700 tracking-[0.8em] uppercase italic font-bold">Giorgos Papatsimpas | UOP</p>
+        <p class="mt-12 mono text-[9px] text-slate-700 tracking-[0.8em] uppercase">G. Papatsimpas | Univ. of Peloponnese</p>
     </footer>
 
     <script>
@@ -254,15 +238,9 @@
             const lines = [
                 "> INITIALIZING SECURE COMMUNICATION...",
                 "> Dear Guest,",
-                "> ",
                 "> Thank you for evaluating my technical portfolio.",
-                "> It is a privilege to share my engineering journey with you.",
-                "> ",
-                "> I hope this overview provides a clear insight into my commitment",
-                "> to systems development and network excellence.",
-                "> ",
-                "> Sincerely,",
-                "> Giorgos Papatsimpas",
+                "> It is a privilege to share my engineering journey.",
+                "> Sincerely, Giorgos Papatsimpas",
                 "> [STATUS]: SYSTEM_VERIFIED"
             ];
 
@@ -274,12 +252,12 @@
                     if (charIndex < lines[lineIndex].length) {
                         target.innerHTML += lines[lineIndex].charAt(charIndex);
                         charIndex++;
-                        setTimeout(type, 30);
+                        setTimeout(type, 25);
                     } else {
                         target.innerHTML += "<br>";
                         lineIndex++;
                         charIndex = 0;
-                        setTimeout(type, 500);
+                        setTimeout(type, 450);
                     }
                 }
             }
