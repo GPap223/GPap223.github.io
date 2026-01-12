@@ -9,7 +9,8 @@
     <style>
         body { 
             font-family: 'Inter', sans-serif; 
-            background: #020617; 
+            /* PROFESSIONAL GRADIENT BACKGROUND */
+            background: radial-gradient(circle at top center, #1e293b 0%, #0f172a 40%, #020617 100%);
             color: #f8fafc; 
             min-height: 100vh;
             overflow-x: hidden;
@@ -19,8 +20,8 @@
         #mouse-glow {
             position: fixed;
             top: 0; left: 0;
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, rgba(56, 189, 248, 0) 70%);
+            width: 800px; height: 800px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.05) 0%, rgba(56, 189, 248, 0) 60%);
             border-radius: 50%;
             pointer-events: none;
             z-index: 0;
@@ -28,18 +29,42 @@
         }
 
         .mono { font-family: 'JetBrains Mono', monospace; }
-        .glass { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; position: relative; z-index: 1; }
-        .glass:hover { border-color: #38bdf8; transform: translateY(-2px); }
         
-        /* ΣΤΑΘΕΡΑ ΜΕΓΕΘΗ (Professional Sizes) */
+        /* NEW GLASS CARD STYLE - WITH BORDERS */
+        .glass { 
+            background: rgba(15, 23, 42, 0.6); 
+            backdrop-filter: blur(12px); 
+            border: 1px solid rgba(255, 255, 255, 0.08); /* Διακριτικό πλαίσιο γύρω γύρω */
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            position: relative; 
+            z-index: 1; 
+        }
+        
+        /* Hover Effect: Το πλαίσιο γίνεται λίγο πιο φωτεινό */
+        .glass:hover { 
+            border-color: rgba(255, 255, 255, 0.2); 
+            transform: translateY(-2px); 
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
+        }
+
+        /* Top Color Accents - Η λεπτομέρεια που ζήτησες */
+        .border-top-red { border-top: 3px solid #ef4444; background: linear-gradient(180deg, rgba(239, 68, 68, 0.05) 0%, rgba(15, 23, 42, 0) 100%); }
+        .border-top-blue { border-top: 3px solid #3b82f6; background: linear-gradient(180deg, rgba(59, 130, 246, 0.05) 0%, rgba(15, 23, 42, 0) 100%); }
+        .border-top-green { border-top: 3px solid #22c55e; background: linear-gradient(180deg, rgba(34, 197, 94, 0.05) 0%, rgba(15, 23, 42, 0) 100%); }
+        .border-top-purple { border-top: 3px solid #a855f7; background: linear-gradient(180deg, rgba(168, 85, 247, 0.05) 0%, rgba(15, 23, 42, 0) 100%); }
+        .border-top-orange { border-top: 3px solid #f97316; background: linear-gradient(180deg, rgba(249, 115, 22, 0.05) 0%, rgba(15, 23, 42, 0) 100%); }
+        .border-top-cyan { border-top: 3px solid #06b6d4; background: linear-gradient(180deg, rgba(6, 182, 212, 0.05) 0%, rgba(15, 23, 42, 0) 100%); }
+
         .section-title { 
             font-weight: 900; 
             text-transform: uppercase; 
             border-left: 4px solid #38bdf8; 
             padding-left: 15px; 
             margin-bottom: 2rem; 
-            font-size: 1.25rem; /* 20px */
+            font-size: 1.25rem; 
             letter-spacing: 0.05em;
+            text-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
         }
 
         .cert-item { 
@@ -51,12 +76,12 @@
             display: block;
             font-weight: 700;
             color: #cbd5e1;
-            font-size: 0.8rem; /* 13px */
+            font-size: 0.8rem;
         }
 
-        .terminal-header { background: #1e293b; border-radius: 8px 8px 0 0; padding: 10px 15px; display: flex; gap: 6px; }
+        .terminal-header { background: #1e293b; border-radius: 8px 8px 0 0; padding: 10px 15px; display: flex; gap: 6px; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .dot { width: 10px; height: 10px; border-radius: 50%; }
-        .terminal-body { background: #0f172a; border-radius: 0 0 8px 8px; padding: 25px; min-height: 250px; color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.8; border: 1px solid rgba(56, 189, 248, 0.1); }
+        .terminal-body { background: #0f172a; border-radius: 0 0 8px 8px; padding: 25px; min-height: 250px; color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.8; }
         .cursor { display: inline-block; width: 7px; height: 15px; background: #38bdf8; animation: blink 1s infinite; vertical-align: middle; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
         
@@ -68,18 +93,18 @@
     <div id="mouse-glow"></div>
 
     <header class="mb-12 text-center relative z-10">
-        <h1 class="text-5xl font-black mb-4 tracking-tight uppercase italic text-white">Giorgos Papatsimpas</h1>
-        <p class="text-lg text-blue-400 mono font-bold uppercase tracking-widest bg-blue-500/5 inline-block px-6 py-2 rounded-md border border-blue-500/20">Undergraduate Student | Computer Science & Telecommunications</p>
+        <h1 class="text-5xl font-black mb-4 tracking-tight uppercase italic text-white drop-shadow-2xl">Giorgos Papatsimpas</h1>
+        <p class="text-lg text-blue-400 mono font-bold uppercase tracking-widest bg-blue-500/5 inline-block px-6 py-2 rounded-md border border-blue-500/20 shadow-[0_0_15px_rgba(59,130,246,0.1)]">Undergraduate Student | Computer Science & Telecommunications</p>
         
         <div class="mt-10">
-            <button onclick="revealTerminal()" id="message-btn" class="bg-transparent border-2 border-cyan-500 text-cyan-500 hover:bg-cyan-500 hover:text-white font-black px-8 py-3 rounded-md transition-all uppercase italic text-xs tracking-widest">
+            <button onclick="revealTerminal()" id="message-btn" class="bg-slate-900/50 hover:bg-cyan-500 hover:text-white text-cyan-400 border border-cyan-500/50 font-black px-8 py-3 rounded-md transition-all uppercase italic text-xs tracking-widest shadow-[0_0_10px_rgba(6,182,212,0.2)]">
                 View Official Message
             </button>
         </div>
     </header>
 
     <section id="terminal-section">
-        <div class="glass p-1 rounded-xl">
+        <div class="glass p-0 rounded-xl border border-cyan-500/30 shadow-[0_0_40px_rgba(6,182,212,0.1)]">
             <div class="terminal-header">
                 <div class="dot bg-slate-600"></div>
                 <div class="dot bg-slate-600"></div>
@@ -95,12 +120,12 @@
 
     <section class="mb-24">
         <h2 class="section-title text-white">Profile Summary</h2>
-        <div class="glass p-10 rounded-xl">
+        <div class="glass border-top-cyan p-10 rounded-xl">
             <p class="leading-relaxed text-lg text-slate-300 font-medium text-justify italic">
                 "Tech enthusiast specializing in low-level systems and telecommunications. Focused on the intersection of hardware and software, with extensive experience in C programming and algorithmic architecture. Committed to building secure, high-performance systems for next-generation connectivity."
             </p>
             <div class="mt-8">
-                <a href="mailto:gpapatsimpas@gmail.com?subject=Request%20for%20Giorgos%20Papatsimpas%20CV" class="text-xs font-black uppercase tracking-widest text-blue-400 hover:text-white transition-colors border-b border-blue-400/30 pb-1">
+                <a href="mailto:gpapatsimpas@gmail.com?subject=Request%20for%20Giorgos%20Papatsimpas%20CV" class="text-xs font-black uppercase tracking-widest text-blue-400 hover:text-white transition-colors border-b border-blue-400/30 pb-1 italic">
                     Request Comprehensive CV 
                 </a>
             </div>
@@ -110,8 +135,8 @@
     <section class="mb-24">
         <h2 class="section-title">Verified Certifications</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-            <div class="glass p-6 rounded-xl border-t-2 border-t-red-900/50">
-                <h3 class="text-xs font-black mb-6 uppercase tracking-[0.2em] text-red-500/80">Cyber Security</h3>
+            <div class="glass border-top-red p-6 rounded-xl">
+                <h3 class="text-xs font-black mb-6 uppercase tracking-[0.2em] text-red-400">Cyber Security</h3>
                 <div class="space-y-2">
                     <span class="cert-item">THREAT LANDSCAPE (FORTINET)</span>
                     <span class="cert-item">THREAT INTELLIGENCE (IBM)</span>
@@ -119,8 +144,8 @@
                     <span class="cert-item">STAY SAFE ONLINE (OPEN UNIV)</span>
                 </div>
             </div>
-            <div class="glass p-6 rounded-xl border-t-2 border-t-blue-900/50">
-                <h3 class="text-xs font-black mb-6 uppercase tracking-[0.2em] text-blue-500/80">Data & AI</h3>
+            <div class="glass border-top-blue p-6 rounded-xl">
+                <h3 class="text-xs font-black mb-6 uppercase tracking-[0.2em] text-blue-400">Data & AI</h3>
                 <div class="space-y-2">
                     <span class="cert-item">DATA SCIENCE (HP LIFE)</span>
                     <span class="cert-item">DATA FUNDAMENTALS (IBM)</span>
@@ -128,8 +153,8 @@
                     <span class="cert-item">GOOGLE ANALYTICS</span>
                 </div>
             </div>
-            <div class="glass p-6 rounded-xl border-t-2 border-t-green-900/50">
-                <h3 class="text-xs font-black mb-6 uppercase tracking-[0.2em] text-green-500/80">Development</h3>
+            <div class="glass border-top-green p-6 rounded-xl">
+                <h3 class="text-xs font-black mb-6 uppercase tracking-[0.2em] text-green-400">Development</h3>
                 <div class="space-y-2">
                     <span class="cert-item">WEB DEV FUNDAMENTALS (IBM)</span>
                     <span class="cert-item">DIGITAL MARKETING (GOOGLE)</span>
@@ -146,27 +171,27 @@
     <section class="mb-24">
         <h2 class="section-title">Technical Expertise</h2>
         <div class="grid grid-cols-2 md:grid-cols-6 gap-6">
-            <div class="glass p-5 rounded-lg text-center transition-all">
+            <div class="glass p-5 rounded-lg text-center border-t border-t-white/5 hover:border-t-blue-400 transition-all">
                 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" class="w-8 h-8 mx-auto mb-3">
                 <span class="mono text-[9px] font-bold tracking-widest uppercase">C Language</span>
             </div>
-            <div class="glass p-5 rounded-lg text-center transition-all">
+            <div class="glass p-5 rounded-lg text-center border-t border-t-white/5 hover:border-t-yellow-400 transition-all">
                 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" class="w-8 h-8 mx-auto mb-3">
                 <span class="mono text-[9px] font-bold tracking-widest uppercase">Python</span>
             </div>
-            <div class="glass p-5 rounded-lg text-center transition-all">
+            <div class="glass p-5 rounded-lg text-center border-t border-t-white/5 hover:border-t-white transition-all">
                 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" class="w-8 h-8 mx-auto mb-3">
                 <span class="mono text-[9px] font-bold tracking-widest uppercase">Linux</span>
             </div>
-            <div class="glass p-5 rounded-lg text-center transition-all">
+            <div class="glass p-5 rounded-lg text-center border-t border-t-white/5 hover:border-t-orange-500 transition-all">
                 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" class="w-8 h-8 mx-auto mb-3">
                 <span class="mono text-[9px] font-bold tracking-widest uppercase">Git</span>
             </div>
-            <div class="glass p-5 rounded-lg text-center transition-all">
+            <div class="glass p-5 rounded-lg text-center border-t border-t-white/5 hover:border-t-red-400 transition-all">
                 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" class="w-8 h-8 mx-auto mb-3">
                 <span class="mono text-[9px] font-bold tracking-widest uppercase">Java</span>
             </div>
-            <div class="glass p-5 rounded-lg text-center transition-all">
+            <div class="glass p-5 rounded-lg text-center border-t border-t-white/5 hover:border-t-orange-600 transition-all">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png" class="w-8 h-8 mx-auto mb-3">
                 <span class="mono text-[9px] font-bold tracking-widest uppercase">Matlab</span>
             </div>
@@ -175,8 +200,8 @@
 
     <section class="mb-24">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="glass p-10 rounded-xl border-l-4 border-l-purple-900/50">
-                <h3 class="text-xs font-black uppercase tracking-[0.2em] text-slate-500 mb-6">Languages</h3>
+            <div class="glass border-top-purple p-10 rounded-xl">
+                <h3 class="text-xs font-black uppercase tracking-[0.2em] text-purple-400 mb-6">Languages</h3>
                 <div class="space-y-6">
                     <div>
                         <p class="font-bold text-white tracking-tight uppercase flex items-center gap-3">
@@ -192,8 +217,8 @@
                     </div>
                 </div>
             </div>
-            <div class="glass p-10 rounded-xl border-l-4 border-l-orange-900/50">
-                <h3 class="text-xs font-black uppercase tracking-[0.2em] text-slate-500 mb-6 text-left">Conferences</h3>
+            <div class="glass border-top-orange p-10 rounded-xl">
+                <h3 class="text-xs font-black uppercase tracking-[0.2em] text-orange-400 mb-6 text-left">Conferences</h3>
                 <p class="font-bold text-white tracking-tight uppercase mb-2">Voxxed Days Ioannina 2024</p>
                 <p class="text-[10px] text-orange-500 font-bold uppercase tracking-widest">Authorized Attendee</p>
             </div>
@@ -203,17 +228,17 @@
     <section class="mb-24">
         <h2 class="section-title border-blue-400">Engineering Repositories</h2>
         <div class="grid gap-6">
-            <a href="https://github.com/GPap223" target="_blank" class="glass p-8 rounded-xl block group transition">
+            <a href="https://github.com/GPap223" target="_blank" class="glass border-top-blue p-8 rounded-xl block group transition hover:bg-slate-800/50">
                 <div class="flex justify-between items-center mb-4">
                     <h3 class="text-xl font-black text-blue-400 mono tracking-tighter italic">ACROSTIC_MULTICREATOR</h3>
-                    <span class="mono text-[10px] font-bold text-slate-500 border border-slate-500/20 px-3 py-1">1,387 LOC</span>
+                    <span class="mono text-[10px] font-bold text-slate-500 border border-slate-500/20 px-3 py-1 bg-slate-900/50">1,387 LOC</span>
                 </div>
                 <p class="text-sm text-slate-400 uppercase leading-relaxed font-bold tracking-wide">Algorithmic architecture focusing on memory allocation and C optimization.</p>
             </a>
-            <a href="https://github.com/GPap223" target="_blank" class="glass p-8 rounded-xl block group transition">
+            <a href="https://github.com/GPap223" target="_blank" class="glass border-top-purple p-8 rounded-xl block group transition hover:bg-slate-800/50">
                 <div class="flex justify-between items-center mb-4">
                     <h3 class="text-xl font-black text-purple-400 mono tracking-tighter italic">DUNGEON_ADVENTURE</h3>
-                    <span class="mono text-[10px] font-bold text-slate-500 border border-slate-500/20 px-3 py-1">1,352 LOC</span>
+                    <span class="mono text-[10px] font-bold text-slate-500 border border-slate-500/20 px-3 py-1 bg-slate-900/50">1,352 LOC</span>
                 </div>
                 <p class="text-sm text-slate-400 uppercase leading-relaxed font-bold tracking-wide">Complex logic engine implementation utilizing modular C programming patterns.</p>
             </a>
@@ -224,7 +249,7 @@
         <a href="https://www.linkedin.com/in/giorgos-papatsimpas-203212377/" target="_blank" class="inline-block text-[10px] font-black uppercase tracking-[0.4em] text-white hover:text-blue-400 transition-all border border-white/20 px-10 py-4 rounded-sm italic">
             Connect via LinkedIn
         </a>
-        <p class="mt-12 mono text-[9px] text-slate-700 tracking-[0.8em] uppercase">G. Papatsimpas | Univ. of Peloponnese</p>
+        <p class="mt-12 mono text-[9px] text-slate-700 tracking-[0.8em] uppercase italic font-bold">G. Papatsimpas | Univ. of Peloponnese</p>
     </footer>
 
     <script>
@@ -251,7 +276,7 @@
                 "> Dear Guest,",
                 "> ",
                 "> Thank you for evaluating my technical portfolio.",
-                "> It is a privilege to share my engineering journey.",
+                "> It is a privilege to share my engineering journey with you.",
                 "> ",
                 "> Sincerely,",
                 "> Giorgos Papatsimpas",
