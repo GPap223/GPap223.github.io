@@ -25,15 +25,18 @@
         .glass:hover { border-color: #38bdf8; transform: translateY(-3px); }
         .section-title { font-weight: 900; letter-spacing: -0.05em; text-transform: uppercase; border-left: 6px solid #38bdf8; padding-left: 12px; margin-bottom: 1.5rem; font-size: 1.75rem; }
         
-        .tech-badge {
+        .tech-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .tech-card:hover {
             background: rgba(56, 189, 248, 0.1);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            color: #38bdf8;
-            padding: 4px 12px;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
+            border-color: #38bdf8;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
         }
 
         .cert-item { 
@@ -58,20 +61,10 @@
 
     <section class="mb-20">
         <h2 class="section-title text-white">A Bit About Me</h2>
-        <div class="glass p-8 rounded-2xl relative overflow-hidden">
+        <div class="glass p-8 rounded-2xl">
             <p class="leading-relaxed text-lg text-slate-200 italic font-medium mb-6">
                 "I am a tech enthusiast specializing in low-level systems and telecommunications. I focus on the intersection of hardware and software, with extensive experience in C programming and AI model training. My goal is to build secure, high-performance systems for the next generation of connectivity."
             </p>
-            
-            <div class="flex flex-wrap gap-3 mb-8">
-                <span class="tech-badge italic">C / C++</span>
-                <span class="tech-badge italic">Python</span>
-                <span class="tech-badge italic">Java</span>
-                <span class="tech-badge italic">Linux (Ubuntu)</span>
-                <span class="tech-badge italic">Git / GitHub</span>
-                <span class="tech-badge italic">Matlab</span>
-            </div>
-
             <a href="mailto:gpapatsimpas@gmail.com?subject=Request%20for%20Giorgos%20Papatsimpas%20CV" class="inline-flex items-center gap-2 bg-white text-black font-black px-6 py-3 rounded-xl hover:bg-blue-400 hover:text-white transition-all uppercase text-sm italic">
                 <span>📄 Request Full CV</span>
             </a>
@@ -121,7 +114,37 @@
     </section>
 
     <section class="mb-20">
-        <h2 class="section-title border-purple-500">Languages & Proficiency</h2>
+        <h2 class="section-title border-blue-400">Tech Stack & Tools</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <div class="tech-card">
+                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" class="w-10 h-10 mx-auto mb-3" alt="C">
+                <span class="mono text-[10px] font-bold">C PROGRAMMING</span>
+            </div>
+            <div class="tech-card">
+                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" class="w-10 h-10 mx-auto mb-3" alt="Python">
+                <span class="mono text-[10px] font-bold">PYTHON</span>
+            </div>
+            <div class="tech-card">
+                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" class="w-10 h-10 mx-auto mb-3" alt="Java">
+                <span class="mono text-[10px] font-bold">JAVA</span>
+            </div>
+            <div class="tech-card">
+                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" class="w-10 h-10 mx-auto mb-3" alt="Linux">
+                <span class="mono text-[10px] font-bold">LINUX OS</span>
+            </div>
+            <div class="tech-card">
+                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" class="w-10 h-10 mx-auto mb-3" alt="Git">
+                <span class="mono text-[10px] font-bold">GIT / GITHUB</span>
+            </div>
+            <div class="tech-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png" class="w-10 h-10 mx-auto mb-3" alt="Matlab">
+                <span class="mono text-[10px] font-bold">MATLAB</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="mb-20">
+        <h2 class="section-title border-purple-500">Foreign Languages</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="glass p-8 rounded-2xl flex items-center gap-6 border-l-8 border-l-purple-500">
                 <div class="text-5xl">🇬🇧</div>
