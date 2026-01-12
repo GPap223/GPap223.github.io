@@ -7,7 +7,7 @@
 > A high-performance, minimalist personal portfolio designed to showcase engineering projects, certifications, and technical skills in Systems Engineering and Telecommunications.
 
 ## 🔗 Live Demo
-### [👉 Click here to view the Portfolio](https://gpap223.github.io/portfolio/) 
+### [👉 Click here to view the Portfolio](https://gpap223.github.io) 
 
 
 ---
