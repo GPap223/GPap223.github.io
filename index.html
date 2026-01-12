@@ -31,13 +31,14 @@
         .glass { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; position: relative; z-index: 1; }
         .glass:hover { border-color: #38bdf8; transform: translateY(-2px); }
         
+        /* ΣΤΑΘΕΡΑ ΜΕΓΕΘΗ (Professional Sizes) */
         .section-title { 
             font-weight: 900; 
             text-transform: uppercase; 
             border-left: 4px solid #38bdf8; 
             padding-left: 15px; 
             margin-bottom: 2rem; 
-            font-size: 1.25rem; /* 20px - Σοβαρό και επίσημο */
+            font-size: 1.25rem; /* 20px */
             letter-spacing: 0.05em;
         }
 
@@ -50,7 +51,7 @@
             display: block;
             font-weight: 700;
             color: #cbd5e1;
-            font-size: 0.8rem; /* 13px - Καθαρό list item */
+            font-size: 0.8rem; /* 13px */
         }
 
         .terminal-header { background: #1e293b; border-radius: 8px 8px 0 0; padding: 10px 15px; display: flex; gap: 6px; }
@@ -176,9 +177,19 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div class="glass p-10 rounded-xl border-l-4 border-l-purple-900/50">
                 <h3 class="text-xs font-black uppercase tracking-[0.2em] text-slate-500 mb-6">Languages</h3>
-                <div class="space-y-4">
-                    <p class="font-bold text-white tracking-tight uppercase">🇬🇧 English — Proficiency (C2)</p>
-                    <p class="font-bold text-white tracking-tight uppercase border-t border-white/5 pt-4">🇩🇪 German — Advanced (C1)</p>
+                <div class="space-y-6">
+                    <div>
+                        <p class="font-bold text-white tracking-tight uppercase flex items-center gap-3">
+                            <span class="text-2xl">🇬🇧</span> English — Proficiency (C2)
+                        </p>
+                        <p class="text-[10px] text-purple-400 font-black uppercase tracking-widest mt-1 ml-10">Full Professional Mastery</p>
+                    </div>
+                    <div class="border-t border-white/5 pt-4">
+                        <p class="font-bold text-white tracking-tight uppercase flex items-center gap-3">
+                            <span class="text-2xl">🇩🇪</span> German — Advanced (C1)
+                        </p>
+                        <p class="text-[10px] text-yellow-500 font-black uppercase tracking-widest mt-1 ml-10">Advanced Mastery</p>
+                    </div>
                 </div>
             </div>
             <div class="glass p-10 rounded-xl border-l-4 border-l-orange-900/50">
@@ -238,9 +249,12 @@
             const lines = [
                 "> INITIALIZING SECURE COMMUNICATION...",
                 "> Dear Guest,",
+                "> ",
                 "> Thank you for evaluating my technical portfolio.",
                 "> It is a privilege to share my engineering journey.",
-                "> Sincerely, Giorgos Papatsimpas",
+                "> ",
+                "> Sincerely,",
+                "> Giorgos Papatsimpas",
                 "> [STATUS]: SYSTEM_VERIFIED"
             ];
 
