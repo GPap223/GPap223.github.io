@@ -23,7 +23,18 @@
         .mono { font-family: 'JetBrains Mono', monospace; }
         .glass { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.4s ease; }
         .glass:hover { border-color: #38bdf8; transform: translateY(-3px); }
-        .section-title { font-weight: 900; letter-spacing: -0.05em; text-transform: uppercase; border-left: 6px solid #38bdf8; padding-left: 12px; margin-bottom: 1.5rem; font-size: 1.75rem; }
+        
+        /* ΟΜΟΙΟΜΟΡΦΟΙ ΤΙΤΛΟΙ ΓΙΑ ΟΛΕΣ ΤΙΣ ΕΝΟΤΗΤΕΣ */
+        .section-title { 
+            font-weight: 900; 
+            letter-spacing: -0.05em; 
+            text-transform: uppercase; 
+            border-left: 6px solid #38bdf8; 
+            padding-left: 12px; 
+            margin-bottom: 2rem; 
+            font-size: 1.5rem; /* Σταθερό μέγεθος (24px) για όλους τους τίτλους */
+            line-height: 1;
+        }
         
         .tech-card {
             background: rgba(255, 255, 255, 0.03);
@@ -76,7 +87,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div class="glass p-6 rounded-3xl border-t-4 border-t-red-500 shadow-xl">
                 <div class="text-3xl mb-4">🛡️</div>
-                <h3 class="text-xl font-black mb-6 uppercase italic text-red-400">Cyber Security</h3>
+                <h3 class="text-lg font-black mb-6 uppercase italic text-red-400">Cyber Security</h3>
                 <div class="space-y-2">
                     <span class="cert-item">▶ THREAT LANDSCAPE (FORTINET)</span>
                     <span class="cert-item">▶ THREAT INTELLIGENCE (IBM)</span>
@@ -86,7 +97,7 @@
             </div>
             <div class="glass p-6 rounded-3xl border-t-4 border-t-blue-500 shadow-xl">
                 <div class="text-3xl mb-4">🤖</div>
-                <h3 class="text-xl font-black mb-6 uppercase italic text-blue-400">Data & AI</h3>
+                <h3 class="text-lg font-black mb-4 uppercase italic text-blue-400">Data & AI</h3>
                 <div class="space-y-2">
                     <span class="cert-item">▶ DATA SCIENCE (HP LIFE)</span>
                     <span class="cert-item">▶ DATA FUNDAMENTALS (IBM)</span>
@@ -96,7 +107,7 @@
             </div>
             <div class="glass p-6 rounded-3xl border-t-4 border-t-green-500 shadow-xl">
                 <div class="text-3xl mb-4">🌐</div>
-                <h3 class="text-xl font-black mb-6 uppercase italic text-green-400">Development</h3>
+                <h3 class="text-lg font-black mb-4 uppercase italic text-green-400">Development</h3>
                 <div class="space-y-2">
                     <span class="cert-item">▶ WEB DEV FUNDAMENTALS (IBM)</span>
                     <span class="cert-item">▶ DIGITAL MARKETING (GOOGLE)</span>
@@ -114,7 +125,7 @@
     </section>
 
     <section class="mb-20">
-        <h2 class="section-title border-blue-400">Tech Stack & Tools</h2>
+        <h2 class="section-title">Tech Stack & Tools</h2>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             <div class="tech-card">
                 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" class="w-10 h-10 mx-auto mb-3" alt="C">
@@ -164,12 +175,12 @@
     </section>
 
     <section class="mb-20">
-        <h2 class="section-title border-orange-500 text-orange-500">Conferences & Events</h2>
+        <h2 class="section-title border-orange-500">Conferences & Events</h2>
         <div class="glass p-10 rounded-3xl flex flex-col md:flex-row justify-between items-center bg-orange-500/5 text-white gap-6">
             <div class="flex items-center gap-6 text-center md:text-left">
                 <div class="text-4xl">🎤</div>
                 <div>
-                    <h3 class="text-3xl font-black uppercase tracking-tight italic">Voxxed Days Ioannina 2024</h3>
+                    <h3 class="text-2xl font-black uppercase tracking-tight italic">Voxxed Days Ioannina 2024</h3>
                     <p class="text-slate-400 font-bold text-sm uppercase italic">Certificate of Attendance - Developer Community</p>
                 </div>
             </div>
@@ -182,15 +193,15 @@
         <div class="grid gap-6">
             <a href="https://github.com/GPap223" target="_blank" class="glass p-8 rounded-2xl block hover:bg-slate-800/60 group transition">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-4">
-                    <h3 class="text-3xl font-black text-blue-400 uppercase italic tracking-wider mono">ACROSTIC_MULTICREATOR</h3>
-                    <span class="bg-white text-black font-black px-6 py-2 text-xl italic shadow-2xl">1,387 LOC</span>
+                    <h3 class="text-2xl font-black text-blue-400 uppercase italic tracking-wider mono leading-tight">ACROSTIC_MULTICREATOR</h3>
+                    <span class="bg-white text-black font-black px-6 py-2 text-xl italic shadow-2xl shrink-0">1,387 LOC</span>
                 </div>
                 <p class="text-lg text-slate-300 font-bold uppercase tracking-tight">Large-scale C algorithmic architecture focused on performance and memory safety.</p>
             </a>
             <a href="https://github.com/GPap223" target="_blank" class="glass p-8 rounded-2xl block hover:bg-slate-800/60 group transition">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-4">
-                    <h3 class="text-3xl font-black text-purple-400 uppercase italic tracking-wider mono">DUNGEON_ADVENTURE</h3>
-                    <span class="bg-purple-500 text-white font-black px-6 py-2 text-xl italic shadow-2xl">1,352 LOC</span>
+                    <h3 class="text-2xl font-black text-purple-400 uppercase italic tracking-wider mono leading-tight">DUNGEON_ADVENTURE</h3>
+                    <span class="bg-purple-500 text-white font-black px-6 py-2 text-xl italic shadow-2xl shrink-0">1,352 LOC</span>
                 </div>
                 <p class="text-lg text-slate-300 font-bold uppercase tracking-tight text-justify">Complex game logic engine in C. Structural programming with intricate puzzle systems.</p>
             </a>
