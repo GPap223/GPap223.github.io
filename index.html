@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>G I O R G O S  P A P A T S I M P A S | Portfolio</title>
+    <title>Giorgos Papatsimpas | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <style>
@@ -25,6 +25,17 @@
         .glass:hover { border-color: #38bdf8; transform: translateY(-3px); }
         .section-title { font-weight: 900; letter-spacing: -0.05em; text-transform: uppercase; border-left: 6px solid #38bdf8; padding-left: 12px; margin-bottom: 1.5rem; font-size: 1.75rem; }
         
+        .tech-badge {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: #38bdf8;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
         .cert-item { 
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -41,14 +52,29 @@
 <body class="max-w-5xl mx-auto px-6 py-10">
 
     <header class="mb-16 text-center">
-        <h1 class="text-5xl md:text-6xl font-black mb-3 tracking-[0.3em] uppercase italic drop-shadow-2xl text-white">G I O R G O S <br class="md:hidden"> P A P A T S I M P A S</h1>
+        <h1 class="text-6xl font-black mb-3 tracking-tighter uppercase italic drop-shadow-2xl text-white">Giorgos Papatsimpas</h1>
         <p class="text-xl text-blue-400 mono font-bold uppercase tracking-tight bg-blue-500/10 inline-block px-4 py-1 rounded-lg">Undergraduate Student @ Computer Science & Telecommunications</p>
     </header>
 
     <section class="mb-20">
-        <h2 class="section-title">A Bit About Me</h2>
-        <div class="glass p-8 rounded-2xl leading-relaxed text-lg text-slate-200 italic font-medium">
-            "I am a tech enthusiast specializing in low-level systems and telecommunications. I focus on the intersection of hardware and software, with extensive experience in C programming and AI model training. My goal is to build secure, high-performance systems for the next generation of connectivity."
+        <h2 class="section-title text-white">A Bit About Me</h2>
+        <div class="glass p-8 rounded-2xl relative overflow-hidden">
+            <p class="leading-relaxed text-lg text-slate-200 italic font-medium mb-6">
+                "I am a tech enthusiast specializing in low-level systems and telecommunications. I focus on the intersection of hardware and software, with extensive experience in C programming and AI model training. My goal is to build secure, high-performance systems for the next generation of connectivity."
+            </p>
+            
+            <div class="flex flex-wrap gap-3 mb-8">
+                <span class="tech-badge italic">C / C++</span>
+                <span class="tech-badge italic">Python</span>
+                <span class="tech-badge italic">Java</span>
+                <span class="tech-badge italic">Linux (Ubuntu)</span>
+                <span class="tech-badge italic">Git / GitHub</span>
+                <span class="tech-badge italic">Matlab</span>
+            </div>
+
+            <a href="mailto:gpapatsimpas@gmail.com?subject=Request%20for%20Giorgos%20Papatsimpas%20CV" class="inline-flex items-center gap-2 bg-white text-black font-black px-6 py-3 rounded-xl hover:bg-blue-400 hover:text-white transition-all uppercase text-sm italic">
+                <span>📄 Request Full CV</span>
+            </a>
         </div>
     </section>
 
@@ -152,7 +178,7 @@
         <a href="https://www.linkedin.com/in/giorgos-papatsimpas-203212377/" target="_blank" class="bg-[#0077b5] hover:bg-white hover:text-[#0077b5] text-white text-3xl font-black px-12 py-5 rounded-full transition-all uppercase italic shadow-2xl inline-block border-2 border-transparent hover:border-[#0077b5]">
             CONNECT ON LINKEDIN
         </a>
-        <p class="mt-12 mono text-[10px] text-slate-800 tracking-[0.8em] uppercase italic">G I O R G O S  P A P A T S I M P A S | U O P</p>
+        <p class="mt-12 mono text-[10px] text-slate-800 tracking-[0.8em] uppercase italic">Giorgos Papatsimpas | University of Peloponnese</p>
     </footer>
 
 </body>
