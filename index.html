@@ -45,15 +45,9 @@
             box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
         }
 
-        /* Status Light Animation */
         .status-dot {
-            height: 8px;
-            width: 8px;
-            background-color: #22c55e;
-            border-radius: 50%;
-            display: inline-block;
-            margin-right: 8px;
-            box-shadow: 0 0 10px #22c55e;
+            height: 8px; width: 8px; background-color: #22c55e; border-radius: 50%;
+            display: inline-block; margin-right: 8px; box-shadow: 0 0 10px #22c55e;
             animation: pulse-green 2s infinite;
         }
 
@@ -71,26 +65,15 @@
         .border-top-cyan { border-top: 3px solid #06b6d4; background: linear-gradient(180deg, rgba(6, 182, 212, 0.05) 0%, rgba(15, 23, 42, 0) 100%); }
 
         .section-title { 
-            font-weight: 900; 
-            text-transform: uppercase; 
-            border-left: 4px solid #38bdf8; 
-            padding-left: 15px; 
-            margin-bottom: 2rem; 
-            font-size: 1.25rem; 
-            letter-spacing: 0.05em;
+            font-weight: 900; text-transform: uppercase; border-left: 4px solid #38bdf8; 
+            padding-left: 15px; margin-bottom: 2rem; font-size: 1.25rem; letter-spacing: 0.05em;
             text-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
         }
 
         .cert-item { 
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 10px 14px;
-            border-radius: 6px;
-            margin-bottom: 8px;
-            display: block;
-            font-weight: 700;
-            color: #cbd5e1;
-            font-size: 0.8rem;
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 10px 14px; border-radius: 6px; margin-bottom: 8px; display: block;
+            font-weight: 700; color: #cbd5e1; font-size: 0.8rem;
         }
 
         .terminal-header { background: #1e293b; border-radius: 8px 8px 0 0; padding: 10px 15px; display: flex; gap: 6px; border-bottom: 1px solid rgba(255,255,255,0.05); }
@@ -103,10 +86,7 @@
 
         .uop-badge {
             background: rgba(255, 255, 255, 0.95);
-            padding: 12px;
-            border-radius: 12px;
-            width: 100px;
-            height: auto;
+            padding: 12px; border-radius: 12px; width: 100px; height: auto;
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
         }
     </style>
@@ -127,7 +107,7 @@
     </header>
 
     <section id="terminal-section">
-        <div class="glass p-0 rounded-xl border border-cyan-500/30 shadow-[0_0_40px_rgba(6,182,212,0.1)]">
+        <div class="glass p-0 rounded-xl border border-cyan-500/30">
             <div class="terminal-header">
                 <div class="dot bg-slate-600"></div><div class="dot bg-slate-600"></div><div class="dot bg-slate-600"></div>
                 <span class="ml-4 text-[9px] mono text-slate-500 uppercase font-bold tracking-[0.2em]">system_authentication.sh</span>
@@ -170,20 +150,18 @@
     </section>
 
     <section class="mb-24">
-        <h2 class="section-title text-white">Current Professional Status</h2>
+        <h2 class="section-title text-white text-left">Current Professional Status</h2>
         <div class="glass border-top-green p-8 rounded-xl flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="text-left w-full">
                 <div class="flex items-center mb-2">
                     <span class="status-dot"></span>
-                    <span id="status-badge" class="text-[10px] font-black uppercase tracking-[0.3em] text-green-400">Internship Program | Active</span>
+                    <span class="text-[10px] font-black uppercase tracking-[0.3em] text-green-400">Internship Program | Active</span>
                 </div>
-                <h3 id="status-role" class="text-2xl font-black text-white italic uppercase tracking-tight">IT Systems & e-Government Specialist</h3>
-                <p id="status-dept" class="text-slate-400 font-bold uppercase text-xs mt-1 italic">Region of Peloponnese | Dept. of Transparency & Electronic Governance</p>
+                <h3 class="text-2xl font-black text-white italic uppercase tracking-tight">IT Systems & e-Government Specialist</h3>
+                <p class="text-slate-400 font-bold uppercase text-xs mt-1 italic">Region of Peloponnese | Dept. of Transparency & Electronic Governance</p>
             </div>
             <div class="text-right w-full md:w-auto">
-                <span id="status-label" class="mono text-[10px] font-bold text-slate-400 border border-slate-500/20 px-4 py-2 bg-slate-900/50 whitespace-nowrap uppercase">
-                    Digital Infrastructure
-                </span>
+                <span class="mono text-[10px] font-bold text-slate-400 border border-slate-500/20 px-4 py-2 bg-slate-900/50 whitespace-nowrap uppercase">Digital Infrastructure</span>
             </div>
         </div>
     </section>
@@ -224,9 +202,9 @@
         </div>
     </section>
 
-    <section class="mb-24">
+    <section class="mb-24 text-left">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="glass border-top-purple p-10 rounded-xl">
+            <div class="glass border-top-purple p-10 rounded-xl text-left">
                 <h3 class="text-xs font-black uppercase tracking-[0.2em] text-purple-400 mb-6 text-left">Languages</h3>
                 <div class="space-y-6 text-left">
                     <div>
@@ -245,7 +223,7 @@
                     </div>
                 </div>
             </div>
-            <div class="glass border-top-orange p-10 rounded-xl">
+            <div class="glass border-top-orange p-10 rounded-xl text-left">
                 <h3 class="text-xs font-black uppercase tracking-[0.2em] text-orange-400 mb-6 text-left">Conferences</h3>
                 <p class="font-bold text-white tracking-tight uppercase mb-2 text-left">Voxxed Days Ioannina 2024</p>
                 <p class="text-[10px] text-orange-500 font-bold uppercase tracking-widest text-left">Authorized Attendee</p>
@@ -286,32 +264,30 @@
     <section class="mb-24">
         <h2 class="section-title border-blue-400 text-white">Engineering Repositories</h2>
         <div class="grid gap-6">
-            <a href="https://github.com/GPap223/ACROSTIC_MULTICREATOR" target="_blank" class="glass border-top-blue p-8 rounded-xl block group transition-all hover:bg-blue-500/5 hover:border-blue-400/50">
+            <a href="https://github.com/GPap223/Acrostic_Multi_Creator" target="_blank" class="glass border-top-blue p-8 rounded-xl block group transition-all hover:bg-blue-500/5 hover:border-blue-400/50">
                 <div class="flex justify-between items-start mb-4">
                     <div>
                         <h3 class="text-xl font-black text-blue-400 mono tracking-tighter italic group-hover:underline flex items-center gap-2 uppercase">
                             <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                            ACROSTIC_MULTICREATOR
+                            Acrostic_Multi_Creator
                         </h3>
-                        <p class="text-blue-500/60 text-[10px] font-black mt-1 tracking-widest uppercase group-hover:text-blue-400">VIEW SOURCE CODE ON GITHUB →</p>
+                        <p class="text-blue-500/60 text-[10px] font-black mt-1 tracking-widest uppercase group-hover:text-blue-400 transition-colors">VIEW SOURCE CODE ON GITHUB →</p>
                     </div>
-                    <span class="mono text-[10px] font-bold text-slate-500 border border-slate-500/20 px-3 py-1 bg-slate-900/50 uppercase">1,387 LOC</span>
+                    <span class="mono text-[10px] font-bold text-slate-500 border border-slate-500/20 px-3 py-1 bg-slate-900/50 uppercase">C SOURCE</span>
                 </div>
-                <p class="text-sm text-slate-400 uppercase leading-relaxed font-bold tracking-wide group-hover:text-slate-300">Algorithmic architecture focusing on memory allocation and C optimization.</p>
             </a>
 
-            <a href="https://github.com/GPap223/DUNGEON_ADVENTURE" target="_blank" class="glass border-top-purple p-8 rounded-xl block group transition-all hover:bg-purple-500/5 hover:border-purple-400/50 mt-6">
+            <a href="https://github.com/GPap223/DungeonAdventure" target="_blank" class="glass border-top-purple p-8 rounded-xl block group transition-all hover:bg-purple-500/5 hover:border-purple-400/50 mt-6">
                 <div class="flex justify-between items-start mb-4">
                     <div>
                         <h3 class="text-xl font-black text-purple-400 mono tracking-tighter italic group-hover:underline flex items-center gap-2 uppercase">
                             <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                            DUNGEON_ADVENTURE
+                            DungeonAdventure
                         </h3>
                         <p class="text-purple-500/60 text-[10px] font-black mt-1 tracking-widest uppercase group-hover:text-purple-400 transition-colors">VIEW SOURCE CODE ON GITHUB →</p>
                     </div>
-                    <span class="mono text-[10px] font-bold text-slate-500 border border-slate-500/20 px-3 py-1 bg-slate-900/50 uppercase">1,352 LOC</span>
+                    <span class="mono text-[10px] font-bold text-slate-500 border border-slate-500/20 px-3 py-1 bg-slate-900/50 uppercase">LOGIC ENGINE</span>
                 </div>
-                <p class="text-sm text-slate-400 uppercase leading-relaxed font-bold tracking-wide group-hover:text-slate-300">Complex logic engine implementation utilizing modular C programming patterns.</p>
             </a>
         </div>
     </section>
