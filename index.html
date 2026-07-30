@@ -10,473 +10,447 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giorgos Papatsimpas | SYSTEM VERIFIED</title>
+    <title>Giorgos Papatsimpas | Elite Engineer</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
     
     <style>
+        :root {
+            --bg-color: #030712; /* Deepest slate */
+            --card-bg: rgba(15, 23, 42, 0.4);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --accent-cyan: #06b6d4;
+            --accent-purple: #a855f7;
+            --accent-emerald: #10b981;
+        }
+
         body { 
             font-family: 'Inter', sans-serif; 
-            background-color: #020617;
-            background-image: 
-                radial-gradient(circle at 50% 0%, #1e293b 0%, transparent 70%),
-                linear-gradient(rgba(15, 23, 42, 0.9), rgba(2, 6, 23, 1));
+            background-color: var(--bg-color);
             color: #f8fafc; 
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
+            selection-background-color: rgba(6, 182, 212, 0.3);
         }
 
-        /* Subtle CRT Scanlines */
-        .scanlines {
+        /* Abstract Background Grid (The Blueprint look) */
+        .bg-grid {
             position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background: linear-gradient(
-                to bottom,
-                rgba(255,255,255,0),
-                rgba(255,255,255,0) 50%,
-                rgba(0,0,0,0.1) 50%,
-                rgba(0,0,0,0.1)
-            );
-            background-size: 100% 4px;
-            pointer-events: none;
-            z-index: 9999;
-            opacity: 0.3;
-        }
-
-        #mouse-glow {
-            position: fixed;
-            top: 0; left: 0;
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, rgba(56, 189, 248, 0) 60%);
-            border-radius: 50%;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-size: 50px 50px;
+            background-image: 
+                linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+            mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
             pointer-events: none;
             z-index: 0;
-            transform: translate(-50%, -50%);
-            transition: width 0.2s, height 0.2s;
+        }
+
+        /* Ambient Glowing Orbs */
+        .ambient-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.4;
+            animation: float 20s infinite ease-in-out;
+        }
+        .orb-1 {
+            top: -10%; left: -10%;
+            width: 50vw; height: 50vw;
+            background: radial-gradient(circle, rgba(6,182,212,0.15) 0%, transparent 70%);
+        }
+        .orb-2 {
+            bottom: -20%; right: -10%;
+            width: 60vw; height: 60vw;
+            background: radial-gradient(circle, rgba(168,85,247,0.1) 0%, transparent 70%);
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(5%, 5%); }
+        }
+
+        /* Elite Card (Bento Style) */
+        .elite-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 10;
+        }
+
+        .elite-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.06), transparent 40%);
+            opacity: 0;
+            transition: opacity 0.5s;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .elite-card:hover::before { opacity: 1; }
+        .elite-card:hover { 
+            border-color: rgba(255,255,255,0.15); 
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
         }
 
         .mono { font-family: 'JetBrains Mono', monospace; }
+
+        .section-header {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: #64748b;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
         
-        .glass { 
-            background: rgba(15, 23, 42, 0.4); 
-            backdrop-filter: blur(16px); 
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(56, 189, 248, 0.1);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-            position: relative; 
-            z-index: 1; 
+        .section-header::before {
+            content: '';
+            display: block;
+            width: 30px;
+            height: 2px;
+            background: #38bdf8;
+        }
+
+        /* Mac/Linux Style Terminal */
+        .terminal-window {
+            background: #09090b;
+            border: 1px solid #27272a;
+            border-radius: 12px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
             overflow: hidden;
         }
+        .terminal-header {
+            background: #18181b;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #27272a;
+        }
+        .terminal-dots { display: flex; gap: 8px; }
+        .tdot { width: 12px; height: 12px; border-radius: 50%; }
+        .tdot.close { background: #ff5f56; }
+        .tdot.min { background: #ffbd2e; }
+        .tdot.max { background: #27c93f; }
+        .terminal-title { margin-left: 16px; font-size: 12px; color: #71717a; }
+        .terminal-body { padding: 24px; min-height: 200px; color: #10b981; font-size: 14px; line-height: 1.6; }
         
-        .glass::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%; width: 50%; height: 100%;
-            background: linear-gradient(to right, transparent, rgba(56, 189, 248, 0.05), transparent);
-            transform: skewX(-20deg);
-            transition: all 0.5s;
-        }
-
-        .glass:hover::before {
-            left: 200%;
-        }
-
-        .glass:hover { 
-            border-color: rgba(56, 189, 248, 0.4); 
-            transform: translateY(-5px) scale(1.01); 
-            box-shadow: 0 15px 40px -10px rgba(56, 189, 248, 0.2);
-        }
-
-        #glitch-name {
-            font-family: 'JetBrains Mono', monospace;
-            cursor: crosshair;
-        }
-
-        .status-dot {
-            height: 8px;
-            width: 8px;
-            margin-bottom: 0.5rem;
-            animation: bounce-3d 1.5s infinite ease-in-out;
-            filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.8));
-        }
-
-        @keyframes bounce-3d {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(-10deg) scale(1.1); }
-        }
-
-        .border-top-red { border-top: 3px solid #ef4444; }
-        .border-top-blue { border-top: 3px solid #3b82f6; }
-        .border-top-green { border-top: 3px solid #22c55e; }
-        .border-top-purple { border-top: 3px solid #a855f7; }
-        .border-top-orange { border-top: 3px solid #f97316; }
-        .border-top-cyan { border-top: 3px solid #06b6d4; }
-
-        .section-title { 
-            font-weight: 900; 
-            text-transform: uppercase; 
-            border-left: 4px solid #38bdf8; 
-            padding-left: 15px; 
-            margin-bottom: 2rem; 
-            font-size: 1.25rem; 
-            letter-spacing: 0.05em;
-            text-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
-            display: inline-block;
-        }
-
-        .cert-item { 
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 10px 14px;
-            border-radius: 4px;
-            margin-bottom: 8px;
-            display: block;
-            font-weight: 700;
-            color: #94a3b8;
-            font-size: 0.8rem;
-            transition: all 0.2s;
-            border-left: 2px solid transparent;
-        }
-        .cert-item:hover {
-            color: #fff;
-            background: rgba(255, 255, 255, 0.05);
-            border-left-color: #38bdf8;
-            padding-left: 18px;
-        }
-
-        .terminal-header { background: #0f172a; border-radius: 8px 8px 0 0; padding: 10px 15px; display: flex; gap: 6px; border-bottom: 1px solid #1e293b; }
-        .dot { width: 12px; height: 12px; border-radius: 50%; }
-        .terminal-body { background: #020617; border-radius: 0 0 8px 8px; padding: 25px; min-height: 250px; color: #22c55e; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.8; box-shadow: inset 0 0 50px rgba(0,0,0,0.5); }
-        .cursor { display: inline-block; width: 8px; height: 18px; background: #22c55e; animation: blink 1s infinite; vertical-align: middle; box-shadow: 0 0 8px #22c55e; }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-        
-        #terminal-section { display: none; margin-bottom: 4rem; animation: bootUp 0.5s ease-out forwards; opacity: 0; transform: translateY(20px); }
-        
-        @keyframes bootUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .uop-badge { background: #fff; padding: 12px; border-radius: 8px; width: 100px; height: auto; box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); }
+        #terminal-section { display: none; margin-bottom: 4rem; animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(30px); }
+        @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
 
         .cyber-btn {
-            background: linear-gradient(45deg, transparent 5%, #0ea5e9 5%);
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
             color: #fff;
-            box-shadow: 6px 0px 0px #0284c7;
+            padding: 14px 32px;
+            border-radius: 9999px; /* Pill shape */
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .cyber-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: conic-gradient(transparent, transparent, transparent, #06b6d4);
+            animation: rotate 4s linear infinite;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .cyber-btn:hover::after { opacity: 1; }
+        .cyber-btn:hover { border-color: #06b6d4; background: rgba(6,182,212,0.1); box-shadow: 0 0 20px rgba(6,182,212,0.2); }
+        @keyframes rotate { 100% { transform: rotate(360deg); } }
+
+        /* Badge Pills for Skills/Certs */
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #94a3b8;
             transition: all 0.2s;
         }
-        .cyber-btn:active { box-shadow: 2px 0px 0px #0284c7; transform: translateX(4px); }
+        .pill:hover { background: rgba(255,255,255,0.1); color: #fff; transform: translateY(-2px); }
+
+        .uop-logo { filter: grayscale(100%) brightness(200%); opacity: 0.6; transition: all 0.3s; }
+        .elite-card:hover .uop-logo { filter: grayscale(0%) brightness(100%); opacity: 1; }
     </style>
 </head>
-<body class="max-w-5xl mx-auto px-6 py-12">
+<body class="max-w-6xl mx-auto px-6 py-16">
 
-    <div class="scanlines"></div>
-    <div id="mouse-glow"></div>
+    <div class="bg-grid"></div>
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
 
-    <header class="mb-16 text-center relative z-10 pt-10">
-        <!-- THE DECRYPT EFFECT TARGET -->
-        <h1 id="glitch-name" data-value="GIORGOS PAPATSIMPAS" class="text-4xl md:text-6xl font-black mb-4 tracking-tighter uppercase text-white drop-shadow-[0_0_15px_rgba(56,189,248,0.6)] text-center">
+    <header class="mb-20 mt-10 text-center relative z-10">
+        <div class="inline-block mb-6 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 backdrop-blur-md">
+            <span class="w-2 h-2 rounded-full bg-cyan-400 inline-block mr-2 animate-pulse"></span>
+            <span class="mono text-xs font-bold text-cyan-300 uppercase tracking-widest">SYSTEM.STATUS = "VERIFIED"</span>
+        </div>
+        
+        <h1 id="glitch-name" data-value="GIORGOS PAPATSIMPAS" class="text-5xl md:text-7xl font-black mb-4 tracking-tighter text-white drop-shadow-2xl">
             GIORGOS PAPATSIMPAS
         </h1>
-        <p class="text-md md:text-lg text-cyan-400 mono font-bold uppercase tracking-[0.2em] bg-cyan-500/10 inline-block px-6 py-2 rounded border border-cyan-500/30 shadow-[0_0_20px_rgba(6,182,212,0.15)] backdrop-blur-sm mt-2">
-            Undergraduate Student | Computer Science & Telecommunications
+        <p class="text-lg text-slate-400 font-medium max-w-2xl mx-auto mt-6">
+            Undergraduate Student in <span class="text-white font-bold">Computer Science & Telecommunications</span>. 
+            Focused on the intersection of hardware and software, low-level systems, and cybersecurity architecture.
         </p>
         
-        <div class="mt-14 flex flex-col items-center">
-            <span class="pointer-hand" id="pointer-emoji">👇</span>
-            <button onclick="revealTerminal()" id="message-btn" class="cyber-btn font-black px-10 py-4 rounded-sm uppercase italic text-xs tracking-[0.3em]">
-                INITIATE SECURE PROTOCOL
+        <div class="mt-12">
+            <button onclick="revealTerminal()" id="message-btn" class="cyber-btn mono">
+                > INITIATE_SECURE_PROTOCOL
             </button>
         </div>
     </header>
 
-    <section id="terminal-section">
-        <div class="p-1 rounded-xl bg-gradient-to-b from-cyan-500/30 to-transparent">
-            <div class="terminal-header items-center">
-                <div class="dot bg-red-500"></div><div class="dot bg-yellow-500"></div><div class="dot bg-green-500"></div>
-                <span class="ml-4 text-[10px] mono text-slate-400 uppercase font-bold tracking-[0.2em]">root@sys-auth:~# ./handshake.sh</span>
+    <section id="terminal-section" class="relative z-10 max-w-3xl mx-auto">
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <div class="terminal-dots">
+                    <div class="tdot close"></div><div class="tdot min"></div><div class="tdot max"></div>
+                </div>
+                <div class="terminal-title mono">root@gpap-sys:~</div>
             </div>
-            <div class="terminal-body">
+            <div class="terminal-body mono">
                 <div id="terminal-text"></div><span id="cursor" class="cursor" style="display:none;"></span>
             </div>
         </div>
     </section>
 
-    <section class="mb-24 relative z-10">
-        <h2 class="section-title text-white">Profile Summary</h2>
-        <div class="glass border-top-cyan p-10 rounded-xl">
-            <p class="leading-relaxed text-lg text-slate-300 font-medium text-justify">
-                <span class="text-cyan-400 font-black text-2xl mr-1">"</span>Tech enthusiast specializing in low-level systems and telecommunications. Focused on the intersection of hardware and software, with extensive experience in C programming and algorithmic architecture. Committed to building secure, high-performance systems for next-generation connectivity.<span class="text-cyan-400 font-black text-2xl ml-1">"</span>
-            </p>
-            <div class="mt-8 flex items-center">
-                <div class="h-[1px] flex-grow bg-gradient-to-r from-cyan-500/50 to-transparent"></div>
-                <a href="mailto:papatsimpasgeorgios@gmail.com?subject=Request%20for%20Giorgos%20Papatsimpas%20CV" class="text-[11px] font-black uppercase tracking-[0.2em] text-cyan-400 hover:text-white transition-colors ml-4 bg-cyan-950/50 px-4 py-2 border border-cyan-500/30 rounded">
-                    Request Comprehensive CV →
+    <!-- Bento Grid Layout Starts -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 relative z-10">
+
+        <!-- Education (Spans 7 cols) -->
+        <section class="elite-card md:col-span-7 flex flex-col justify-center">
+            <h2 class="section-header">Academic Foundation</h2>
+            <div class="flex items-start gap-6">
+                <div class="w-16 h-16 bg-white/5 rounded-xl p-3 flex items-center justify-center flex-shrink-0 border border-white/10">
+                    <img src="https://www.uop.gr/images/uop_logo.png" alt="UOP" class="uop-logo w-full h-auto">
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-white tracking-tight">University of Peloponnese</h3>
+                    <p class="text-cyan-400 font-semibold text-sm mt-1">BSc Informatics & Telecommunications</p>
+                    <div class="flex gap-3 mt-3">
+                        <span class="pill"><svg class="w-3 h-3 mr-1.5 fill-current" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> Tripoli, GR</span>
+                        <span class="pill"><svg class="w-3 h-3 mr-1.5 fill-current" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg> Final Year Student</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience (Spans 5 cols) -->
+        <section class="elite-card md:col-span-5 flex flex-col justify-center group">
+            <h2 class="section-header">Current Role</h2>
+            <div class="relative">
+                <div class="absolute -left-3 top-2 w-1 h-full bg-cyan-500/20 rounded-full"></div>
+                <div class="absolute -left-3 top-2 w-1 h-1/3 bg-cyan-400 rounded-full group-hover:h-full transition-all duration-500"></div>
+                <div class="pl-4">
+                    <span class="mono text-[10px] font-bold tracking-widest text-cyan-400 mb-1 block">NOV 2025 - FEB 2026</span>
+                    <h3 class="text-lg font-bold text-white leading-tight">IT Systems Specialist</h3>
+                    <p class="text-sm text-slate-400 mt-1">Region of Peloponnese</p>
+                    <p class="text-xs text-slate-500 mt-2 font-medium">Dept. of Transparency & e-Gov</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Languages (Spans 4 cols) -->
+        <section class="elite-card md:col-span-4">
+            <h2 class="section-header">Linguistics</h2>
+            <div class="space-y-4">
+                <div class="flex items-center justify-between p-3 rounded-lg bg-white/5 border border-white/5 hover:border-white/10 transition-colors">
+                    <div class="flex items-center gap-3">
+                        <img src="https://flagcdn.com/w40/gr.png" class="w-5 h-5 rounded-full object-cover" alt="GR"> 
+                        <span class="font-bold text-white text-sm">Greek</span>
+                    </div>
+                    <span class="mono text-xs text-slate-400">Native</span>
+                </div>
+                <div class="flex items-center justify-between p-3 rounded-lg bg-white/5 border border-white/5 hover:border-white/10 transition-colors">
+                    <div class="flex items-center gap-3">
+                        <img src="https://flagcdn.com/w40/gb.png" class="w-5 h-5 rounded-full object-cover" alt="UK"> 
+                        <span class="font-bold text-white text-sm">English</span>
+                    </div>
+                    <span class="mono text-xs text-cyan-400 font-bold">C2 Proficient</span>
+                </div>
+                <div class="flex items-center justify-between p-3 rounded-lg bg-white/5 border border-white/5 hover:border-white/10 transition-colors">
+                    <div class="flex items-center gap-3">
+                        <img src="https://flagcdn.com/w40/de.png" class="w-5 h-5 rounded-full object-cover" alt="DE"> 
+                        <span class="font-bold text-white text-sm">German</span>
+                    </div>
+                    <span class="mono text-xs text-emerald-400 font-bold">C1 Advanced</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Stack (Spans 8 cols) -->
+        <section class="elite-card md:col-span-8">
+            <h2 class="section-header">Engineering Stack</h2>
+            <div class="grid grid-cols-3 md:grid-cols-6 gap-3">
+                <!-- Stack Items -->
+                <div class="p-4 rounded-xl bg-black/40 border border-white/5 flex flex-col items-center justify-center gap-2 hover:bg-white/10 transition-colors group">
+                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" class="w-8 h-8 group-hover:scale-110 transition-transform">
+                    <span class="mono text-[9px] font-bold text-slate-400 group-hover:text-white">C Lang</span>
+                </div>
+                <div class="p-4 rounded-xl bg-black/40 border border-white/5 flex flex-col items-center justify-center gap-2 hover:bg-white/10 transition-colors group">
+                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" class="w-8 h-8 group-hover:scale-110 transition-transform">
+                    <span class="mono text-[9px] font-bold text-slate-400 group-hover:text-white">Linux</span>
+                </div>
+                <div class="p-4 rounded-xl bg-black/40 border border-white/5 flex flex-col items-center justify-center gap-2 hover:bg-white/10 transition-colors group">
+                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" class="w-8 h-8 group-hover:scale-110 transition-transform">
+                    <span class="mono text-[9px] font-bold text-slate-400 group-hover:text-white">Python</span>
+                </div>
+                <div class="p-4 rounded-xl bg-black/40 border border-white/5 flex flex-col items-center justify-center gap-2 hover:bg-white/10 transition-colors group">
+                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" class="w-8 h-8 group-hover:scale-110 transition-transform">
+                    <span class="mono text-[9px] font-bold text-slate-400 group-hover:text-white">Git</span>
+                </div>
+                <div class="p-4 rounded-xl bg-black/40 border border-white/5 flex flex-col items-center justify-center gap-2 hover:bg-white/10 transition-colors group">
+                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" class="w-8 h-8 group-hover:scale-110 transition-transform">
+                    <span class="mono text-[9px] font-bold text-slate-400 group-hover:text-white">Java</span>
+                </div>
+                <div class="p-4 rounded-xl bg-black/40 border border-white/5 flex flex-col items-center justify-center gap-2 hover:bg-white/10 transition-colors group">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png" class="w-8 h-8 object-contain group-hover:scale-110 transition-transform">
+                    <span class="mono text-[9px] font-bold text-slate-400 group-hover:text-white">Matlab</span>
+                </div>
+                <div class="p-4 rounded-xl bg-black/40 border border-white/5 flex flex-col items-center justify-center gap-2 hover:bg-white/10 transition-colors group">
+                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg" class="w-8 h-8 group-hover:scale-110 transition-transform">
+                    <span class="mono text-[9px] font-bold text-slate-400 group-hover:text-white">SQL</span>
+                </div>
+                <div class="p-4 rounded-xl bg-black/40 border border-white/5 flex flex-col items-center justify-center gap-2 hover:bg-white/10 transition-colors group">
+                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg" class="w-8 h-8 group-hover:scale-110 transition-transform">
+                    <span class="mono text-[9px] font-bold text-slate-400 group-hover:text-white">PHP</span>
+                </div>
+                <div class="p-4 rounded-xl bg-black/40 border border-white/5 flex flex-col items-center justify-center gap-2 hover:bg-white/10 transition-colors group">
+                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/json/json-original.svg" class="w-8 h-8 group-hover:scale-110 transition-transform">
+                    <span class="mono text-[9px] font-bold text-slate-400 group-hover:text-white">JSON</span>
+                </div>
+                <div class="p-4 rounded-xl bg-black/40 border border-white/5 flex flex-col items-center justify-center gap-2 hover:bg-white/10 transition-colors group">
+                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" class="w-8 h-8 group-hover:scale-110 transition-transform">
+                    <span class="mono text-[9px] font-bold text-slate-400 group-hover:text-white">AJAX</span>
+                </div>
+                <div class="p-4 rounded-xl bg-black/40 border border-white/5 flex flex-col items-center justify-center gap-2 hover:bg-white/10 transition-colors group">
+                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" class="w-8 h-8 group-hover:scale-110 transition-transform">
+                    <span class="mono text-[9px] font-bold text-slate-400 group-hover:text-white">HTML</span>
+                </div>
+                <div class="p-4 rounded-xl bg-black/40 border border-white/5 flex flex-col items-center justify-center gap-2 hover:bg-white/10 transition-colors group">
+                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg" class="w-8 h-8 group-hover:scale-110 transition-transform">
+                    <span class="mono text-[9px] font-bold text-slate-400 group-hover:text-white">CSS</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Repositories (Spans 6 cols) -->
+        <section class="elite-card md:col-span-6">
+            <h2 class="section-header">Architecture / Repos</h2>
+            <div class="space-y-4">
+                <a href="https://github.com/GPap223/Acrostic_Multi_Creator" target="_blank" class="block p-5 rounded-xl border border-white/5 bg-black/20 hover:bg-cyan-500/5 hover:border-cyan-500/30 transition-all group">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-white text-lg group-hover:text-cyan-400 transition-colors">Acrostic_Multi_Creator</h3>
+                        <span class="mono text-[9px] border border-slate-600 px-2 py-0.5 rounded text-slate-400">1.3K LOC</span>
+                    </div>
+                    <p class="text-sm text-slate-400 leading-relaxed">Algorithmic architecture focusing on memory allocation and C optimization.</p>
+                </a>
+                <a href="https://github.com/GPap223/DungeonAdventure" target="_blank" class="block p-5 rounded-xl border border-white/5 bg-black/20 hover:bg-purple-500/5 hover:border-purple-500/30 transition-all group">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-white text-lg group-hover:text-purple-400 transition-colors">DungeonAdventure</h3>
+                        <span class="mono text-[9px] border border-slate-600 px-2 py-0.5 rounded text-slate-400">1.3K LOC</span>
+                    </div>
+                    <p class="text-sm text-slate-400 leading-relaxed">Complex logic engine implementation utilizing modular C programming patterns.</p>
                 </a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="mb-24 relative z-10">
-        <h2 class="section-title text-white">Academic Education</h2>
-        <div class="glass border-top-blue p-8 rounded-xl flex flex-col md:flex-row items-center gap-8 relative overflow-hidden">
-            <div class="absolute -right-10 -bottom-10 opacity-5 pointer-events-none">
-                <svg class="w-64 h-64" viewBox="0 0 24 24"><path d="M12 3L1 9l11 6l9-4.91V17h2V9L12 3z"/></svg>
-            </div>
-            <div class="uop-badge flex-shrink-0 z-10">
-                <img src="https://www.uop.gr/images/uop_logo.png" alt="University of Peloponnese Logo" class="w-full h-auto">
-            </div>
-            <div class="z-10">
-                <h3 class="text-2xl font-black text-white uppercase tracking-tight">Undergraduate Student (Final Year)</h3>
-                <p class="text-blue-400 font-bold uppercase text-sm mt-1 tracking-wider">Informatics & Telecommunications</p>
-                <p class="text-slate-400 font-medium uppercase text-xs mt-1">University of Peloponnese | School of Economics and Technology</p>
-                <div class="mt-4 flex gap-2">
-                    <span class="mono text-[10px] bg-slate-900/80 text-blue-300 border border-blue-500/30 px-3 py-1 rounded-sm uppercase font-bold text-center tracking-widest shadow-[0_0_10px_rgba(59,130,246,0.2)]">Tripoli, Greece</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="mb-24 relative z-10">
-        <h2 class="section-title text-white">Professional Experience</h2>
-        <div class="glass border-top-blue p-8 rounded-xl flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="text-left w-full">
-                <div class="flex items-center mb-3">
-                    <div class="w-2 h-2 bg-blue-500 rounded-full animate-pulse mr-2 shadow-[0_0_8px_#3b82f6]"></div>
-                    <span class="text-[10px] font-black uppercase tracking-[0.3em] text-blue-400">Internship Program | Nov 2025 - Feb 2026</span>
-                </div>
-                <h3 class="text-2xl font-black text-white uppercase tracking-tight">IT Systems & e-Government Specialist</h3>
-                <p class="text-slate-400 font-bold uppercase text-xs mt-2">Region of Peloponnese | Dept. of Transparency & Electronic Governance</p>
-            </div>
-            <div class="text-right w-full md:w-auto">
-                <span class="mono text-[11px] font-bold text-blue-300 border border-blue-500/30 px-5 py-2 bg-slate-900/80 whitespace-nowrap uppercase tracking-widest rounded-sm">
-                    Digital Infrastructure
-                </span>
-            </div>
-        </div>
-    </section>
-
-    <section class="mb-24 relative z-10">
-        <h2 class="section-title text-white">Verified Certifications</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-            <div class="glass border-top-red p-6 rounded-xl hover:-translate-y-2">
-                <h3 class="text-xs font-black mb-6 uppercase tracking-[0.2em] text-red-400 flex items-center"><svg class="w-4 h-4 mr-2 fill-current" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg> Cyber Security</h3>
-                <div class="space-y-2 text-left">
-                    <span class="cert-item uppercase mono text-[10px]">Threat Landscape (Fortinet)</span>
-                    <span class="cert-item uppercase mono text-[10px]">Threat Intelligence (IBM)</span>
-                    <span class="cert-item uppercase mono text-[10px]">Cybersecurity Fund. (IBM)</span>
-                    <span class="cert-item uppercase mono text-[10px]">Stay Safe Online (Open Univ)</span>
-                </div>
-            </div>
-            <div class="glass border-top-blue p-6 rounded-xl hover:-translate-y-2">
-                <h3 class="text-xs font-black mb-6 uppercase tracking-[0.2em] text-blue-400 flex items-center"><svg class="w-4 h-4 mr-2 fill-current" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 9h-2V7h-2v5H6v-2h2V5h4v7zm4 0h-2V7h-2v5h-2v-2h2V5h4v7z"/></svg> Data & AI</h3>
-                <div class="space-y-2 text-left">
-                    <span class="cert-item uppercase mono text-[10px]">Data Science (HP LIFE)</span>
-                    <span class="cert-item uppercase mono text-[10px]">Data Fundamentals (IBM)</span>
-                    <span class="cert-item uppercase mono text-[10px]">Intro to AI (Univ. Helsinki)</span>
-                    <span class="cert-item uppercase mono text-[10px]">Google Analytics</span>
-                </div>
-            </div>
-            <div class="glass border-top-green p-6 rounded-xl hover:-translate-y-2">
-                <h3 class="text-xs font-black mb-6 uppercase tracking-[0.2em] text-green-400 flex items-center"><svg class="w-4 h-4 mr-2 fill-current" viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg> Development</h3>
-                <div class="space-y-2 text-left">
-                    <span class="cert-item uppercase mono text-[10px]">Web Dev Fundamentals (IBM)</span>
-                    <span class="cert-item uppercase mono text-[10px]">Digital Marketing (Google)</span>
-                </div>
-            </div>
-        </div>
-        <div class="text-center">
-            <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-500">
-                Verify credentials via <a href="https://www.linkedin.com/in/giorgos-papatsimpas-203212377/" target="_blank" class="text-cyan-400 hover:text-cyan-300 hover:underline transition-colors">LinkedIn Original Records</a>
-            </p>
-        </div>
-    </section>
-
-    <section class="mb-24 relative z-10">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="glass border-top-purple p-10 rounded-xl text-left">
-                <h3 class="text-xs font-black uppercase tracking-[0.2em] text-purple-400 mb-6 text-left">Languages</h3>
-                <div class="space-y-6 text-left">
-                    <!-- GREEK ADDED HERE -->
-                    <div>
-                        <p class="font-bold text-white tracking-tight uppercase flex items-center gap-3">
-                            <img src="https://flagcdn.com/w40/gr.png" class="w-6 h-4 object-cover rounded-sm shadow-sm" alt="Greece Flag"> 
-                            Greek — Native (C2)
-                        </p>
-                        <p class="text-[10px] text-purple-400 font-black uppercase tracking-widest mt-1 ml-9">Mother Tongue</p>
-                    </div>
-                    <div class="border-t border-white/5 pt-4">
-                        <p class="font-bold text-white tracking-tight uppercase flex items-center gap-3">
-                            <img src="https://flagcdn.com/w40/gb.png" class="w-6 h-4 object-cover rounded-sm shadow-sm" alt="UK Flag"> 
-                            English — Proficiency (C2)
-                        </p>
-                        <p class="text-[10px] text-blue-400 font-black uppercase tracking-widest mt-1 ml-9">Full Professional Mastery</p>
-                    </div>
-                    <div class="border-t border-white/5 pt-4">
-                        <p class="font-bold text-white tracking-tight uppercase flex items-center gap-3">
-                            <img src="https://flagcdn.com/w40/de.png" class="w-6 h-4 object-cover rounded-sm shadow-sm" alt="Germany Flag"> 
-                            German — Advanced (C1)
-                        </p>
-                        <p class="text-[10px] text-yellow-500 font-black uppercase tracking-widest mt-1 ml-9">Advanced Mastery</p>
-                    </div>
-                </div>
-            </div>
+        <!-- Certifications & Conferences (Spans 6 cols) -->
+        <section class="elite-card md:col-span-6">
+            <h2 class="section-header">Global Exposure & Certs</h2>
             
-            <div class="glass border-top-orange p-10 rounded-xl text-left relative overflow-hidden">
-                <div class="absolute -right-5 top-10 opacity-5 pointer-events-none">
-                     <svg class="w-48 h-48" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-                </div>
-                <h3 class="text-xs font-black uppercase tracking-[0.3em] text-orange-400 mb-8 text-left border-b border-orange-500/20 pb-4 z-10 relative">Conferences & Seminars</h3>
-                
-                <div class="space-y-5 text-left z-10 relative">
-                    <div>
-                        <p class="font-bold text-white tracking-tight uppercase mb-1">Infosecurity Europe 2026 (London)</p>
-                        <p class="text-[10px] text-orange-500 font-bold uppercase tracking-widest mono">Authorized Attendee</p>
-                    </div>
-
-                    <div class="border-t border-white/5 pt-4">
-                        <p class="font-bold text-white tracking-tight uppercase mb-1">Voxxed Days Ioannina 2024</p>
-                        <p class="text-[10px] text-orange-500 font-bold uppercase tracking-widest mono">Authorized Attendee</p>
-                    </div>
-                    
-                    <div class="border-t border-white/5 pt-4">
-                        <p class="font-bold text-white tracking-tight uppercase mb-1">27th Greek ICT Forum</p>
-                        <p class="text-[10px] text-orange-500 font-bold uppercase tracking-widest mono">Authorized Attendee</p>
-                    </div>
-
-                    <div class="border-t border-white/5 pt-4">
-                        <p class="font-bold text-white tracking-tight uppercase mb-1">Google: Understanding AI</p>
-                        <p class="text-[10px] text-orange-500 font-bold uppercase tracking-widest mono">Training Seminar</p>
-                    </div>
-
-                    <div class="border-t border-white/5 pt-4">
-                        <p class="font-bold text-white tracking-tight uppercase mb-1">Entrepreneurship Online Seminar</p>
-                        <p class="text-[10px] text-orange-500 font-bold uppercase tracking-widest mono">Webinar Attendee</p>
-                    </div>
+            <div class="mb-6">
+                <h4 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">Conferences & Seminars</h4>
+                <div class="space-y-2">
+                    <div class="flex justify-between items-center text-sm"><span class="text-white font-medium">Infosecurity Europe 2026 (London)</span><span class="text-cyan-400 text-xs font-bold">Attendee</span></div>
+                    <div class="w-full h-px bg-white/5"></div>
+                    <div class="flex justify-between items-center text-sm"><span class="text-white font-medium">Voxxed Days Ioannina 2024</span><span class="text-slate-400 text-xs">Attendee</span></div>
+                    <div class="w-full h-px bg-white/5"></div>
+                    <div class="flex justify-between items-center text-sm"><span class="text-white font-medium">27th Greek ICT Forum</span><span class="text-slate-400 text-xs">Attendee</span></div>
+                    <div class="w-full h-px bg-white/5"></div>
+                    <div class="flex justify-between items-center text-sm"><span class="text-white font-medium">Google: Understanding AI</span><span class="text-emerald-400 text-xs font-bold">Completed</span></div>
+                    <div class="w-full h-px bg-white/5"></div>
+                    <div class="flex justify-between items-center text-sm"><span class="text-white font-medium">Entrepreneurship Seminar</span><span class="text-slate-400 text-xs">Completed</span></div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <section class="mb-24 relative z-10">
-        <h2 class="section-title text-white text-left">Technical Expertise Core</h2>
-        <div class="grid grid-cols-2 md:grid-cols-6 gap-6">
-            <!-- Row 1 -->
-            <div class="glass p-5 rounded-lg text-center border-t border-t-white/5 hover:border-t-blue-400 hover:bg-blue-900/20 transition-all">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" class="w-10 h-10 mx-auto mb-3 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
-                <span class="mono text-[10px] font-black tracking-widest uppercase text-slate-300">C Language</span>
-            </div>
-            <div class="glass p-5 rounded-lg text-center border-t border-t-white/5 hover:border-t-yellow-400 hover:bg-yellow-900/20 transition-all">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" class="w-10 h-10 mx-auto mb-3 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
-                <span class="mono text-[10px] font-black tracking-widest uppercase text-slate-300">Python</span>
-            </div>
-            <div class="glass p-5 rounded-lg text-center border-t border-t-white/5 hover:border-t-white hover:bg-white/10 transition-all">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" class="w-10 h-10 mx-auto mb-3 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
-                <span class="mono text-[10px] font-black tracking-widest uppercase text-slate-300">Linux</span>
-            </div>
-            <div class="glass p-5 rounded-lg text-center border-t border-t-white/5 hover:border-t-orange-500 hover:bg-orange-900/20 transition-all">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" class="w-10 h-10 mx-auto mb-3 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
-                <span class="mono text-[10px] font-black tracking-widest uppercase text-slate-300">Git</span>
-            </div>
-            <div class="glass p-5 rounded-lg text-center border-t border-t-white/5 hover:border-t-red-400 hover:bg-red-900/20 transition-all">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" class="w-10 h-10 mx-auto mb-3 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
-                <span class="mono text-[10px] font-black tracking-widest uppercase text-slate-300">Java</span>
-            </div>
-            <div class="glass p-5 rounded-lg text-center border-t border-t-white/5 hover:border-t-orange-600 hover:bg-orange-900/20 transition-all">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png" class="w-10 h-10 mx-auto mb-3 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
-                <span class="mono text-[10px] font-black tracking-widest uppercase text-slate-300">Matlab</span>
-            </div>
-
-            <!-- Row 2 -->
-            <div class="glass p-5 rounded-lg text-center border-t border-t-white/5 hover:border-t-blue-500 hover:bg-blue-900/20 transition-all">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg" class="w-10 h-10 mx-auto mb-3 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
-                <span class="mono text-[10px] font-black tracking-widest uppercase text-slate-300">SQL</span>
-            </div>
-            <div class="glass p-5 rounded-lg text-center border-t border-t-white/5 hover:border-t-indigo-400 hover:bg-indigo-900/20 transition-all">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg" class="w-10 h-10 mx-auto mb-3 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
-                <span class="mono text-[10px] font-black tracking-widest uppercase text-slate-300">PHP</span>
-            </div>
-            <div class="glass p-5 rounded-lg text-center border-t border-t-white/5 hover:border-t-gray-400 hover:bg-slate-700/30 transition-all">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/json/json-original.svg" class="w-10 h-10 mx-auto mb-3 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
-                <span class="mono text-[10px] font-black tracking-widest uppercase text-slate-300">JSON</span>
-            </div>
-            <div class="glass p-5 rounded-lg text-center border-t border-t-white/5 hover:border-t-yellow-500 hover:bg-yellow-900/20 transition-all">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" class="w-10 h-10 mx-auto mb-3 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
-                <span class="mono text-[10px] font-black tracking-widest uppercase text-slate-300">AJAX</span>
-            </div>
-            <div class="glass p-5 rounded-lg text-center border-t border-t-white/5 hover:border-t-orange-500 hover:bg-orange-900/20 transition-all">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" class="w-10 h-10 mx-auto mb-3 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
-                <span class="mono text-[10px] font-black tracking-widest uppercase text-slate-300">HTML</span>
-            </div>
-            <div class="glass p-5 rounded-lg text-center border-t border-t-white/5 hover:border-t-blue-400 hover:bg-blue-900/20 transition-all">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg" class="w-10 h-10 mx-auto mb-3 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
-                <span class="mono text-[10px] font-black tracking-widest uppercase text-slate-300">CSS</span>
-            </div>
-        </div>
-    </section>
-
-    <section class="mb-24 relative z-10">
-        <h2 class="section-title text-white text-left">Engineering Repositories</h2>
-        <div class="grid gap-6">
-            <a href="https://github.com/GPap223/Acrostic_Multi_Creator" target="_blank" class="glass border-top-cyan p-8 rounded-xl block group transition-all">
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-2xl font-black text-cyan-400 mono tracking-tighter uppercase group-hover:underline drop-shadow-[0_0_8px_rgba(34,211,238,0.4)]">Acrostic_Multi_Creator</h3>
-                    <span class="mono text-[10px] font-bold text-cyan-300 border border-cyan-500/50 px-3 py-1 bg-cyan-950/50 uppercase">1,387 LOC</span>
+            <div>
+                <h4 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">Verified Skills Matrix</h4>
+                <div class="flex flex-wrap gap-2">
+                    <span class="pill border-red-500/20 text-red-300">Threat Landscape</span>
+                    <span class="pill border-red-500/20 text-red-300">Cybersecurity Fund.</span>
+                    <span class="pill border-blue-500/20 text-blue-300">Data Science</span>
+                    <span class="pill border-emerald-500/20 text-emerald-300">Web Dev</span>
+                    <span class="pill">Google Analytics</span>
+                    <span class="pill">Intro to AI</span>
                 </div>
-                <p class="text-sm text-slate-300 uppercase leading-relaxed font-bold tracking-wide">Algorithmic architecture focusing on memory allocation and C optimization.</p>
+            </div>
+        </section>
+
+    </div> <!-- End Bento Grid -->
+
+    <footer class="mt-24 pt-10 border-t border-white/5 text-center relative z-10 flex flex-col items-center">
+        <div class="flex gap-6 mb-8">
+            <a href="https://www.linkedin.com/in/giorgos-papatsimpas-203212377/" target="_blank" class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-cyan-500/20 hover:border-cyan-500/50 hover:text-cyan-400 transition-all text-slate-400">
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
             </a>
-            <a href="https://github.com/GPap223/DungeonAdventure" target="_blank" class="glass border-top-purple p-8 rounded-xl block group transition-all mt-4">
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-2xl font-black text-purple-400 mono tracking-tighter uppercase group-hover:underline drop-shadow-[0_0_8px_rgba(192,132,252,0.4)]">DungeonAdventure</h3>
-                    <span class="mono text-[10px] font-bold text-purple-300 border border-purple-500/50 px-3 py-1 bg-purple-950/50 uppercase">1,352 LOC</span>
-                </div>
-                <p class="text-sm text-slate-300 uppercase leading-relaxed font-bold tracking-wide">Complex logic engine implementation utilizing modular C programming patterns.</p>
+            <a href="https://github.com/GPap223" target="_blank" class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/20 hover:border-white/50 hover:text-white transition-all text-slate-400">
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+            <a href="mailto:papatsimpasgeorgios@gmail.com" class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-emerald-500/20 hover:border-emerald-500/50 hover:text-emerald-400 transition-all text-slate-400">
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099l3.83-3.104 5.612 8.818h-18.893l5.627-8.813zm9.201-1.259l4.623-3.746v9.458l-4.623-5.712z"/></svg>
             </a>
         </div>
-    </section>
-
-    <section class="text-center py-20 border-t border-slate-800 relative z-10">
-        <h2 class="text-xs font-black uppercase tracking-[0.5em] text-blue-400 mb-10">Let's Connect</h2>
-        <div class="flex flex-col md:flex-row justify-center items-center gap-12">
-            <a href="https://www.linkedin.com/in/giorgos-papatsimpas-203212377/" target="_blank" class="group flex flex-col items-center">
-                <div class="p-4 rounded-full bg-slate-900 border border-slate-800 group-hover:border-cyan-500 transition-colors mb-4 group-hover:shadow-[0_0_15px_rgba(6,182,212,0.5)]">
-                    <svg class="w-8 h-8 fill-slate-500 group-hover:fill-cyan-400 transition-colors" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                </div>
-                <span class="mono text-[10px] font-bold uppercase tracking-widest text-slate-500 group-hover:text-cyan-400 transition-colors">LinkedIn</span>
-            </a>
-            <a href="https://github.com/GPap223" target="_blank" class="group flex flex-col items-center">
-                <div class="p-4 rounded-full bg-slate-900 border border-slate-800 group-hover:border-white transition-colors mb-4 group-hover:shadow-[0_0_15px_rgba(255,255,255,0.5)]">
-                    <svg class="w-8 h-8 fill-slate-500 group-hover:fill-white transition-colors" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                </div>
-                <span class="mono text-[10px] font-bold uppercase tracking-widest text-slate-500 group-hover:text-white transition-colors">GitHub</span>
-            </a>
-            <a href="mailto:papatsimpasgeorgios@gmail.com" class="group flex flex-col items-center">
-                <div class="p-4 rounded-full bg-slate-900 border border-slate-800 group-hover:border-cyan-400 transition-colors mb-4 group-hover:shadow-[0_0_15px_rgba(6,182,212,0.5)]">
-                    <svg class="w-8 h-8 fill-slate-500 group-hover:fill-cyan-400 transition-colors" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099l3.83-3.104 5.612 8.818h-18.893l5.627-8.813zm9.201-1.259l4.623-3.746v9.458l-4.623-5.712z"/></svg>
-                </div>
-                <span class="mono text-[10px] font-bold uppercase tracking-widest text-slate-500 group-hover:text-cyan-400 transition-colors">Email</span>
-            </a>
-        </div>
-        <p class="mt-20 mono text-[9px] text-slate-600 tracking-[0.5em] uppercase italic text-center">G. Papatsimpas | Univ. of Peloponnese | Connection Secure</p>
-    </section>
+        <p class="mono text-[10px] text-slate-600 tracking-widest uppercase">G. Papatsimpas &copy; 2026 | Connection Secure</p>
+    </footer>
 
     <script>
-        // Mouse Glow Effect
-        const glow = document.getElementById('mouse-glow');
-        window.addEventListener('mousemove', (e) => {
-            glow.style.left = e.clientX + 'px';
-            glow.style.top = e.clientY + 'px';
+        // Spotlight glow effect tracking mouse movement across all elite cards
+        document.querySelectorAll('.elite-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
         });
 
-        // --- NEW: Hacker Decrypt Text Effect ---
+        // Hacker Decrypt Text Effect for Name
         const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*";
         let interval = null;
         const nameElement = document.getElementById("glitch-name");
 
-        // Run on hover
         nameElement.onmouseover = event => { decryptText(event); }
-        // Run on page load
         window.onload = () => { decryptText({target: nameElement}); }
 
         function decryptText(event) {
@@ -487,48 +461,42 @@
                 event.target.innerText = event.target.innerText
                 .split("")
                 .map((letter, index) => {
-                    if(index < iteration) {
-                        return event.target.dataset.value[index];
-                    }
+                    if(index < iteration) { return event.target.dataset.value[index]; }
                     return letters[Math.floor(Math.random() * letters.length)];
                 })
                 .join("");
                 
-                if(iteration >= event.target.dataset.value.length){ 
-                    clearInterval(interval);
-                }
-                
+                if(iteration >= event.target.dataset.value.length){ clearInterval(interval); }
                 iteration += 1 / 3;
             }, 30);
         }
-        // ----------------------------------------
 
-        // Terminal Reveal Effect
+        // Terminal Interaction Logic
         function revealTerminal() {
             const btn = document.getElementById('message-btn');
-            const pointer = document.getElementById('pointer-emoji');
             const section = document.getElementById('terminal-section');
             const target = document.getElementById('terminal-text');
             const cursor = document.getElementById('cursor');
 
             btn.style.display = 'none';
-            pointer.style.display = 'none';
             section.style.display = 'block';
             cursor.style.display = 'inline-block';
-            section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // Wait slightly for animation to render before scrolling
+            setTimeout(() => {
+                section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
 
             const lines = [
-                "> SECURE SHELL ESTABLISHED...",
-                "> ACCESS GRANTED.",
-                "> ",
-                "> Welcome to my digital workspace.",
+                "Connection established... [OK]",
+                "Authenticating user credentials... [VERIFIED]",
+                " ",
+                "> Hello there.",
                 "> Thank you for evaluating my technical portfolio.",
-                "> It is a privilege to share my engineering journey with you.",
-                "> ", 
-                "> Sincerely,", 
-                "> Giorgos Papatsimpas", 
-                "> ",
-                "> [STATUS]: SYSTEM_VERIFIED"
+                "> I am dedicated to building secure, high-performance systems.",
+                "> Looking forward to our next interaction.",
+                " ",
+                "root@gpap-sys:~# logout"
             ];
 
             let lineIndex = 0; let charIndex = 0;
@@ -536,14 +504,16 @@
                 if (lineIndex < lines.length) {
                     if (charIndex < lines[lineIndex].length) {
                         target.innerHTML += lines[lineIndex].charAt(charIndex);
-                        charIndex++; setTimeout(type, 15); // Faster typing for hacker feel
+                        charIndex++; setTimeout(type, 15); // Fast typing speed
                     } else {
                         target.innerHTML += "<br>"; lineIndex++; charIndex = 0;
                         setTimeout(type, 300);
                     }
+                } else {
+                    cursor.style.display = 'none'; // Hide cursor at end
                 }
             }
-            setTimeout(type, 600);
+            setTimeout(type, 800); // Initial delay before typing starts
         }
     </script>
 </body>
