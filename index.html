@@ -53,7 +53,6 @@
             box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
         }
 
-        /* --- THE WHITE LED EFFECT FOR SEMINARS --- */
         .led-white-card {
             background: rgba(15, 23, 42, 0.4); 
             backdrop-filter: blur(12px); 
@@ -76,9 +75,7 @@
             text-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
             color: #ffffff;
         }
-        /* --------------------------------------- */
 
-        /* 3D Pointer Animation */
         .pointer-hand {
             font-size: 2rem;
             display: block;
@@ -191,7 +188,6 @@
                 <img src="https://www.uop.gr/images/uop_logo.png" alt="University of Peloponnese Logo" class="w-full h-auto">
             </div>
             <div>
-                <!-- FIXED: Final Year -->
                 <h3 class="text-2xl font-black text-white italic uppercase tracking-tight">Undergraduate Student (Final Year)</h3>
                 <p class="text-blue-400 font-bold uppercase text-sm mt-1 tracking-wider">Informatics & Telecommunications</p>
                 <p class="text-slate-400 font-medium uppercase text-xs mt-1">University of Peloponnese | School of Economics and Technology</p>
@@ -206,7 +202,7 @@
         <h2 class="section-title text-white">Professional Experience</h2>
         <div class="glass border-top-blue p-8 rounded-xl flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="flex flex-col md:flex-row items-center gap-6 w-full">
-                <!-- FIXED: Using your provided image with the same badge style -->
+                <!-- IMPORTANT: Using the specific image path requested -->
                 <div class="uop-badge flex-shrink-0">
                     <img src="image_da6335.png" alt="Region of Peloponnese Logo" class="w-full h-auto">
                 </div>
@@ -295,7 +291,7 @@
                 </div>
             </div>
             
-            <!-- Seminars Side with WHITE LED EFFECT -->
+            <!-- Seminars Side with pure WHITE LED EFFECT -->
             <div class="space-y-4">
                 <div class="led-white-card p-6 text-left">
                     <h3 class="font-black led-text-hover text-slate-200 uppercase tracking-tight text-lg mb-1">Infosecurity Europe 2026</h3>
@@ -441,6 +437,7 @@
             cursor.style.display = 'inline-block';
             section.scrollIntoView({ behavior: 'smooth' });
 
+            // Removed the SYSTEM VERIFIED line as requested
             const lines = [
                 "> INITIALIZING SECURE COMMUNICATION...",
                 "> Dear Guest,", "> ",
