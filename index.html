@@ -16,8 +16,8 @@
 
     <style>
         :root {
-            --bg-deep: #050505; /* Σχεδόν απόλυτο μαύρο */
-            --accent-purple: rgba(139, 92, 246, 0.35); /* Πιο έντονο και καθαρό μωβ φως */
+            --bg-deep: #050505;
+            --accent-purple: rgba(139, 92, 246, 0.35);
             --frame-border: rgba(255, 255, 255, 0.1);
             --frame-glow: rgba(255, 255, 255, 0.08);
             --frame-glow-hover: rgba(255, 255, 255, 0.25);
@@ -25,7 +25,6 @@
 
         body { 
             font-family: 'Inter', sans-serif; 
-            /* Βαθύ μαύρο με πιο έντονο μωβ φως στο κέντρο που απλώνεται πιο πολύ */
             background: radial-gradient(circle at 50% 0%, var(--accent-purple) 0%, var(--bg-deep) 70%, #000000 100%);
             background-attachment: fixed;
             color: #f8fafc; 
@@ -36,15 +35,13 @@
 
         .mono { font-family: 'JetBrains Mono', monospace; }
 
-        /* The Gallery Frame (Τα "Κάδρα") */
         .gallery-frame { 
             background: linear-gradient(180deg, rgba(20, 20, 25, 0.7) 0%, rgba(10, 10, 15, 0.8) 100%);
             backdrop-filter: blur(16px); 
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--frame-border);
-            border-top: 1px solid rgba(255, 255, 255, 0.2); /* Έντονο λευκό φως από πάνω */
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 16px;
-            /* Απαλή λευκή λάμψη γύρω γύρω */
             box-shadow: 0 10px 30px -10px var(--frame-glow);
             transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); 
             position: relative; 
@@ -52,15 +49,13 @@
             overflow: hidden;
         }
 
-        /* Το εφέ "σκαλοπάτι" και φωτισμού στο hover */
         .gallery-frame:hover { 
             border-color: rgba(255, 255, 255, 0.3);
             border-top: 1px solid rgba(255, 255, 255, 0.5);
-            transform: translateY(-8px); /* Ανεβαίνει σκαλί */
+            transform: translateY(-8px);
             box-shadow: 0 20px 40px -10px var(--frame-glow-hover), 0 0 20px 0px rgba(255, 255, 255, 0.1) inset;
         }
 
-        /* Abstract φως που ακολουθεί το ποντίκι μέσα στο κάδρο */
         .gallery-frame::before {
             content: '';
             position: absolute;
@@ -107,7 +102,6 @@
         }
         .cert-item:hover { background: rgba(255, 255, 255, 0.08); }
 
-        /* Terminal styling */
         .terminal-header { background: #111; border-radius: 12px 12px 0 0; padding: 12px 20px; display: flex; gap: 8px; border-bottom: 1px solid rgba(255,255,255,0.1); }
         .dot { width: 12px; height: 12px; border-radius: 50%; }
         .terminal-body { background: #050505; border-radius: 0 0 12px 12px; padding: 30px; min-height: 200px; color: #e2e8f0; font-size: 15px; line-height: 1.8; }
@@ -128,11 +122,6 @@
 <body class="max-w-5xl mx-auto px-6 py-16">
 
     <header class="mb-20 mt-10 text-center relative z-10">
-        <div class="inline-block mb-6 px-5 py-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-md shadow-[0_0_20px_rgba(255,255,255,0.1)]">
-            <span class="w-2 h-2 rounded-full bg-white inline-block mr-2 animate-pulse shadow-[0_0_8px_#fff]"></span>
-            <span class="mono text-xs font-bold text-white uppercase tracking-[0.2em]">SYSTEM.STATUS = "VERIFIED"</span>
-        </div>
-
         <h1 id="glitch-name" data-value="GIORGOS PAPATSIMPAS" class="text-5xl md:text-7xl font-black mb-6 tracking-tighter text-white drop-shadow-2xl">
             GIORGOS PAPATSIMPAS
         </h1>
@@ -194,9 +183,9 @@
     <section class="mb-20">
         <h2 class="section-title">Professional Experience</h2>
         <div class="gallery-frame p-10 flex flex-col md:flex-row justify-between items-center gap-6">
-            <!-- ΕΔΩ ΜΠΗΚΕ Η ΕΙΚΟΝΑ ΣΟΥ -->
+            
             <div class="uop-badge flex-shrink-0">
-                <img src="image_da6335.png" alt="Region of Peloponnese Logo" class="w-full h-auto">
+                <img src="Region.jpeg" alt="Region of Peloponnese Logo" class="w-full h-auto">
             </div>
             
             <div class="text-left w-full">
@@ -216,11 +205,9 @@
         </div>
     </section>
 
-    <!-- NEW LANGUAGES SECTION -->
     <section class="mb-20">
         <h2 class="section-title">Languages</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Greek -->
             <div class="gallery-frame p-6 flex items-center gap-5 group hover:border-white/40 transition-colors">
                 <img src="https://flagcdn.com/w40/gr.png" class="w-10 h-7 object-cover rounded shadow-md group-hover:scale-105 transition-transform" alt="GR Flag"> 
                 <div>
@@ -228,7 +215,6 @@
                     <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">Native Language</p>
                 </div>
             </div>
-            <!-- English -->
             <div class="gallery-frame p-6 flex items-center gap-5 group hover:border-white/40 transition-colors">
                 <img src="https://flagcdn.com/w40/gb.png" class="w-10 h-7 object-cover rounded shadow-md group-hover:scale-105 transition-transform" alt="UK Flag"> 
                 <div>
@@ -236,7 +222,6 @@
                     <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">Proficiency (C2)</p>
                 </div>
             </div>
-            <!-- German -->
             <div class="gallery-frame p-6 flex items-center gap-5 group hover:border-white/40 transition-colors">
                 <img src="https://flagcdn.com/w40/de.png" class="w-10 h-7 object-cover rounded shadow-md group-hover:scale-105 transition-transform" alt="DE Flag"> 
                 <div>
@@ -247,14 +232,13 @@
         </div>
     </section>
 
-    <!-- NEW CONFERENCES & SEMINARS SECTION (EVENT TICKETS STYLE) -->
     <section class="mb-20">
         <h2 class="section-title">Conferences & Seminars</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-            <!-- Infosecurity Ticket -->
-            <div class="gallery-frame p-6 border-l-4 border-l-[#8b5cf6] relative overflow-hidden group hover:shadow-[0_0_30px_rgba(255,255,255,0.35)] transition-all duration-300 bg-black/40 hover:bg-black/80">
-                <div class="absolute -right-10 -top-10 w-24 h-24 bg-[#8b5cf6]/20 blur-2xl rounded-full group-hover:bg-white/40 transition-colors duration-500"></div>
+            <!-- Infosecurity Ticket - WHITE LED -->
+            <div class="gallery-frame p-6 border-l-4 border-l-white relative overflow-hidden group hover:shadow-[0_0_30px_rgba(255,255,255,0.35)] transition-all duration-300 bg-black/40 hover:bg-black/80">
+                <div class="absolute -right-10 -top-10 w-32 h-32 bg-white/10 blur-3xl rounded-full group-hover:bg-white/40 transition-colors duration-500"></div>
                 <div class="z-10 relative">
                     <div class="flex justify-between items-start mb-2">
                         <h3 class="font-black text-white uppercase tracking-tight text-md group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] transition-all">Infosecurity Europe</h3>
@@ -264,9 +248,9 @@
                 </div>
             </div>
 
-            <!-- Voxxed Days Ticket -->
-            <div class="gallery-frame p-6 border-l-4 border-l-[#3b82f6] relative overflow-hidden group hover:shadow-[0_0_30px_rgba(255,255,255,0.35)] transition-all duration-300 bg-black/40 hover:bg-black/80">
-                <div class="absolute -right-10 -top-10 w-24 h-24 bg-[#3b82f6]/20 blur-2xl rounded-full group-hover:bg-white/40 transition-colors duration-500"></div>
+            <!-- Voxxed Days Ticket - WHITE LED -->
+            <div class="gallery-frame p-6 border-l-4 border-l-white relative overflow-hidden group hover:shadow-[0_0_30px_rgba(255,255,255,0.35)] transition-all duration-300 bg-black/40 hover:bg-black/80">
+                <div class="absolute -right-10 -top-10 w-32 h-32 bg-white/10 blur-3xl rounded-full group-hover:bg-white/40 transition-colors duration-500"></div>
                 <div class="z-10 relative">
                     <div class="flex justify-between items-start mb-2">
                         <h3 class="font-black text-white uppercase tracking-tight text-md group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] transition-all">Voxxed Days</h3>
@@ -276,9 +260,9 @@
                 </div>
             </div>
 
-            <!-- Greek ICT Ticket -->
-            <div class="gallery-frame p-6 border-l-4 border-l-[#f97316] relative overflow-hidden group hover:shadow-[0_0_30px_rgba(255,255,255,0.35)] transition-all duration-300 bg-black/40 hover:bg-black/80">
-                <div class="absolute -right-10 -top-10 w-24 h-24 bg-[#f97316]/20 blur-2xl rounded-full group-hover:bg-white/40 transition-colors duration-500"></div>
+            <!-- Greek ICT Ticket - WHITE LED -->
+            <div class="gallery-frame p-6 border-l-4 border-l-white relative overflow-hidden group hover:shadow-[0_0_30px_rgba(255,255,255,0.35)] transition-all duration-300 bg-black/40 hover:bg-black/80">
+                <div class="absolute -right-10 -top-10 w-32 h-32 bg-white/10 blur-3xl rounded-full group-hover:bg-white/40 transition-colors duration-500"></div>
                 <div class="z-10 relative">
                     <div class="flex justify-between items-start mb-2">
                         <h3 class="font-black text-white uppercase tracking-tight text-md group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] transition-all">27th Greek ICT Forum</h3>
@@ -288,9 +272,9 @@
                 </div>
             </div>
 
-            <!-- Google AI Ticket -->
-            <div class="gallery-frame p-6 border-l-4 border-l-[#10b981] relative overflow-hidden group hover:shadow-[0_0_30px_rgba(255,255,255,0.35)] transition-all duration-300 bg-black/40 hover:bg-black/80">
-                <div class="absolute -right-10 -top-10 w-24 h-24 bg-[#10b981]/20 blur-2xl rounded-full group-hover:bg-white/40 transition-colors duration-500"></div>
+            <!-- Google AI Ticket - WHITE LED -->
+            <div class="gallery-frame p-6 border-l-4 border-l-white relative overflow-hidden group hover:shadow-[0_0_30px_rgba(255,255,255,0.35)] transition-all duration-300 bg-black/40 hover:bg-black/80">
+                <div class="absolute -right-10 -top-10 w-32 h-32 bg-white/10 blur-3xl rounded-full group-hover:bg-white/40 transition-colors duration-500"></div>
                 <div class="z-10 relative">
                     <div class="flex justify-between items-start mb-2">
                         <h3 class="font-black text-white uppercase tracking-tight text-md group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] transition-all">Understanding AI</h3>
@@ -300,9 +284,9 @@
                 </div>
             </div>
 
-            <!-- Entrepreneurship Ticket -->
-            <div class="gallery-frame p-6 border-l-4 border-l-[#f43f5e] relative overflow-hidden group hover:shadow-[0_0_30px_rgba(255,255,255,0.35)] transition-all duration-300 bg-black/40 hover:bg-black/80">
-                <div class="absolute -right-10 -top-10 w-24 h-24 bg-[#f43f5e]/20 blur-2xl rounded-full group-hover:bg-white/40 transition-colors duration-500"></div>
+            <!-- Entrepreneurship Ticket - WHITE LED -->
+            <div class="gallery-frame p-6 border-l-4 border-l-white relative overflow-hidden group hover:shadow-[0_0_30px_rgba(255,255,255,0.35)] transition-all duration-300 bg-black/40 hover:bg-black/80">
+                <div class="absolute -right-10 -top-10 w-32 h-32 bg-white/10 blur-3xl rounded-full group-hover:bg-white/40 transition-colors duration-500"></div>
                 <div class="z-10 relative">
                     <div class="flex justify-between items-start mb-2">
                         <h3 class="font-black text-white uppercase tracking-tight text-md group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] transition-all">Entrepreneurship</h3>
@@ -315,16 +299,11 @@
         </div>
     </section>
 
-    <!-- NEW CERTIFICATIONS SECTION (ICONS & HOVER GLOW) -->
     <section class="mb-20">
         <h2 class="section-title">Verified Certifications</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-            <!-- Cyber Security Card -->
             <div class="gallery-frame p-8 relative overflow-hidden group">
-                <!-- Red Hover Ambient Glow -->
                 <div class="absolute inset-0 bg-gradient-to-b from-red-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-
                 <h3 class="text-[11px] font-black mb-6 uppercase tracking-[0.2em] text-red-400 flex items-center gap-3 relative z-10">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
                     Cyber Security
@@ -337,11 +316,8 @@
                 </div>
             </div>
 
-            <!-- Data & AI Card -->
             <div class="gallery-frame p-8 relative overflow-hidden group">
-                <!-- Blue Hover Ambient Glow -->
                 <div class="absolute inset-0 bg-gradient-to-b from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-
                 <h3 class="text-[11px] font-black mb-6 uppercase tracking-[0.2em] text-blue-400 flex items-center gap-3 relative z-10">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
                     Data & AI
@@ -354,11 +330,8 @@
                 </div>
             </div>
 
-            <!-- Development Card -->
             <div class="gallery-frame p-8 relative overflow-hidden group">
-                <!-- Green Hover Ambient Glow -->
                 <div class="absolute inset-0 bg-gradient-to-b from-green-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-
                 <h3 class="text-[11px] font-black mb-6 uppercase tracking-[0.2em] text-green-400 flex items-center gap-3 relative z-10">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
                     Development
@@ -405,7 +378,6 @@
                 <span class="mono text-[9px] font-bold tracking-widest uppercase text-white/80">Matlab</span>
             </div>
 
-            <!-- Web Stack Row -->
             <div class="gallery-frame p-6 flex flex-col items-center justify-center gap-3">
                 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg" class="w-9 h-9">
                 <span class="mono text-[9px] font-bold tracking-widest uppercase text-white/80">SQL</span>
@@ -443,7 +415,6 @@
                 </div>
                 <p class="text-sm text-slate-300 uppercase leading-relaxed font-bold tracking-wide">Algorithmic architecture focusing on memory allocation and C optimization.</p>
             </a>
-            
             <a href="https://github.com/GPap223/DungeonAdventure" target="_blank" class="gallery-frame p-10 block group">
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-xl font-black text-white mono tracking-tighter uppercase group-hover:underline">DungeonAdventure</h3>
