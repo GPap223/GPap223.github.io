@@ -29,7 +29,7 @@
             content: '';
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at 50% 30%, rgba(139, 92, 246, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
+            background: radial-gradient(circle at 50% 30%, rgba(139, 92, 246, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
             pointer-events: none;
             z-index: -1;
         }
@@ -48,22 +48,42 @@
 
         .mono { font-family: 'JetBrains Mono', monospace; }
         
+        /* The Gallery Glass Effect */
         .glass { 
-            background: rgba(15, 15, 20, 0.6); /* Very dark, almost black glass */
+            background: rgba(15, 15, 20, 0.6); 
             backdrop-filter: blur(12px); 
-            border: 1px solid rgba(255, 255, 255, 0.05); /* Very subtle white border initially */
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5); /* Deep shadow */
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy step transition */
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5); 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
             position: relative; 
             z-index: 1; 
         }
         
         .glass:hover { 
-            border-color: rgba(255, 255, 255, 0.3); /* Stronger white border on hover */
-            transform: translateY(-5px); /* The "Step up" effect */
-            box-shadow: 0 15px 40px -5px rgba(255, 255, 255, 0.08), 0 0 20px rgba(255, 255, 255, 0.03); /* Soft white glow */
+            border-color: rgba(255, 255, 255, 0.3); 
+            transform: translateY(-5px); 
+            box-shadow: 0 15px 40px -5px rgba(255, 255, 255, 0.08), 0 0 20px rgba(255, 255, 255, 0.03); 
             background: rgba(25, 25, 30, 0.8);
         }
+
+        /* White LED Effect for Seminars */
+        .led-white-card {
+            background: rgba(15, 15, 20, 0.6); 
+            backdrop-filter: blur(12px); 
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .led-white-card:hover {
+            background: rgba(30, 30, 35, 0.8);
+            border-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 35px rgba(255, 255, 255, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px) scale(1.02);
+        }
+        .led-text-hover { transition: all 0.4s ease; }
+        .led-white-card:hover .led-text-hover { text-shadow: 0 0 12px rgba(255, 255, 255, 0.9); color: #ffffff; }
 
         .pointer-hand {
             font-size: 2rem;
@@ -78,11 +98,10 @@
             50% { transform: translateY(-15px) rotate(-10deg); }
         }
 
-        /* Clean Section Titles */
         .section-title { 
             font-weight: 900; 
             text-transform: uppercase; 
-            border-left: 3px solid rgba(255, 255, 255, 0.8); /* White left border */
+            border-left: 3px solid rgba(255, 255, 255, 0.8); 
             padding-left: 15px; 
             margin-bottom: 2rem; 
             font-size: 1.25rem; 
@@ -90,7 +109,6 @@
             color: rgba(255, 255, 255, 0.9);
         }
 
-        /* Certification Items - Clean */
         .cert-item { 
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -107,12 +125,12 @@
             border-color: rgba(255, 255, 255, 0.4);
             background: rgba(255, 255, 255, 0.05);
             color: #fff;
-            transform: translateX(3px); /* Slight indent on hover */
+            transform: translateX(3px);
         }
 
         .terminal-header { background: #111; border-radius: 8px 8px 0 0; padding: 10px 15px; display: flex; gap: 6px; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .dot { width: 10px; height: 10px; border-radius: 50%; }
-        .terminal-body { background: #050505; border-radius: 0 0 8px 8px; padding: 25px; min-height: 200px; color: #a855f7; /* Purple text */ font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.8; }
+        .terminal-body { background: #050505; border-radius: 0 0 8px 8px; padding: 25px; min-height: 200px; color: #a855f7; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.8; }
         .cursor { display: inline-block; width: 7px; height: 15px; background: #a855f7; animation: blink 1s infinite; vertical-align: middle; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
         
@@ -127,7 +145,6 @@
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
         }
 
-        /* Subtle top borders for some visual separation if needed, but keeping them very soft */
         .border-top-soft { border-top: 1px solid rgba(255,255,255,0.1); }
     </style>
 </head>
@@ -136,7 +153,7 @@
     <div id="mouse-glow"></div>
 
     <header class="mb-12 text-center relative z-10">
-        <h1 class="text-5xl font-black mb-4 tracking-tight uppercase italic text-white drop-shadow-2xl text-center">Giorgos Papatsimpas</h1>
+        <h1 id="glitch-name" data-value="GIORGOS PAPATSIMPAS" class="text-5xl font-black mb-4 tracking-tight uppercase italic text-white drop-shadow-2xl text-center">Giorgos Papatsimpas</h1>
         <p class="text-lg text-purple-300 mono font-bold uppercase tracking-widest bg-purple-500/5 inline-block px-6 py-2 rounded-md border border-purple-500/20 shadow-[0_0_15px_rgba(168,85,247,0.1)]">Undergraduate Student | Computer Science & Telecommunications</p>
         
         <div class="mt-10 flex flex-col items-center">
@@ -194,7 +211,7 @@
         <h2 class="section-title">Professional Experience</h2>
         <div class="glass border-top-soft p-8 rounded-xl flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="flex flex-col md:flex-row items-center gap-6 w-full">
-                <!-- IMPORTANT: Using the specific image path requested -->
+                <!-- Using the specific image path requested for Region of Peloponnese -->
                 <div class="uop-badge flex-shrink-0">
                     <img src="image_da6335.png" alt="Region of Peloponnese Logo" class="w-full h-auto">
                 </div>
@@ -260,11 +277,11 @@
                 <div class="glass p-6 rounded-xl text-left border-l-2 border-l-white/20 hover:border-l-white">
                     <p class="font-bold text-white tracking-tight uppercase flex items-center gap-3">
                         <img src="https://flagcdn.com/w40/gr.png" class="w-6 h-4 object-cover rounded-sm shadow-sm" alt="GR Flag"> 
-                        Greek — Native
+                        Greek — Native (C2)
                     </p>
                     <p class="text-[10px] text-slate-400 font-black uppercase tracking-widest mt-1 ml-9">Mother Tongue</p>
                 </div>
-                
+
                 <div class="glass p-6 rounded-xl text-left border-l-2 border-l-white/20 hover:border-l-white">
                     <p class="font-bold text-white tracking-tight uppercase flex items-center gap-3">
                         <img src="https://flagcdn.com/w40/gb.png" class="w-6 h-4 object-cover rounded-sm shadow-sm" alt="UK Flag"> 
@@ -285,28 +302,28 @@
             <div class="space-y-4 text-left">
                 <h2 class="section-title">Seminars</h2>
                 
-                <div class="glass p-6 rounded-xl text-left">
-                    <p class="font-bold text-white tracking-tight uppercase mb-1">Infosecurity Europe 2026 (London)</p>
+                <div class="led-white-card p-6 text-left">
+                    <h3 class="font-black led-text-hover text-slate-200 uppercase tracking-tight text-lg mb-1">Infosecurity Europe 2026</h3>
+                    <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">London, UK | Authorized Attendee</p>
+                </div>
+
+                <div class="led-white-card p-6 text-left">
+                    <h3 class="font-black led-text-hover text-slate-200 uppercase tracking-tight text-lg mb-1">Voxxed Days Ioannina 2024</h3>
                     <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Authorized Attendee</p>
                 </div>
 
-                <div class="glass p-6 rounded-xl text-left">
-                    <p class="font-bold text-white tracking-tight uppercase mb-1">Voxxed Days Ioannina 2024</p>
+                <div class="led-white-card p-6 text-left">
+                    <h3 class="font-black led-text-hover text-slate-200 uppercase tracking-tight text-lg mb-1">27th Greek ICT Forum</h3>
                     <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Authorized Attendee</p>
                 </div>
 
-                <div class="glass p-6 rounded-xl text-left">
-                    <p class="font-bold text-white tracking-tight uppercase mb-1">27th Greek ICT Forum</p>
-                    <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Authorized Attendee</p>
-                </div>
-
-                <div class="glass p-6 rounded-xl text-left">
-                    <p class="font-bold text-white tracking-tight uppercase mb-1">Google: Understanding AI</p>
+                <div class="led-white-card p-6 text-left">
+                    <h3 class="font-black led-text-hover text-slate-200 uppercase tracking-tight text-lg mb-1">Google: Understanding AI</h3>
                     <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Training Seminar</p>
                 </div>
 
-                <div class="glass p-6 rounded-xl text-left">
-                    <p class="font-bold text-white tracking-tight uppercase mb-1">Entrepreneurship</p>
+                <div class="led-white-card p-6 text-left">
+                    <h3 class="font-black led-text-hover text-slate-200 uppercase tracking-tight text-lg mb-1">Entrepreneurship</h3>
                     <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Online Seminar | Webinar Attendee</p>
                 </div>
             </div>
@@ -415,6 +432,37 @@
             glow.style.left = e.clientX + 'px';
             glow.style.top = e.clientY + 'px';
         });
+
+        // Decrypt text effect for the main name
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*";
+        const nameElement = document.getElementById("glitch-name");
+        let decryptInterval = null;
+
+        function runDecrypt() {
+            let iteration = 0;
+            clearInterval(decryptInterval);
+            
+            decryptInterval = setInterval(() => {
+                nameElement.innerText = nameElement.innerText
+                    .split("")
+                    .map((letter, index) => {
+                        if(index < iteration) {
+                            return nameElement.dataset.value[index];
+                        }
+                        return letters[Math.floor(Math.random() * letters.length)];
+                    })
+                    .join("");
+                
+                if(iteration >= nameElement.dataset.value.length){ 
+                    clearInterval(decryptInterval);
+                }
+                iteration += 1 / 3;
+            }, 30);
+        }
+
+        // Run decrypt on page load and on hover
+        window.onload = runDecrypt;
+        nameElement.onmouseover = runDecrypt;
 
         function revealTerminal() {
             const btn = document.getElementById('message-btn');
