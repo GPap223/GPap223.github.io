@@ -17,7 +17,7 @@
     <style>
         :root {
             --bg-deep: #050505; /* Σχεδόν απόλυτο μαύρο */
-            --accent-purple: rgba(139, 92, 246, 0.15); /* Απαλό ανοιχτό μωβ */
+            --accent-purple: rgba(139, 92, 246, 0.35); /* Πιο έντονο και καθαρό μωβ φως */
             --frame-border: rgba(255, 255, 255, 0.1);
             --frame-glow: rgba(255, 255, 255, 0.08);
             --frame-glow-hover: rgba(255, 255, 255, 0.25);
@@ -25,8 +25,8 @@
 
         body { 
             font-family: 'Inter', sans-serif; 
-            /* Βαθύ μαύρο με ένα πολύ απαλό μωβ φως στο κέντρο */
-            background: radial-gradient(circle at 50% 0%, var(--accent-purple) 0%, var(--bg-deep) 60%, #000000 100%);
+            /* Βαθύ μαύρο με πιο έντονο μωβ φως στο κέντρο που απλώνεται πιο πολύ */
+            background: radial-gradient(circle at 50% 0%, var(--accent-purple) 0%, var(--bg-deep) 70%, #000000 100%);
             background-attachment: fixed;
             color: #f8fafc; 
             min-height: 100vh;
@@ -161,6 +161,20 @@
     </section>
 
     <section class="mb-20">
+        <h2 class="section-title">Profile Summary</h2>
+        <div class="gallery-frame p-10">
+            <p class="leading-relaxed text-lg text-slate-300 font-medium text-justify italic">
+                "Tech enthusiast specializing in low-level systems and telecommunications. Focused on the intersection of hardware and software, with extensive experience in C programming and algorithmic architecture. Committed to building secure, high-performance systems for next-generation connectivity."
+            </p>
+            <div class="mt-8">
+                <a href="mailto:papatsimpasgeorgios@gmail.com?subject=Request%20for%20Giorgos%20Papatsimpas%20CV" class="text-xs font-black uppercase tracking-widest text-white/80 hover:text-white transition-colors border-b border-white/30 pb-1 italic">
+                    Request Comprehensive CV →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="mb-20">
         <h2 class="section-title">Academic Foundation</h2>
         <div class="gallery-frame p-10 flex flex-col md:flex-row items-center gap-8">
             <div class="uop-badge flex-shrink-0">
@@ -200,7 +214,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <!-- Languages -->
             <div class="gallery-frame p-10 text-left flex flex-col justify-between">
-                <h3 class="text-sm font-black uppercase tracking-[0.2em] text-white mb-8 border-b border-white/10 pb-4">Linguistics</h3>
+                <h3 class="text-sm font-black uppercase tracking-[0.2em] text-white mb-8 border-b border-white/10 pb-4">Languages</h3>
                 <div class="space-y-6 flex-grow">
                     <div>
                         <p class="font-bold text-white tracking-tight uppercase flex items-center gap-3">
@@ -283,6 +297,11 @@
                     <span class="cert-item uppercase">Digital Marketing (Google)</span>
                 </div>
             </div>
+        </div>
+        <div class="text-center mt-10">
+            <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-500">
+                Verify credentials via <a href="https://www.linkedin.com/in/giorgos-papatsimpas-203212377/" target="_blank" class="text-white hover:underline">LinkedIn Original Records</a>
+            </p>
         </div>
     </section>
 
