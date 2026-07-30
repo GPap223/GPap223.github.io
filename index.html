@@ -17,63 +17,52 @@
     <style>
         body { 
             font-family: 'Inter', sans-serif; 
-            background: radial-gradient(circle at top center, #1e293b 0%, #0f172a 40%, #020617 100%);
+            background: #000000; /* Deep Black Base */
             color: #f8fafc; 
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
         }
 
+        /* The Soft Ambient Purple in the background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 50% 30%, rgba(139, 92, 246, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
         #mouse-glow {
             position: fixed;
             top: 0; left: 0;
             width: 800px; height: 800px;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.05) 0%, rgba(56, 189, 248, 0) 60%);
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, rgba(139, 92, 246, 0) 50%);
             border-radius: 50%;
             pointer-events: none;
             z-index: 0;
             transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease;
         }
 
         .mono { font-family: 'JetBrains Mono', monospace; }
         
         .glass { 
-            background: rgba(15, 23, 42, 0.6); 
+            background: rgba(15, 15, 20, 0.6); /* Very dark, almost black glass */
             backdrop-filter: blur(12px); 
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            border: 1px solid rgba(255, 255, 255, 0.05); /* Very subtle white border initially */
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5); /* Deep shadow */
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy step transition */
             position: relative; 
             z-index: 1; 
         }
         
         .glass:hover { 
-            border-color: rgba(255, 255, 255, 0.2); 
-            transform: translateY(-2px); 
-            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
-        }
-
-        .led-white-card {
-            background: rgba(15, 23, 42, 0.4); 
-            backdrop-filter: blur(12px); 
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .led-white-card:hover {
-            background: rgba(20, 30, 50, 0.6);
-            border-color: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 0 35px rgba(255, 255, 255, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.15);
-            transform: translateY(-5px) scale(1.02);
-        }
-        .led-text-hover {
-            transition: all 0.4s ease;
-        }
-        .led-white-card:hover .led-text-hover {
-            text-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
-            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.3); /* Stronger white border on hover */
+            transform: translateY(-5px); /* The "Step up" effect */
+            box-shadow: 0 15px 40px -5px rgba(255, 255, 255, 0.08), 0 0 20px rgba(255, 255, 255, 0.03); /* Soft white glow */
+            background: rgba(25, 25, 30, 0.8);
         }
 
         .pointer-hand {
@@ -81,7 +70,7 @@
             display: block;
             margin-bottom: 0.5rem;
             animation: bounce-3d 1.5s infinite ease-in-out;
-            filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.5));
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
         }
 
         @keyframes bounce-3d {
@@ -89,54 +78,57 @@
             50% { transform: translateY(-15px) rotate(-10deg); }
         }
 
-        .border-top-red { border-top: 3px solid #ef4444; background: linear-gradient(180deg, rgba(239, 68, 68, 0.05) 0%, rgba(15, 23, 42, 0) 100%); }
-        .border-top-blue { border-top: 3px solid #3b82f6; background: linear-gradient(180deg, rgba(59, 130, 246, 0.05) 0%, rgba(15, 23, 42, 0) 100%); }
-        .border-top-green { border-top: 3px solid #22c55e; background: linear-gradient(180deg, rgba(34, 197, 94, 0.05) 0%, rgba(15, 23, 42, 0) 100%); }
-
+        /* Clean Section Titles */
         .section-title { 
             font-weight: 900; 
             text-transform: uppercase; 
-            border-left: 4px solid #38bdf8; 
+            border-left: 3px solid rgba(255, 255, 255, 0.8); /* White left border */
             padding-left: 15px; 
             margin-bottom: 2rem; 
             font-size: 1.25rem; 
-            letter-spacing: 0.05em;
-            text-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+            letter-spacing: 0.1em;
+            color: rgba(255, 255, 255, 0.9);
         }
 
+        /* Certification Items - Clean */
         .cert-item { 
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.05);
             padding: 10px 14px;
             border-radius: 6px;
             margin-bottom: 8px;
             display: block;
-            font-weight: 700;
+            font-weight: 600;
             color: #cbd5e1;
             font-size: 0.8rem;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
         }
         .cert-item:hover {
-            border-color: rgba(255,255,255,0.3);
-            background: rgba(255,255,255,0.08);
+            border-color: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            transform: translateX(3px); /* Slight indent on hover */
         }
 
-        .terminal-header { background: #1e293b; border-radius: 8px 8px 0 0; padding: 10px 15px; display: flex; gap: 6px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .terminal-header { background: #111; border-radius: 8px 8px 0 0; padding: 10px 15px; display: flex; gap: 6px; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .dot { width: 10px; height: 10px; border-radius: 50%; }
-        .terminal-body { background: #0f172a; border-radius: 0 0 8px 8px; padding: 25px; min-height: 250px; color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.8; }
-        .cursor { display: inline-block; width: 7px; height: 15px; background: #38bdf8; animation: blink 1s infinite; vertical-align: middle; }
+        .terminal-body { background: #050505; border-radius: 0 0 8px 8px; padding: 25px; min-height: 200px; color: #a855f7; /* Purple text */ font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.8; }
+        .cursor { display: inline-block; width: 7px; height: 15px; background: #a855f7; animation: blink 1s infinite; vertical-align: middle; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
         
         #terminal-section { display: none; margin-bottom: 4rem; }
 
         .uop-badge {
-            background: rgba(255, 255, 255, 0.95);
+            background: #fff;
             padding: 12px;
             border-radius: 12px;
             width: 100px;
             height: auto;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
         }
+
+        /* Subtle top borders for some visual separation if needed, but keeping them very soft */
+        .border-top-soft { border-top: 1px solid rgba(255,255,255,0.1); }
     </style>
 </head>
 <body class="max-w-5xl mx-auto px-6 py-12">
@@ -145,21 +137,21 @@
 
     <header class="mb-12 text-center relative z-10">
         <h1 class="text-5xl font-black mb-4 tracking-tight uppercase italic text-white drop-shadow-2xl text-center">Giorgos Papatsimpas</h1>
-        <p class="text-lg text-blue-400 mono font-bold uppercase tracking-widest bg-blue-500/5 inline-block px-6 py-2 rounded-md border border-blue-500/20 shadow-[0_0_15px_rgba(59,130,246,0.1)]">Undergraduate Student | Computer Science & Telecommunications</p>
+        <p class="text-lg text-purple-300 mono font-bold uppercase tracking-widest bg-purple-500/5 inline-block px-6 py-2 rounded-md border border-purple-500/20 shadow-[0_0_15px_rgba(168,85,247,0.1)]">Undergraduate Student | Computer Science & Telecommunications</p>
         
         <div class="mt-10 flex flex-col items-center">
             <span class="pointer-hand" id="pointer-emoji">👇</span>
-            <button onclick="revealTerminal()" id="message-btn" class="bg-slate-900/50 hover:bg-cyan-500 hover:text-white text-cyan-400 border border-cyan-500/50 font-black px-8 py-3 rounded-md transition-all uppercase italic text-xs tracking-widest shadow-[0_0_20px_rgba(6,182,212,0.3)]">
+            <button onclick="revealTerminal()" id="message-btn" class="bg-black/50 hover:bg-white hover:text-black text-white border border-white/30 font-black px-8 py-3 rounded-md transition-all uppercase italic text-xs tracking-widest shadow-[0_0_15px_rgba(255,255,255,0.1)]">
                 A MESSAGE FOR YOU
             </button>
         </div>
     </header>
 
     <section id="terminal-section">
-        <div class="glass p-0 rounded-xl border border-cyan-500/30">
+        <div class="glass p-0 rounded-xl border border-purple-500/30">
             <div class="terminal-header">
-                <div class="dot bg-slate-600"></div><div class="dot bg-slate-600"></div><div class="dot bg-slate-600"></div>
-                <span class="ml-4 text-[9px] mono text-slate-500 uppercase font-bold tracking-[0.2em]">system_authentication.sh</span>
+                <div class="dot bg-slate-700"></div><div class="dot bg-slate-700"></div><div class="dot bg-slate-700"></div>
+                <span class="ml-4 text-[9px] mono text-slate-500 uppercase font-bold tracking-[0.2em]">init_sequence.sh</span>
             </div>
             <div class="terminal-body">
                 <div id="terminal-text"></div><span id="cursor" class="cursor" style="display:none;"></span>
@@ -168,13 +160,13 @@
     </section>
 
     <section class="mb-24">
-        <h2 class="section-title text-white">Profile Summary</h2>
-        <div class="glass p-10 rounded-xl border-t-2 border-t-cyan-500">
+        <h2 class="section-title">Profile Summary</h2>
+        <div class="glass border-top-soft p-10 rounded-xl">
             <p class="leading-relaxed text-lg text-slate-300 font-medium text-justify italic">
                 "Tech enthusiast specializing in low-level systems and telecommunications. Focused on the intersection of hardware and software, with extensive experience in C programming and algorithmic architecture. Committed to building secure, high-performance systems for next-generation connectivity."
             </p>
             <div class="mt-8">
-                <a href="mailto:papatsimpasgeorgios@gmail.com?subject=Request%20for%20Giorgos%20Papatsimpas%20CV" class="text-xs font-black uppercase tracking-widest text-blue-400 hover:text-white transition-colors border-b border-blue-400/30 pb-1 italic">
+                <a href="mailto:papatsimpasgeorgios@gmail.com?subject=Request%20for%20Giorgos%20Papatsimpas%20CV" class="text-xs font-black uppercase tracking-widest text-purple-400 hover:text-white transition-colors border-b border-purple-400/30 pb-1 italic">
                     Request Comprehensive CV →
                 </a>
             </div>
@@ -182,25 +174,25 @@
     </section>
 
     <section class="mb-24">
-        <h2 class="section-title text-white">Academic Education</h2>
-        <div class="glass border-top-blue p-8 rounded-xl flex flex-col md:flex-row items-center gap-8">
+        <h2 class="section-title">Academic Education</h2>
+        <div class="glass border-top-soft p-8 rounded-xl flex flex-col md:flex-row items-center gap-8">
             <div class="uop-badge flex-shrink-0">
                 <img src="https://www.uop.gr/images/uop_logo.png" alt="University of Peloponnese Logo" class="w-full h-auto">
             </div>
             <div>
                 <h3 class="text-2xl font-black text-white italic uppercase tracking-tight">Undergraduate Student (Final Year)</h3>
-                <p class="text-blue-400 font-bold uppercase text-sm mt-1 tracking-wider">Informatics & Telecommunications</p>
+                <p class="text-purple-300 font-bold uppercase text-sm mt-1 tracking-wider">Informatics & Telecommunications</p>
                 <p class="text-slate-400 font-medium uppercase text-xs mt-1">University of Peloponnese | School of Economics and Technology</p>
                 <div class="mt-4 flex gap-2">
-                    <span class="mono text-[10px] bg-slate-800 text-slate-400 border border-slate-700 px-3 py-1 rounded italic uppercase font-bold text-center">Tripoli, Greece</span>
+                    <span class="mono text-[10px] bg-white/5 text-slate-300 border border-white/10 px-3 py-1 rounded italic uppercase font-bold text-center">Tripoli, Greece</span>
                 </div>
             </div>
         </div>
     </section>
 
     <section class="mb-24">
-        <h2 class="section-title text-white">Professional Experience</h2>
-        <div class="glass border-top-blue p-8 rounded-xl flex flex-col md:flex-row justify-between items-center gap-6">
+        <h2 class="section-title">Professional Experience</h2>
+        <div class="glass border-top-soft p-8 rounded-xl flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="flex flex-col md:flex-row items-center gap-6 w-full">
                 <!-- IMPORTANT: Using the specific image path requested -->
                 <div class="uop-badge flex-shrink-0">
@@ -209,15 +201,15 @@
                 
                 <div class="text-left w-full">
                     <div class="flex items-center mb-2">
-                        <svg class="w-3 h-3 fill-blue-400 mr-2" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10z"/></svg>
-                        <span class="text-[10px] font-black uppercase tracking-[0.3em] text-blue-400">Internship Program | Nov 2025 - Feb 2026</span>
+                        <svg class="w-3 h-3 fill-purple-400 mr-2" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10z"/></svg>
+                        <span class="text-[10px] font-black uppercase tracking-[0.3em] text-purple-400">Internship Program | Nov 2025 - Feb 2026</span>
                     </div>
                     <h3 class="text-2xl font-black text-white italic uppercase tracking-tight">IT Systems & e-Government Specialist</h3>
                     <p class="text-slate-400 font-bold uppercase text-xs mt-1 italic">Region of Peloponnese | Dept. of Transparency & Electronic Governance</p>
                 </div>
             </div>
             <div class="text-right w-full md:w-auto flex-shrink-0 mt-4 md:mt-0">
-                <span class="mono text-[10px] font-bold text-slate-400 border border-slate-500/20 px-4 py-2 bg-slate-900/50 whitespace-nowrap uppercase">
+                <span class="mono text-[10px] font-bold text-slate-300 border border-white/10 px-4 py-2 bg-white/5 whitespace-nowrap uppercase">
                     Digital Infrastructure
                 </span>
             </div>
@@ -225,10 +217,10 @@
     </section>
 
     <section class="mb-24">
-        <h2 class="section-title text-white">Verified Certifications</h2>
+        <h2 class="section-title">Verified Certifications</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-            <div class="glass border-top-red p-6 rounded-xl">
-                <h3 class="text-xs font-black mb-6 uppercase tracking-[0.2em] text-red-400">Cyber Security</h3>
+            <div class="glass p-6 rounded-xl">
+                <h3 class="text-xs font-black mb-6 uppercase tracking-[0.2em] text-white/70">Cyber Security</h3>
                 <div class="space-y-2 text-left">
                     <span class="cert-item uppercase">Threat Landscape (Fortinet)</span>
                     <span class="cert-item uppercase">Threat Intelligence (IBM)</span>
@@ -236,8 +228,8 @@
                     <span class="cert-item uppercase">Stay Safe Online (Open Univ)</span>
                 </div>
             </div>
-            <div class="glass border-top-blue p-6 rounded-xl">
-                <h3 class="text-xs font-black mb-6 uppercase tracking-[0.2em] text-blue-400">Data & AI</h3>
+            <div class="glass p-6 rounded-xl">
+                <h3 class="text-xs font-black mb-6 uppercase tracking-[0.2em] text-white/70">Data & AI</h3>
                 <div class="space-y-2 text-left">
                     <span class="cert-item uppercase">Data Science (HP LIFE)</span>
                     <span class="cert-item uppercase">Data Fundamentals (IBM)</span>
@@ -245,8 +237,8 @@
                     <span class="cert-item uppercase">Google Analytics</span>
                 </div>
             </div>
-            <div class="glass border-top-green p-6 rounded-xl">
-                <h3 class="text-xs font-black mb-6 uppercase tracking-[0.2em] text-green-400">Development</h3>
+            <div class="glass p-6 rounded-xl">
+                <h3 class="text-xs font-black mb-6 uppercase tracking-[0.2em] text-white/70">Development</h3>
                 <div class="space-y-2 text-left">
                     <span class="cert-item uppercase">Web Dev Fundamentals (IBM)</span>
                     <span class="cert-item uppercase">Digital Marketing (Google)</span>
@@ -255,66 +247,66 @@
         </div>
         <div class="text-center">
             <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-500">
-                Verify credentials via <a href="https://www.linkedin.com/in/giorgos-papatsimpas-203212377/" target="_blank" class="text-blue-500 hover:underline">LinkedIn Original Records</a>
+                Verify credentials via <a href="https://www.linkedin.com/in/giorgos-papatsimpas-203212377/" target="_blank" class="text-purple-400 hover:text-white transition-colors">LinkedIn Original Records</a>
             </p>
         </div>
     </section>
 
     <section class="mb-24">
-        <h2 class="section-title text-white">Languages & Seminars</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             
-            <!-- Languages Side -->
-            <div class="space-y-4">
-                <div class="glass p-6 rounded-xl border-l-4 border-l-purple-500 text-left">
+            <div class="space-y-4 text-left">
+                <h2 class="section-title">Languages</h2>
+                <div class="glass p-6 rounded-xl text-left border-l-2 border-l-white/20 hover:border-l-white">
                     <p class="font-bold text-white tracking-tight uppercase flex items-center gap-3">
                         <img src="https://flagcdn.com/w40/gr.png" class="w-6 h-4 object-cover rounded-sm shadow-sm" alt="GR Flag"> 
                         Greek — Native
                     </p>
-                    <p class="text-[10px] text-purple-400 font-black uppercase tracking-widest mt-1 ml-9">Mother Tongue</p>
+                    <p class="text-[10px] text-slate-400 font-black uppercase tracking-widest mt-1 ml-9">Mother Tongue</p>
                 </div>
                 
-                <div class="glass p-6 rounded-xl border-l-4 border-l-blue-500 text-left">
+                <div class="glass p-6 rounded-xl text-left border-l-2 border-l-white/20 hover:border-l-white">
                     <p class="font-bold text-white tracking-tight uppercase flex items-center gap-3">
                         <img src="https://flagcdn.com/w40/gb.png" class="w-6 h-4 object-cover rounded-sm shadow-sm" alt="UK Flag"> 
                         English — Proficiency (C2)
                     </p>
-                    <p class="text-[10px] text-blue-400 font-black uppercase tracking-widest mt-1 ml-9">Full Professional Mastery</p>
+                    <p class="text-[10px] text-slate-400 font-black uppercase tracking-widest mt-1 ml-9">Full Professional Mastery</p>
                 </div>
 
-                <div class="glass p-6 rounded-xl border-l-4 border-l-yellow-500 text-left">
+                <div class="glass p-6 rounded-xl text-left border-l-2 border-l-white/20 hover:border-l-white">
                     <p class="font-bold text-white tracking-tight uppercase flex items-center gap-3">
                         <img src="https://flagcdn.com/w40/de.png" class="w-6 h-4 object-cover rounded-sm shadow-sm" alt="DE Flag"> 
                         German — Advanced (C1)
                     </p>
-                    <p class="text-[10px] text-yellow-500 font-black uppercase tracking-widest mt-1 ml-9">Advanced Mastery</p>
+                    <p class="text-[10px] text-slate-400 font-black uppercase tracking-widest mt-1 ml-9">Advanced Mastery</p>
                 </div>
             </div>
             
-            <!-- Seminars Side with pure WHITE LED EFFECT -->
-            <div class="space-y-4">
-                <div class="led-white-card p-6 text-left">
-                    <h3 class="font-black led-text-hover text-slate-200 uppercase tracking-tight text-lg mb-1">Infosecurity Europe 2026</h3>
-                    <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">London, UK | Authorized Attendee</p>
-                </div>
+            <div class="space-y-4 text-left">
+                <h2 class="section-title">Seminars</h2>
                 
-                <div class="led-white-card p-6 text-left">
-                    <h3 class="font-black led-text-hover text-slate-200 uppercase tracking-tight text-lg mb-1">Voxxed Days Ioannina 2024</h3>
+                <div class="glass p-6 rounded-xl text-left">
+                    <p class="font-bold text-white tracking-tight uppercase mb-1">Infosecurity Europe 2026 (London)</p>
                     <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Authorized Attendee</p>
                 </div>
 
-                <div class="led-white-card p-6 text-left">
-                    <h3 class="font-black led-text-hover text-slate-200 uppercase tracking-tight text-lg mb-1">27th Greek ICT Forum</h3>
+                <div class="glass p-6 rounded-xl text-left">
+                    <p class="font-bold text-white tracking-tight uppercase mb-1">Voxxed Days Ioannina 2024</p>
                     <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Authorized Attendee</p>
                 </div>
 
-                <div class="led-white-card p-6 text-left">
-                    <h3 class="font-black led-text-hover text-slate-200 uppercase tracking-tight text-lg mb-1">Google: Understanding AI</h3>
+                <div class="glass p-6 rounded-xl text-left">
+                    <p class="font-bold text-white tracking-tight uppercase mb-1">27th Greek ICT Forum</p>
+                    <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Authorized Attendee</p>
+                </div>
+
+                <div class="glass p-6 rounded-xl text-left">
+                    <p class="font-bold text-white tracking-tight uppercase mb-1">Google: Understanding AI</p>
                     <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Training Seminar</p>
                 </div>
 
-                <div class="led-white-card p-6 text-left">
-                    <h3 class="font-black led-text-hover text-slate-200 uppercase tracking-tight text-lg mb-1">Entrepreneurship</h3>
+                <div class="glass p-6 rounded-xl text-left">
+                    <p class="font-bold text-white tracking-tight uppercase mb-1">Entrepreneurship</p>
                     <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Online Seminar | Webinar Attendee</p>
                 </div>
             </div>
@@ -323,82 +315,82 @@
     </section>
 
     <section class="mb-24">
-        <h2 class="section-title text-white text-left">Technical Expertise</h2>
+        <h2 class="section-title">Technical Expertise</h2>
         <div class="grid grid-cols-2 md:grid-cols-6 gap-6">
-            <div class="glass p-5 rounded-lg text-center border-t border-t-white/5 hover:border-t-white transition-all hover:-translate-y-1 hover:shadow-[0_5px_15px_rgba(255,255,255,0.1)]">
+            <div class="glass p-5 rounded-lg text-center">
                 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" class="w-8 h-8 mx-auto mb-3">
-                <span class="mono text-[9px] font-bold tracking-widest uppercase">C Language</span>
+                <span class="mono text-[9px] font-bold tracking-widest uppercase text-white/80">C Language</span>
             </div>
-            <div class="glass p-5 rounded-lg text-center border-t border-t-white/5 hover:border-t-white transition-all hover:-translate-y-1 hover:shadow-[0_5px_15px_rgba(255,255,255,0.1)]">
+            <div class="glass p-5 rounded-lg text-center">
                 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" class="w-8 h-8 mx-auto mb-3">
-                <span class="mono text-[9px] font-bold tracking-widest uppercase">Python</span>
+                <span class="mono text-[9px] font-bold tracking-widest uppercase text-white/80">Python</span>
             </div>
-            <div class="glass p-5 rounded-lg text-center border-t border-t-white/5 hover:border-t-white transition-all hover:-translate-y-1 hover:shadow-[0_5px_15px_rgba(255,255,255,0.1)]">
+            <div class="glass p-5 rounded-lg text-center">
                 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" class="w-8 h-8 mx-auto mb-3">
-                <span class="mono text-[9px] font-bold tracking-widest uppercase">Linux</span>
+                <span class="mono text-[9px] font-bold tracking-widest uppercase text-white/80">Linux</span>
             </div>
-            <div class="glass p-5 rounded-lg text-center border-t border-t-white/5 hover:border-t-white transition-all hover:-translate-y-1 hover:shadow-[0_5px_15px_rgba(255,255,255,0.1)]">
+            <div class="glass p-5 rounded-lg text-center">
                 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" class="w-8 h-8 mx-auto mb-3">
-                <span class="mono text-[9px] font-bold tracking-widest uppercase">Git</span>
+                <span class="mono text-[9px] font-bold tracking-widest uppercase text-white/80">Git</span>
             </div>
-            <div class="glass p-5 rounded-lg text-center border-t border-t-white/5 hover:border-t-white transition-all hover:-translate-y-1 hover:shadow-[0_5px_15px_rgba(255,255,255,0.1)]">
+            <div class="glass p-5 rounded-lg text-center">
                 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" class="w-8 h-8 mx-auto mb-3">
-                <span class="mono text-[9px] font-bold tracking-widest uppercase">Java</span>
+                <span class="mono text-[9px] font-bold tracking-widest uppercase text-white/80">Java</span>
             </div>
-            <div class="glass p-5 rounded-lg text-center border-t border-t-white/5 hover:border-t-white transition-all hover:-translate-y-1 hover:shadow-[0_5px_15px_rgba(255,255,255,0.1)]">
+            <div class="glass p-5 rounded-lg text-center">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png" class="w-8 h-8 mx-auto mb-3 object-contain">
-                <span class="mono text-[9px] font-bold tracking-widest uppercase">Matlab</span>
+                <span class="mono text-[9px] font-bold tracking-widest uppercase text-white/80">Matlab</span>
             </div>
             
-            <div class="glass p-5 rounded-lg text-center border-t border-t-white/5 hover:border-t-white transition-all hover:-translate-y-1 hover:shadow-[0_5px_15px_rgba(255,255,255,0.1)]">
+            <div class="glass p-5 rounded-lg text-center">
                 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg" class="w-8 h-8 mx-auto mb-3">
-                <span class="mono text-[9px] font-bold tracking-widest uppercase">SQL</span>
+                <span class="mono text-[9px] font-bold tracking-widest uppercase text-white/80">SQL</span>
             </div>
-            <div class="glass p-5 rounded-lg text-center border-t border-t-white/5 hover:border-t-white transition-all hover:-translate-y-1 hover:shadow-[0_5px_15px_rgba(255,255,255,0.1)]">
+            <div class="glass p-5 rounded-lg text-center">
                 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg" class="w-8 h-8 mx-auto mb-3">
-                <span class="mono text-[9px] font-bold tracking-widest uppercase">PHP</span>
+                <span class="mono text-[9px] font-bold tracking-widest uppercase text-white/80">PHP</span>
             </div>
-            <div class="glass p-5 rounded-lg text-center border-t border-t-white/5 hover:border-t-white transition-all hover:-translate-y-1 hover:shadow-[0_5px_15px_rgba(255,255,255,0.1)]">
+            <div class="glass p-5 rounded-lg text-center">
                 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/json/json-original.svg" class="w-8 h-8 mx-auto mb-3">
-                <span class="mono text-[9px] font-bold tracking-widest uppercase">JSON</span>
+                <span class="mono text-[9px] font-bold tracking-widest uppercase text-white/80">JSON</span>
             </div>
-            <div class="glass p-5 rounded-lg text-center border-t border-t-white/5 hover:border-t-white transition-all hover:-translate-y-1 hover:shadow-[0_5px_15px_rgba(255,255,255,0.1)]">
+            <div class="glass p-5 rounded-lg text-center">
                 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" class="w-8 h-8 mx-auto mb-3">
-                <span class="mono text-[9px] font-bold tracking-widest uppercase">AJAX</span>
+                <span class="mono text-[9px] font-bold tracking-widest uppercase text-white/80">AJAX</span>
             </div>
-            <div class="glass p-5 rounded-lg text-center border-t border-t-white/5 hover:border-t-white transition-all hover:-translate-y-1 hover:shadow-[0_5px_15px_rgba(255,255,255,0.1)]">
+            <div class="glass p-5 rounded-lg text-center">
                 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" class="w-8 h-8 mx-auto mb-3">
-                <span class="mono text-[9px] font-bold tracking-widest uppercase">HTML</span>
+                <span class="mono text-[9px] font-bold tracking-widest uppercase text-white/80">HTML</span>
             </div>
-            <div class="glass p-5 rounded-lg text-center border-t border-t-white/5 hover:border-t-white transition-all hover:-translate-y-1 hover:shadow-[0_5px_15px_rgba(255,255,255,0.1)]">
+            <div class="glass p-5 rounded-lg text-center">
                 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg" class="w-8 h-8 mx-auto mb-3">
-                <span class="mono text-[9px] font-bold tracking-widest uppercase">CSS</span>
+                <span class="mono text-[9px] font-bold tracking-widest uppercase text-white/80">CSS</span>
             </div>
         </div>
     </section>
 
     <section class="mb-24">
-        <h2 class="section-title text-white text-left">Engineering Repositories</h2>
+        <h2 class="section-title">Engineering Repositories</h2>
         <div class="grid gap-6">
-            <a href="https://github.com/GPap223/Acrostic_Multi_Creator" target="_blank" class="glass border-t border-t-white/10 p-8 rounded-xl block group transition-all hover:bg-white/5 hover:border-t-white/40 hover:shadow-[0_10px_30px_rgba(255,255,255,0.05)]">
+            <a href="https://github.com/GPap223/Acrostic_Multi_Creator" target="_blank" class="glass p-8 rounded-xl block group">
                 <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-xl font-black text-white mono tracking-tighter italic uppercase group-hover:underline">Acrostic_Multi_Creator</h3>
-                    <span class="mono text-[10px] font-bold text-slate-400 border border-slate-500/30 px-3 py-1 bg-slate-900/50 uppercase rounded">1,387 LOC</span>
+                    <h3 class="text-xl font-black text-white mono tracking-tighter italic uppercase group-hover:text-purple-400 transition-colors">Acrostic_Multi_Creator</h3>
+                    <span class="mono text-[10px] font-bold text-slate-400 border border-white/10 px-3 py-1 bg-white/5 uppercase rounded">1,387 LOC</span>
                 </div>
                 <p class="text-sm text-slate-400 uppercase leading-relaxed font-bold tracking-wide">Algorithmic architecture focusing on memory allocation and C optimization.</p>
             </a>
             
-            <a href="https://github.com/GPap223/DungeonAdventure" target="_blank" class="glass border-t border-t-white/10 p-8 rounded-xl block group transition-all hover:bg-white/5 hover:border-t-white/40 hover:shadow-[0_10px_30px_rgba(255,255,255,0.05)] mt-6">
+            <a href="https://github.com/GPap223/DungeonAdventure" target="_blank" class="glass p-8 rounded-xl block group mt-6">
                 <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-xl font-black text-white mono tracking-tighter italic uppercase group-hover:underline">DungeonAdventure</h3>
-                    <span class="mono text-[10px] font-bold text-slate-400 border border-slate-500/30 px-3 py-1 bg-slate-900/50 uppercase rounded">1,352 LOC</span>
+                    <h3 class="text-xl font-black text-white mono tracking-tighter italic uppercase group-hover:text-purple-400 transition-colors">DungeonAdventure</h3>
+                    <span class="mono text-[10px] font-bold text-slate-400 border border-white/10 px-3 py-1 bg-white/5 uppercase rounded">1,352 LOC</span>
                 </div>
                 <p class="text-sm text-slate-400 uppercase leading-relaxed font-bold tracking-wide">Complex logic engine implementation utilizing modular C programming patterns.</p>
             </a>
         </div>
     </section>
 
-    <section class="text-center py-20 border-t border-slate-800 relative z-10">
+    <section class="text-center py-20 border-t border-white/5 relative z-10">
         <h2 class="text-xs font-black uppercase tracking-[0.5em] text-slate-500 mb-10">Let's Connect</h2>
         <div class="flex flex-col md:flex-row justify-center items-center gap-12">
             <a href="https://www.linkedin.com/in/giorgos-papatsimpas-203212377/" target="_blank" class="group flex flex-col items-center">
@@ -414,7 +406,7 @@
                 <span class="mono text-[10px] font-bold uppercase tracking-widest text-slate-500 group-hover:text-white transition-colors">Email</span>
             </a>
         </div>
-        <p class="mt-16 mono text-[8px] text-slate-700 tracking-[0.5em] uppercase italic text-center">G. Papatsimpas | Univ. of Peloponnese | Verified Credentials</p>
+        <p class="mt-16 mono text-[8px] text-slate-600 tracking-[0.5em] uppercase italic text-center">G. Papatsimpas | Univ. of Peloponnese | Verified Credentials</p>
     </section>
 
     <script>
@@ -437,7 +429,6 @@
             cursor.style.display = 'inline-block';
             section.scrollIntoView({ behavior: 'smooth' });
 
-            // Removed the SYSTEM VERIFIED line as requested
             const lines = [
                 "> INITIALIZING SECURE COMMUNICATION...",
                 "> Dear Guest,", "> ",
